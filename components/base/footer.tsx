@@ -25,29 +25,30 @@ const Footer: React.FC<FooterProps> = ({ variant }) => {
 
   return (
     <footer className="w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)]">
-      {/* web footer */}
+      {/* Desktop */}
       <div className="hidden sm:flex justify-between items-center">
         <div>© 2025</div>
         <div>About</div>
       </div>
 
-      {/* mobile footer variant: normal */}
+      {/* Mobile */}
       <div className="sm:hidden">
+        {/* Home, Work, Project, Play */}
         {isNormalMobileVariant && (
           <div className="flex justify-between items-center">
             <div>© 2025</div>
-            <SunIcon size={24} />
+            <SunIcon size={20} />
           </div>
         )}
 
-        {/* mobile footer variant: socials */}
+        {/* About, Menu */}
         {isSocialMobileVariant && (
           <div className="flex justify-center items-center gap-4">
-            <EnvelopeIcon size={24} />
-            <LinkedinLogoIcon size={24} />
-            <GithubLogoIcon size={24} />
-            <InstagramLogoIcon size={24} />
-            <SpotifyLogoIcon size={24} />
+            <EnvelopeIcon size={20} />
+            <LinkedinLogoIcon size={20} />
+            <GithubLogoIcon size={20} />
+            <InstagramLogoIcon size={20} />
+            <SpotifyLogoIcon size={20} />
           </div>
         )}
       </div>
