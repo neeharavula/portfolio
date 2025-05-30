@@ -3,7 +3,7 @@ import Layout from "@/components/base/general-layout";
 export default function Home() {
   return (
     <Layout variant="home">
-      <section className="min-h-full w-full p-8 sm:p-20 grid grid-cols-1 sm:grid-cols-[1fr_3fr_1fr] sm:grid-rows-1 sm:gap-8 text-sm font-[family-name:var(--font-geist-mono)]">
+      <section className="felx flex-col h-full w-full p-8 sm:p-20 grid grid-cols-1 sm:grid-cols-[1fr_3fr_1fr] sm:grid-rows-1 sm:gap-8 text-sm font-[family-name:var(--font-geist-mono)]">
         {/* Desktop */}
         {/* Empty space */}
         <div className="hidden sm:block" />

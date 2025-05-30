@@ -18,7 +18,7 @@ const Layout = ({ children, variant }: LayoutProps) => {
   const showFooter = variant !== "project";
 
   return (
-    <div className="flex flex-col min-h-screen h-screen overflow-hidden">
+    <div className="flex flex-col h-screen overflow-hidden">
       <Nav variant={variant} />
       <main className="flex-1 overflow-auto">{children}</main>
       {showFooter && <Footer variant={variant} />}
