@@ -10,6 +10,7 @@ import {
   ListIcon,
   XIcon,
 } from "@phosphor-icons/react";
+import Link from "next/link";
 
 interface NavProps {
   variant: "home" | "work" | "project" | "play" | "about" | "menu";
@@ -27,7 +28,9 @@ const Nav: React.FC<NavProps> = ({ variant }) => {
         {/* Home, About */}
         {isHomeAbout && (
           <>
-            <div>{"Neeha's Room"}</div>
+            <Link href="/">
+              <div>{"Neeha's Room"}</div>
+            </Link>
             <SunIcon size={20} />
           </>
         )}
@@ -35,12 +38,16 @@ const Nav: React.FC<NavProps> = ({ variant }) => {
         {/* Work, Project, Play */}
         {isWorkPlayProject && (
           <>
-            <div className="flex items-center gap-2">
-              <ArrowBendUpLeftIcon size={20} />
-              <span>Back to my room</span>
-            </div>
+            <Link href="/">
+              <div className="flex items-center gap-4">
+                <ArrowBendUpLeftIcon size={20} />
+                <span>Back to room</span>
+              </div>
+            </Link>
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
-              Project Name
+              {variant === "work" && "Work"}
+              {variant === "play" && "Play"}
+              {variant === "project" && "Project Name"}
             </div>
             <SunIcon size={20} />
           </>
@@ -52,7 +59,9 @@ const Nav: React.FC<NavProps> = ({ variant }) => {
         {/* Home, About */}
         {isHomeAbout && (
           <>
-            <div>{"Neeha's Room"}</div>
+            <Link href="/">
+              <div>{"Neeha's Room"}</div>
+            </Link>
             <ListIcon size={20} />
           </>
         )}
@@ -68,8 +77,14 @@ const Nav: React.FC<NavProps> = ({ variant }) => {
         {/* Work, Project, Play */}
         {isWorkPlayProject && (
           <>
-            <ArrowBendUpLeftIcon size={20} />
-            <div className="text-center">Project Name</div>
+            <Link href="/">
+              <ArrowBendUpLeftIcon size={20} />
+            </Link>
+            <div className="text-center">
+              {variant === "work" && "Work"}
+              {variant === "play" && "Play"}
+              {variant === "project" && "Project Name"}
+            </div>
             <ListIcon size={20} />
           </>
         )}
