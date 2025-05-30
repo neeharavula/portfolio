@@ -1,4 +1,5 @@
 import Layout from "@/components/base/general-layout";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -15,9 +16,9 @@ export default function Home() {
               Room under construction.
               <br />
               <br />
-              Work
+              <Link href="/work">Work</Link>
               <br />
-              Play
+              <Link href="/play">Play</Link>
             </span>
           </div>
         </div>
