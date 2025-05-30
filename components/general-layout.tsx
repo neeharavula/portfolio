@@ -18,7 +18,7 @@ const Layout = ({ children, variant }: LayoutProps) => {
 
   return (
     <div className="flex flex-col min-h-screen h-screen overflow-hidden">
-      <main className="flex-1 overflow-auto p-8 sm:p-20">{children}</main>
+      <main className="flex-1 overflow-auto p-8 sm:p-20 pb-32">{children}</main>
       {showFooter && <Footer variant={variant} />}
     </div>
   );
