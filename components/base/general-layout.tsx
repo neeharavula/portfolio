@@ -2,7 +2,8 @@
   /* Component Layout: lays out nav and footer */
 }
 
-import Footer from "@/components/footer";
+import Nav from "@/components/base/nav";
+import Footer from "@/components/base/footer";
 
 export interface LayoutConfig {
   variant: "home" | "work" | "project" | "play" | "about" | "menu";
@@ -18,6 +19,7 @@ const Layout = ({ children, variant }: LayoutProps) => {
 
   return (
     <div className="flex flex-col min-h-screen h-screen overflow-hidden">
+      <Nav variant={variant} />
       <main className="flex-1 overflow-auto p-8 sm:p-20 pb-32">{children}</main>
       {showFooter && <Footer variant={variant} />}
     </div>
