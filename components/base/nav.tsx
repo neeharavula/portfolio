@@ -1,7 +1,7 @@
 "use client";
 
 {
-  /* Component UI: Footer */
+  /* Base Component: nav */
 }
 
 import {
