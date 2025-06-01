@@ -1,45 +1,40 @@
-export type PlayCategory = "film" | "digital" | "video" | "art";
+export const filters = ["film", "digital", "video", "art"] as const;
+export type FilterType = (typeof filters)[number];
 
-export interface PlayImage {
-  src: string;
-  alt: string;
-  category: PlayCategory;
-}
-
-export const playGalleryImages: PlayImage[] = [
-  /* Film */
-  {
-    src: "/play-assets/film/nice-bw.jpg",
-    alt: "Old Nice",
-    category: "film",
-  },
-  {
-    src: "/play-assets/film/nice-bw.jpg",
-    alt: "Old Nice",
-    category: "film",
-  },
-  {
-    src: "/play-assets/film/nice-bw.jpg",
-    alt: "Old Nice",
-    category: "film",
-  },
-  /* Digital */
-  {
-    src: "/play-assets/digital/buenosaires.jpg",
-    alt: "Buenos Aires",
-    category: "digital",
-  },
-  /* Video */
-  {
-    src: "/play-assets/video/pilot.jpeg",
-    alt: "Still from pilot set",
-    category: "video",
-  },
-  /* Art */
-  {
-    src: "/play-assets/art/florence.jpg",
-    alt: "Florence",
-    category: "art",
-  },
-  // Add more entries...
-];
+export const imageFiles: Record<FilterType, string[]> = {
+  film: [
+    "01-monaco.JPG",
+    "03-beaune.JPG",
+    "09-bigbear.JPG",
+    "02-beaune.JPG",
+    "12-tokyo.JPG",
+    "14-maui.JPG",
+    "05-nice.JPG",
+    "04-monaco.JPG",
+    "17-agra.JPG",
+    "11-bui.JPG",
+    "10-sandiego.JPG",
+    "07-seoul.JPG",
+    "06-beaune.JPG",
+    "18-munich.JPG",
+    "20-jaipur.JPG",
+    "15-tokyo.JPG",
+    "08-nice.JPG",
+    "13-jaipur.JPG",
+    "16-nice.JPG",
+    "19-jeju.JPG",
+  ],
+  digital: [
+    "01-sandiego.JPG",
+    "02-sandiego.JPG",
+    // ...
+  ],
+  video: [
+    "pilot.mp4",
+    // ...
+  ],
+  art: [
+    "florence.jpg",
+    // ...
+  ],
+};
