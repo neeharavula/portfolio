@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <Layout variant="home">
-      <section className="grid h-full w-full p-8 sm:p-20 grid-cols-1 sm:grid-cols-[1fr_3fr_1fr] sm:grid-rows-1 sm:gap-8 text-sm font-[family-name:var(--font-geist-mono)]">
+      <section className="grid h-full w-full p-8 pb-20 sm:p-20 sm:pb-24 grid-cols-1 sm:grid-cols-[1fr_3fr_1fr] sm:grid-rows-1 sm:gap-8 text-sm font-[family-name:var(--font-geist-mono)]">
         {/* Desktop */}
         {/* Empty space */}
         <div className="hidden sm:block" />
