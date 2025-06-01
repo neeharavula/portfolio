@@ -1,5 +1,3 @@
-import { Playwrite_DK_Loopet } from "next/font/google";
-
 export const filters = ["film", "digital", "video", "art"] as const;
 export type FilterType = (typeof filters)[number];
 
