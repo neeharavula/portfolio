@@ -51,6 +51,7 @@ export default function Play() {
                     muted
                     loop
                     preload="metadata"
+                    playsInline
                     className="w-full h-auto object-cover rounded-lg"
                     onMouseOver={(e) => {
                       e.currentTarget.play();
