@@ -16,11 +16,14 @@ type LayoutProps = {
 
 const Layout = ({ children, variant }: LayoutProps) => {
   const showFooter = variant !== "project";
+  const isScrollable = ["play", "about", "work"].includes(variant);
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Nav variant={variant} />
-      <main className="flex-1 overflow-auto">{children}</main>
+      <main className={`flex-1 ${isScrollable ? "overflow-auto" : ""}`}>
+        {children}
+      </main>
       {showFooter && <Footer variant={variant} />}
     </div>
   );

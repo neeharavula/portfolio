@@ -21,3 +21,14 @@ export const iconMap: Record<string, IconType> = {
   nextjs: SiNextdotjs,
   tailwind: SiTailwindcss,
 };
+
+export const iconColorMap: Record<string, string> = {
+  javascript: "#F7DF1E",
+  typescript: "#3178C6",
+  html5: "#E34F26",
+  css3: "#1572B6",
+  figma: "#F24E1E",
+  react: "#61DAFB",
+  nextjs: "#000000",
+  tailwind: "#06B6D4",
+};

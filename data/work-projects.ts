@@ -4,7 +4,6 @@ export const workData = [
     title: "Northwestern Mutual",
     type: "Internship",
     date: "Summer 2023",
-    color: "bg-[#457B9D]",
     tools: ["javascript", "html5", "css3", "figma"],
   },
   {
@@ -12,7 +11,6 @@ export const workData = [
     title: "Melodics",
     type: "Project",
     date: "Spring 2023",
-    color: "bg-[#A8DADC]",
     tools: ["javascript", "html5", "css3"],
   },
   {
@@ -20,7 +18,6 @@ export const workData = [
     title: "Tech4Good / Causeway",
     type: "Lab",
     date: "Spring 2023",
-    color: "bg-[#A8DADC]",
     tools: ["javascript", "html5", "css3"],
   },
   {
@@ -28,7 +25,6 @@ export const workData = [
     title: "Athenahacks / USC SOS",
     type: "Hackathon",
     date: "Spring 2021",
-    color: "bg-[#A8DADC]",
     tools: ["javascript", "html5", "css3"],
   },
   // ...
