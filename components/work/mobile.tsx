@@ -1,6 +1,6 @@
 "use client";
 
-import { iconMap, iconColorMap } from "@/utils/icons";
+import { iconMap } from "@/utils/icons";
 import { workData } from "@/data/work-projects";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -9,7 +9,7 @@ const WorkMobile = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col gap-6 md:hidden text-sm font-[family-name:var(--font-geist-mono)]">
+    <div className="flex flex-col gap-6 mt-8 p-8 md:hidden text-sm font-[family-name:var(--font-geist-mono)]">
       {workData.map((project) => (
         <div
           key={project.slug}
@@ -36,10 +36,7 @@ const WorkMobile = () => {
             <div className="flex gap-2 mt-1">
               {project.tools.map((tool) => {
                 const Icon = iconMap[tool];
-                const color = iconColorMap[tool];
-                return Icon ? (
-                  <Icon key={tool} className="text-md" color={color} />
-                ) : null;
+                return Icon ? <Icon key={tool} className="text-md" /> : null;
               })}
             </div>
           </div>

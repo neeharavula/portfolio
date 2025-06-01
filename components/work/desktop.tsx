@@ -1,6 +1,6 @@
 "use client";
 
-import { iconMap, iconColorMap } from "@/utils/icons";
+import { iconMap } from "@/utils/icons";
 import { workData } from "@/data/work-projects";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -41,9 +41,8 @@ const WorkDesktop = () => {
             <div className="flex gap-3">
               {project.tools.map((tool) => {
                 const Icon = iconMap[tool];
-                const color = iconColorMap[tool];
                 return Icon ? (
-                  <Icon key={tool} className="w-5 h-5" color={color} />
+                  <Icon key={tool} className="min-w-5 min-h-5" />
                 ) : null;
               })}
             </div>
