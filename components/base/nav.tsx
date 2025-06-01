@@ -14,11 +14,13 @@ import Link from "next/link";
 
 interface NavProps {
   variant: "home" | "work" | "project" | "play" | "about" | "menu";
+  projectTitle?: string;
 }
 
-const Nav: React.FC<NavProps> = ({ variant }) => {
-  const isWorkPlayProject = ["work", "project", "play"].includes(variant);
+const Nav: React.FC<NavProps> = ({ variant, projectTitle }) => {
+  const isWorkPlay = ["work", "play"].includes(variant);
   const isHomeAbout = ["home", "about"].includes(variant);
+  const isProject = variant === "project";
   const isMenu = variant === "menu";
 
   return (
@@ -35,8 +37,8 @@ const Nav: React.FC<NavProps> = ({ variant }) => {
           </>
         )}
 
-        {/* Work, Project, Play */}
-        {isWorkPlayProject && (
+        {/* Work, Play */}
+        {isWorkPlay && (
           <>
             <Link href="/">
               <div className="flex items-center gap-4">
@@ -47,7 +49,22 @@ const Nav: React.FC<NavProps> = ({ variant }) => {
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
-              {variant === "project" && "Project Name"}
+            </div>
+            <SunIcon size={20} />
+          </>
+        )}
+
+        {/* Project */}
+        {isProject && (
+          <>
+            <Link href="/work">
+              <div className="flex items-center gap-4">
+                <ArrowBendUpLeftIcon size={20} />
+                <span>All work</span>
+              </div>
+            </Link>
+            <div className="text-center absolute left-1/2 transform -translate-x-1/2">
+              {projectTitle ?? "Project"}
             </div>
             <SunIcon size={20} />
           </>
@@ -74,8 +91,8 @@ const Nav: React.FC<NavProps> = ({ variant }) => {
           </>
         )}
 
-        {/* Work, Project, Play */}
-        {isWorkPlayProject && (
+        {/* Work, Play */}
+        {isWorkPlay && (
           <>
             <Link href="/">
               <ArrowBendUpLeftIcon size={20} />
@@ -83,8 +100,18 @@ const Nav: React.FC<NavProps> = ({ variant }) => {
             <div className="text-center">
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
-              {variant === "project" && "Project Name"}
             </div>
+            <ListIcon size={20} />
+          </>
+        )}
+
+        {/* Project */}
+        {isProject && (
+          <>
+            <Link href="/work">
+              <ArrowBendUpLeftIcon size={20} />
+            </Link>
+            <div className="text-center">{projectTitle ?? "Project"}</div>
             <ListIcon size={20} />
           </>
         )}
