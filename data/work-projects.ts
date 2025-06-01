@@ -15,5 +15,21 @@ export const workData = [
     color: "bg-[#A8DADC]",
     tools: ["javascript", "html5", "css3"],
   },
+  {
+    slug: "tech4good",
+    title: "Tech4Good / Causeway",
+    type: "Lab",
+    date: "Spring 2023",
+    color: "bg-[#A8DADC]",
+    tools: ["javascript", "html5", "css3"],
+  },
+  {
+    slug: "athenahacks",
+    title: "Athenahacks / USC SOS",
+    type: "Hackathon",
+    date: "Spring 2021",
+    color: "bg-[#A8DADC]",
+    tools: ["javascript", "html5", "css3"],
+  },
   // ...
 ];
