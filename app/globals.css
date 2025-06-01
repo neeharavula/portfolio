@@ -20,3 +20,42 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.masonry-grid {
+  display: flex;
+  margin-left: -0.5rem;
+  /* mobile horizontal gap (px-2) */
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    margin-left: -3rem;
+    /* desktop horizontal gap (px-4) */
+  }
+}
+
+.masonry-column {
+  padding-left: 1rem;
+  /* mobile horizontal gap */
+}
+
+@media (min-width: 640px) {
+  .masonry-column {
+    padding-left: 2rem;
+    /* desktop horizontal gap */
+  }
+}
+
+/* Vertical gap between images */
+
+.masonry-column > div {
+  margin-bottom: 1rem;
+  /* mobile vertical gap */
+}
+
+@media (min-width: 640px) {
+  .masonry-column > div {
+    margin-bottom: 2rem;
+    /* desktop vertical gap */
+  }
+}
