@@ -1,11 +1,11 @@
 export const workData = [
-  {
+  /*{
     slug: "melodics",
     title: "Neeha's Room",
     type: "Project",
     date: "Spring 2025",
     tools: ["nextjs", "react", "typescript", "tailwind", "aws"],
-  },
+  },*/
   {
     slug: "northwestern-mutual",
     title: "Northwestern Mutual",
@@ -19,6 +19,7 @@ export const workData = [
     type: "Project",
     date: "Spring 2023",
     tools: ["figma"],
+    overview: "this is a test",
   },
   {
     slug: "tech4good",
