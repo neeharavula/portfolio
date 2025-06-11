@@ -27,7 +27,21 @@ export const imageFiles: Record<FilterType, string[]> = {
   digital: [
     "01-sandiego.JPG",
     "02-sandiego.JPG",
-    // ...
+    "03-rio.JPG",
+    "04-buenosaires.JPG",
+    "05-buenosaires.JPG",
+    "06-buenosaires.JPG",
+    "07-rio.JPG",
+    "08-buenosaires.JPG",
+    "09-sandiego.JPG",
+    "10-rio.JPG",
+    "11-sandiego.JPG",
+    "13-buenosaires.JPG",
+    "14-buenosaires.JPG",
+    "15-rio.JPG",
+    "16-rio.JPG",
+    "17-sandiego.JPG",
+    "18-sandiego.JPG",
   ],
   video: [
     "pilot.mp4",
