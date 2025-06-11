@@ -12,13 +12,9 @@ export default function Section({
   className = "",
 }: SectionProps) {
   return (
-    <section
-      className={`flex flex-col md:flex-row gap-6 md:gap-12 py-8 ${className}`}
-    >
-      <div className="w-full md:w-1/3 text-base font-semibold text-muted-foreground">
-        {title}
-      </div>
-      <div className="w-full md:w-2/3">{children}</div>
+    <section className={`flex flex-col md:flex-row md:py-8 py-4 ${className}`}>
+      <div className="w-full md:w-1/4 text-sm text-gray-400">{title}</div>
+      <div className="w-full md:w-3/4 py-4 md:py-0">{children}</div>
     </section>
   );
 }

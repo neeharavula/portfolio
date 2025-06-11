@@ -12,6 +12,9 @@ export const workData = [
     type: "Internship",
     date: "Summer 2023",
     tools: ["javascript", "postman", "mysql", "aws"],
+    overview:
+      "Northwestern Mutual (NM) ↗  is a financial services and life insurance company based in Milwaukee, WI. I spent the summer working on a client communications team within NM's Engineering Solutions Delivery division, which is responsible for modernizing the development and delivery of communications and applications used by over 10,000 field representatives. These client communications can consist of physical contracts, statements, bills, and correspondence, as well as digital notifications sent via text or email.",
+    tasks: "blah blah",
   },
   {
     slug: "melodics",
@@ -19,7 +22,8 @@ export const workData = [
     type: "Project",
     date: "Spring 2023",
     tools: ["figma"],
-    overview: "this is a test",
+    overview: "blah blah blah",
+    tasks: "blah blah",
   },
   {
     slug: "tech4good",
@@ -27,6 +31,8 @@ export const workData = [
     type: "Lab",
     date: "Spring 2023",
     tools: ["javascript", "angular", "stackblitz"],
+    overview: "blah blah blah",
+    tasks: "blah blah",
   },
   {
     slug: "general-atomics",
@@ -34,6 +40,8 @@ export const workData = [
     type: "Internship",
     date: "Summer 2022",
     tools: ["python"],
+    overview: "blah blah blah",
+    tasks: "blah blah",
   },
   {
     slug: "athenahacks",
@@ -41,6 +49,8 @@ export const workData = [
     type: "Hackathon",
     date: "Spring 2021",
     tools: ["javascript", "twilio"],
+    overview: "blah blah blah",
+    tasks: "blah blah",
   },
   // ...
 ];
