@@ -30,7 +30,7 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
         <Magnetic>
           <button
             onClick={onAboutClick}
-            className="relative px-3 py-1 rounded-lg cursor-pointer overflow-hidden group text-black"
+            className="relative px-3 py-1 rounded-lg cursor-pointer overflow-hidden group text-black dark:text-white"
           >
             {/* Hover background (separate from morph) */}
             <div className="absolute inset-0 rounded-lg bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
             />
 
             {/* Text */}
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-white">
               About
             </span>
           </button>
