@@ -12,6 +12,8 @@
     "@iconify/react": "^6.0.0",
     "@phosphor-icons/react": "^2.1.10",
     "devicons-react": "^1.4.1",
+    "framer-motion": "^12.18.1",
+    "motion": "^12.18.1",
     "next": "^15.3.3",
     "next-themes": "^0.4.6",
     "phosphor-react": "^1.4.1",
