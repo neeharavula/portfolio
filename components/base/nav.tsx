@@ -1,33 +1,30 @@
 "use client";
 
-{
-  /* Base Component: nav */
-}
-
-import {
-  SunIcon,
-  ArrowBendUpLeftIcon,
-  ListIcon,
-  XIcon,
-} from "@phosphor-icons/react";
+import { SunIcon, ArrowBendUpLeftIcon, ListIcon } from "@phosphor-icons/react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavProps {
   variant: "home" | "work" | "project" | "play" | "about" | "menu";
   projectTitle?: string;
+  menuOpen: boolean;
+  setMenuOpen: (open: boolean) => void;
 }
 
-const Nav: React.FC<NavProps> = ({ variant, projectTitle }) => {
+const Nav: React.FC<NavProps> = ({
+  variant,
+  projectTitle,
+  menuOpen,
+  setMenuOpen,
+}) => {
   const isWorkPlay = ["work", "play"].includes(variant);
   const isHomeAbout = ["home", "about"].includes(variant);
   const isProject = variant === "project";
-  const isMenu = variant === "menu";
 
   return (
     <nav className="w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)]">
       {/* Desktop */}
       <div className="hidden sm:flex w-full items-center justify-between">
-        {/* Home, About */}
         {isHomeAbout && (
           <>
             <Link href="/">
@@ -37,7 +34,6 @@ const Nav: React.FC<NavProps> = ({ variant, projectTitle }) => {
           </>
         )}
 
-        {/* Work, Play */}
         {isWorkPlay && (
           <>
             <Link href="/">
@@ -54,7 +50,6 @@ const Nav: React.FC<NavProps> = ({ variant, projectTitle }) => {
           </>
         )}
 
-        {/* Project */}
         {isProject && (
           <>
             <Link href="/work">
@@ -71,49 +66,58 @@ const Nav: React.FC<NavProps> = ({ variant, projectTitle }) => {
         )}
       </div>
 
-      {/* Mobile layout */}
-      <div className="flex sm:hidden justify-between items-center">
-        {/* Home, About */}
-        {isHomeAbout && (
-          <>
+      {/* Mobile */}
+      <div className="flex sm:hidden justify-between items-center w-full">
+        <div className="flex items-center gap-2">
+          {isHomeAbout && (
             <Link href="/">
               <div>{"Neeha's Room"}</div>
             </Link>
-            <ListIcon size={20} />
-          </>
-        )}
+          )}
 
-        {/* Menu */}
-        {isMenu && (
-          <>
-            <div>Menu</div>
-            <XIcon size={20} />
-          </>
-        )}
+          <div className="flex items-center gap-2">
+            {isWorkPlay && (
+              <Link href="/">
+                <ArrowBendUpLeftIcon size={20} />
+              </Link>
+            )}
+          </div>
 
-        {/* Work, Play */}
-        {isWorkPlay && (
-          <>
-            <Link href="/">
-              <ArrowBendUpLeftIcon size={20} />
-            </Link>
-            <div className="text-center">
+          {/* Center title */}
+          {isWorkPlay && (
+            <div className="absolute left-1/2 transform -translate-x-1/2">
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
             </div>
-            <ListIcon size={20} />
-          </>
-        )}
+          )}
 
-        {/* Project */}
-        {isProject && (
-          <>
-            <Link href="/work">
-              <ArrowBendUpLeftIcon size={20} />
-            </Link>
-            <div className="text-center">{projectTitle ?? "Project"}</div>
-            <ListIcon size={20} />
-          </>
+          {isProject && (
+            <>
+              <Link href="/work">
+                <ArrowBendUpLeftIcon size={20} />
+              </Link>
+              <div className="text-center">{projectTitle ?? "Project"}</div>
+            </>
+          )}
+
+          {variant === "menu" && <div>Menu</div>}
+        </div>
+
+        {/* List button only (X button handled in overlay) */}
+        {!menuOpen && (
+          <button onClick={() => setMenuOpen(true)} className="p-2">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key="list"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ListIcon size={20} className="text-black" />
+              </motion.div>
+            </AnimatePresence>
+          </button>
         )}
       </div>
     </nav>
