@@ -41,7 +41,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
         setMenuOpen={setMenuOpen}
       />
 
-      <main className={`flex-1 ${isScrollable ? "overflow-auto" : ""}`}>
+      <main className="flex-1 overflow-auto">
         {children}
 
         <AnimatePresence>
