@@ -22,8 +22,14 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
   );
   const isSocialMobileVariant = ["about", "menu"].includes(variant);
 
+  const footerClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
+    variant === "about" ? "bg-[#111] text-white" : "bg-transparent text-black"
+  }`;
+
+  const iconClass = variant === "about" ? "text-white" : "text-black";
+
   return (
-    <footer className="w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)]">
+    <footer className={footerClass}>
       {/* Desktop */}
       <div className="hidden sm:flex justify-between items-center">
         <div>© 2025</div>
@@ -32,16 +38,11 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
             onClick={onAboutClick}
             className="relative px-3 py-1 rounded-lg cursor-pointer overflow-hidden group text-black dark:text-white"
           >
-            {/* Hover background (separate from morph) */}
             <div className="absolute inset-0 rounded-lg bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-            {/* Morph background (ONLY handles morph) */}
             <motion.div
               layoutId="about-overlay"
               className="absolute inset-0 rounded-lg pointer-events-none"
             />
-
-            {/* Text */}
             <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-white">
               About
             </span>
@@ -54,17 +55,17 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
         {isNormalMobileVariant && (
           <div className="flex justify-between items-center">
             <div>© 2025</div>
-            <SunIcon size={20} />
+            <SunIcon size={20} className={iconClass} />
           </div>
         )}
 
         {isSocialMobileVariant && (
-          <div className="flex justify-center items-center gap-4">
-            <EnvelopeIcon size={20} />
-            <LinkedinLogoIcon size={20} />
-            <GithubLogoIcon size={20} />
-            <InstagramLogoIcon size={20} />
-            <SpotifyLogoIcon size={20} />
+          <div className="flex justify-center items-center gap-8">
+            <EnvelopeIcon size={20} className={iconClass} />
+            <LinkedinLogoIcon size={20} className={iconClass} />
+            <GithubLogoIcon size={20} className={iconClass} />
+            <InstagramLogoIcon size={20} className={iconClass} />
+            <SpotifyLogoIcon size={20} className={iconClass} />
           </div>
         )}
       </div>

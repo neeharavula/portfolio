@@ -120,13 +120,20 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
               </div>
 
               {/* Social icons at bottom */}
-              <div className="flex gap-4 mt-8">
+              <div className="flex justify-center items-center gap-8 mt-8">
                 <Link
                   href="mailto:your@email.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <EnvelopeIcon size={20} />
+                </Link>
+                <Link
+                  href="https://linkedin.com/in/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedinLogoIcon size={20} />
                 </Link>
                 <Link
                   href="https://github.com/yourusername"
@@ -141,13 +148,6 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                   rel="noopener noreferrer"
                 >
                   <InstagramLogoIcon size={20} />
-                </Link>
-                <Link
-                  href="https://linkedin.com/in/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <LinkedinLogoIcon size={20} />
                 </Link>
                 <Link
                   href="https://open.spotify.com/user/yourusername"
