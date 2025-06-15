@@ -82,13 +82,7 @@ const Nav: React.FC<NavProps> = ({
           )}
 
           {isWorkPlay && (
-            <Link href="/">
-              <ArrowBendUpLeftIcon size={20} className={iconClass} />
-            </Link>
-          )}
-
-          {isWorkPlay && (
-            <div className="absolute left-1/2 transform -translate-x-1/2">
+            <div>
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
             </div>
