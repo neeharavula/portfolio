@@ -73,48 +73,51 @@ const Nav: React.FC<NavProps> = ({
       </div>
 
       {/* Mobile */}
-      <div className="flex sm:hidden justify-between items-center w-full">
-        <div className="flex items-center gap-2">
-          {isHomeAbout && (
-            <Link href="/">
-              <div>{"Neeha's Room"}</div>
+      <div className="flex sm:hidden items-center justify-between w-full">
+        {/* Left: Arrow or empty */}
+        <div className="w-8 flex justify-start">
+          {isProject && (
+            <Link href="/work" className="inline-flex items-center">
+              <ArrowBendUpLeftIcon size={20} className={iconClass} />
             </Link>
           )}
 
-          {isWorkPlay && (
-            <div>
-              {variant === "work" && "Work"}
-              {variant === "play" && "Play"}
-            </div>
-          )}
-
-          {isProject && (
-            <>
-              <Link href="/work">
-                <ArrowBendUpLeftIcon size={20} className={iconClass} />
-              </Link>
-              <div className="text-center">{projectTitle ?? "Project"}</div>
-            </>
-          )}
-
-          {variant === "menu" && <div>Menu</div>}
+          {(isHomeAbout || isWorkPlay || variant === "menu") && null}
+          {/* For other variants you can add icons/links here if needed */}
         </div>
 
-        {!menuOpen && (
-          <button onClick={() => setMenuOpen(true)} className="p-2">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key="list"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ListIcon size={20} className={iconClass} />
-              </motion.div>
-            </AnimatePresence>
-          </button>
-        )}
+        {/* Center: Title */}
+        <div className="flex-1 text-center truncate">
+          {isHomeAbout &&
+            (variant === "home"
+              ? "Neeha's Room"
+              : variant === "about"
+              ? "About"
+              : "")}
+          {isWorkPlay &&
+            (variant === "work" ? "Work" : variant === "play" ? "Play" : "")}
+          {isProject && (projectTitle ?? "Project")}
+          {variant === "menu" && "Menu"}
+        </div>
+
+        {/* Right: Menu button or empty */}
+        <div className="w-8 flex justify-end">
+          {!menuOpen && (
+            <button onClick={() => setMenuOpen(true)} className="p-2">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key="list"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ListIcon size={20} className={iconClass} />
+                </motion.div>
+              </AnimatePresence>
+            </button>
+          )}
+        </div>
       </div>
     </nav>
   );
