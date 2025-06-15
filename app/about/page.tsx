@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import Layout from "@/components/base/general-layout";
 import Image from "next/image";
 
@@ -34,19 +33,9 @@ const AboutPageContent = () => {
 };
 
 export default function AboutPage() {
-  useEffect(() => {
-    // Disable scrolling on body when About page is mounted
-    document.body.style.overflow = "hidden";
-
-    // Re-enable scrolling on unmount
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
-
   return (
     <Layout variant="about">
-      <div className="bg-[#111] text-white w-full h-full">
+      <div className="bg-[#111] text-white md:bg-transparent md:text-black min-h-screen">
         <AboutPageContent />
       </div>
     </Layout>
