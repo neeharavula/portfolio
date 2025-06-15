@@ -21,8 +21,14 @@ const Nav: React.FC<NavProps> = ({
   const isHomeAbout = ["home", "about"].includes(variant);
   const isProject = variant === "project";
 
+  const navClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
+    variant === "about" ? "bg-[#111] text-white" : "bg-transparent text-black"
+  }`;
+
+  const iconClass = variant === "about" ? "text-white" : "text-black";
+
   return (
-    <nav className="w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)]">
+    <nav className={navClass}>
       {/* Desktop */}
       <div className="hidden sm:flex w-full items-center justify-between">
         {isHomeAbout && (
@@ -30,7 +36,7 @@ const Nav: React.FC<NavProps> = ({
             <Link href="/">
               <div>{"Neeha's Room"}</div>
             </Link>
-            <SunIcon size={20} />
+            <SunIcon size={20} className={iconClass} />
           </>
         )}
 
@@ -38,7 +44,7 @@ const Nav: React.FC<NavProps> = ({
           <>
             <Link href="/">
               <div className="flex items-center gap-4">
-                <ArrowBendUpLeftIcon size={20} />
+                <ArrowBendUpLeftIcon size={20} className={iconClass} />
                 <span>Back to room</span>
               </div>
             </Link>
@@ -46,7 +52,7 @@ const Nav: React.FC<NavProps> = ({
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
             </div>
-            <SunIcon size={20} />
+            <SunIcon size={20} className={iconClass} />
           </>
         )}
 
@@ -54,14 +60,14 @@ const Nav: React.FC<NavProps> = ({
           <>
             <Link href="/work">
               <div className="flex items-center gap-4">
-                <ArrowBendUpLeftIcon size={20} />
+                <ArrowBendUpLeftIcon size={20} className={iconClass} />
                 <span>All work</span>
               </div>
             </Link>
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {projectTitle ?? "Project"}
             </div>
-            <SunIcon size={20} />
+            <SunIcon size={20} className={iconClass} />
           </>
         )}
       </div>
@@ -75,15 +81,12 @@ const Nav: React.FC<NavProps> = ({
             </Link>
           )}
 
-          <div className="flex items-center gap-2">
-            {isWorkPlay && (
-              <Link href="/">
-                <ArrowBendUpLeftIcon size={20} />
-              </Link>
-            )}
-          </div>
+          {isWorkPlay && (
+            <Link href="/">
+              <ArrowBendUpLeftIcon size={20} className={iconClass} />
+            </Link>
+          )}
 
-          {/* Center title */}
           {isWorkPlay && (
             <div className="absolute left-1/2 transform -translate-x-1/2">
               {variant === "work" && "Work"}
@@ -94,7 +97,7 @@ const Nav: React.FC<NavProps> = ({
           {isProject && (
             <>
               <Link href="/work">
-                <ArrowBendUpLeftIcon size={20} />
+                <ArrowBendUpLeftIcon size={20} className={iconClass} />
               </Link>
               <div className="text-center">{projectTitle ?? "Project"}</div>
             </>
@@ -103,7 +106,6 @@ const Nav: React.FC<NavProps> = ({
           {variant === "menu" && <div>Menu</div>}
         </div>
 
-        {/* List button only (X button handled in overlay) */}
         {!menuOpen && (
           <button onClick={() => setMenuOpen(true)} className="p-2">
             <AnimatePresence mode="wait">
@@ -114,7 +116,7 @@ const Nav: React.FC<NavProps> = ({
                 exit={{ rotate: -90, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <ListIcon size={20} className="text-black" />
+                <ListIcon size={20} className={iconClass} />
               </motion.div>
             </AnimatePresence>
           </button>
