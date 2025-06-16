@@ -2,14 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
-import {
-  SunIcon,
-  EnvelopeIcon,
-  GithubLogoIcon,
-  InstagramLogoIcon,
-  SpotifyLogoIcon,
-  LinkedinLogoIcon,
-} from "@phosphor-icons/react";
 
 interface FooterProps {
   variant: "home" | "work" | "project" | "play" | "about" | "menu";
@@ -17,16 +9,9 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
-  const isNormalMobileVariant = ["home", "work", "project", "play"].includes(
-    variant
-  );
-  const isSocialMobileVariant = ["about", "menu"].includes(variant);
-
   const footerClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
     variant === "about" ? "bg-[#111] text-white" : "bg-transparent text-black"
   }`;
-
-  const iconClass = variant === "about" ? "text-white" : "text-black";
 
   return (
     <footer className={footerClass}>
@@ -48,26 +33,6 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
             </span>
           </button>
         </Magnetic>
-      </div>
-
-      {/* Mobile */}
-      <div className="sm:hidden">
-        {isNormalMobileVariant && (
-          <div className="flex justify-between items-center">
-            <div>© 2025</div>
-            <SunIcon size={20} className={iconClass} />
-          </div>
-        )}
-
-        {isSocialMobileVariant && (
-          <div className="flex justify-center items-center gap-8">
-            <EnvelopeIcon size={20} className={iconClass} />
-            <LinkedinLogoIcon size={20} className={iconClass} />
-            <GithubLogoIcon size={20} className={iconClass} />
-            <InstagramLogoIcon size={20} className={iconClass} />
-            <SpotifyLogoIcon size={20} className={iconClass} />
-          </div>
-        )}
       </div>
     </footer>
   );

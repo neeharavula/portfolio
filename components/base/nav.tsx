@@ -74,20 +74,21 @@ const Nav: React.FC<NavProps> = ({
 
       {/* Mobile */}
       <div className="flex sm:hidden items-center justify-between w-full">
-        {/* Left: Arrow or empty */}
-        <div className="w-8 flex justify-start">
+        {/* Left: Back arrow if project */}
+        <div className={`flex justify-start ${isProject ? "w-8" : ""}`}>
           {isProject && (
             <Link href="/work" className="inline-flex items-center">
               <ArrowBendUpLeftIcon size={20} className={iconClass} />
             </Link>
           )}
-
-          {(isHomeAbout || isWorkPlay || variant === "menu") && null}
-          {/* For other variants you can add icons/links here if needed */}
         </div>
 
         {/* Center: Title */}
-        <div className="flex-1 text-center truncate">
+        <div
+          className={`flex-1 truncate ${
+            isProject ? "text-center" : "text-left"
+          }`}
+        >
           {isHomeAbout &&
             (variant === "home"
               ? "Neeha's Room"
@@ -100,7 +101,7 @@ const Nav: React.FC<NavProps> = ({
           {variant === "menu" && "Menu"}
         </div>
 
-        {/* Right: Menu button or empty */}
+        {/* Right: Menu button */}
         <div className="w-8 flex justify-end">
           {!menuOpen && (
             <button onClick={() => setMenuOpen(true)} className="p-2">

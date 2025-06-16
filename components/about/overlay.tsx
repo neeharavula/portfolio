@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import {
   EnvelopeIcon,
   GithubLogoIcon,
@@ -68,11 +69,41 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
           </p>
 
           <div className="flex gap-8 mt-12">
-            <EnvelopeIcon size={20} />
-            <LinkedinLogoIcon size={20} />
-            <GithubLogoIcon size={20} />
-            <InstagramLogoIcon size={20} />
-            <SpotifyLogoIcon size={20} />
+            <Link
+              href="mailto:ravulaneeha@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <EnvelopeIcon size={20} />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/neeharavula/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkedinLogoIcon size={20} />
+            </Link>
+            <Link
+              href="https://github.com/neeharavula"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubLogoIcon size={20} />
+            </Link>
+            <Link
+              href="https://www.instagram.com/neehasroll/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstagramLogoIcon size={20} />
+            </Link>
+            <Link
+              href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SpotifyLogoIcon size={20} />
+            </Link>
           </div>
         </div>
       </div>

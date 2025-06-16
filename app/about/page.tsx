@@ -2,6 +2,14 @@
 
 import Layout from "@/components/base/general-layout";
 import Image from "next/image";
+import {
+  EnvelopeIcon,
+  LinkedinLogoIcon,
+  GithubLogoIcon,
+  InstagramLogoIcon,
+  SpotifyLogoIcon,
+} from "@phosphor-icons/react";
+import Link from "next/link";
 
 const AboutPageContent = () => {
   return (
@@ -28,6 +36,45 @@ const AboutPageContent = () => {
         my DJ controller, or finding my new song fixation. Feel free to reach
         out or say hi!
       </p>
+
+      {/* Social icons at bottom */}
+      <div className="flex justify-center items-center gap-8 mt-8">
+        <Link
+          href="mailto:ravulaneeha@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <EnvelopeIcon size={20} />
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/neeharavula/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkedinLogoIcon size={20} />
+        </Link>
+        <Link
+          href="https://github.com/neeharavula"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GithubLogoIcon size={20} />
+        </Link>
+        <Link
+          href="https://www.instagram.com/neehasroll/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <InstagramLogoIcon size={20} />
+        </Link>
+        <Link
+          href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <SpotifyLogoIcon size={20} />
+        </Link>
+      </div>
     </div>
   );
 };
