@@ -174,10 +174,12 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
       </main>
 
       {showFooter && (
-        <Footer
-          variant={variant}
-          onAboutClick={() => setShowAboutOverlay(true)}
-        />
+        <div className="hidden sm:block">
+          <Footer
+            variant={variant}
+            onAboutClick={() => setShowAboutOverlay(true)}
+          />
+        </div>
       )}
     </div>
   );

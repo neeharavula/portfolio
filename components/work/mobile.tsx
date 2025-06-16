@@ -9,7 +9,7 @@ const WorkMobile = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col gap-6 mt-2 p-8 md:hidden text-sm font-[family-name:var(--font-geist-mono)]">
+    <div className="flex flex-col gap-6 p-8 md:hidden text-sm font-[family-name:var(--font-geist-mono)]">
       {workData.map((project) => (
         <div
           key={project.slug}
