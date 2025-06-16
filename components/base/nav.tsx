@@ -22,10 +22,13 @@ const Nav: React.FC<NavProps> = ({
   const isProject = variant === "project";
 
   const navClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
-    variant === "about" ? "bg-[#111] text-white" : "bg-transparent text-black"
+    variant === "about"
+      ? "bg-[#111] text-white"
+      : "bg-white dark:bg-black text-black dark:text-white"
   }`;
 
-  const iconClass = variant === "about" ? "text-white" : "text-black";
+  const iconClass =
+    variant === "about" ? "text-white" : "text-black dark:text-white";
 
   return (
     <nav className={navClass}>
