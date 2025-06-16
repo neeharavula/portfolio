@@ -69,7 +69,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
               {/* X button */}
               <button
                 onClick={() => setMenuOpen(false)}
-                className="absolute top-8 right-8 p-2"
+                className="absolute top-8 right-8"
               >
                 <motion.div
                   key="x"

@@ -104,7 +104,7 @@ const Nav: React.FC<NavProps> = ({
         {/* Right: Menu button */}
         <div className="w-8 flex justify-end">
           {!menuOpen && (
-            <button onClick={() => setMenuOpen(true)} className="p-2">
+            <button onClick={() => setMenuOpen(true)}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key="list"
