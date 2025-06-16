@@ -33,19 +33,19 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
   const showFooter = variant !== "project";
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Fixed nav at top */}
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Nav
-          variant={variant}
-          projectTitle={variant === "project" ? projectTitle : undefined}
-          menuOpen={menuOpen}
-          setMenuOpen={setMenuOpen}
-        />
-      </div>
+    <div className="flex flex-col h-screen overflow-hidden">
+      <Nav
+        variant={variant}
+        projectTitle={variant === "project" ? projectTitle : undefined}
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+      />
 
-      {/* Main content with padding to account for nav height (e.g., 64px / 16 = pt-16) */}
-      <main className="flex-1 pt-16 overflow-y-auto">
+      <main
+        className={`flex-1 ${
+          variant === "home" ? "overflow-hidden" : "overflow-auto"
+        }`}
+      >
         {children}
 
         <AnimatePresence>
@@ -66,7 +66,6 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
               <div className="absolute top-8 left-8 text-sm font-[family-name:var(--font-geist-mono)]">
                 Menu
               </div>
-
               {/* X button */}
               <button
                 onClick={() => setMenuOpen(false)}
@@ -174,7 +173,6 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
         </AnimatePresence>
       </main>
 
-      {/* Footer only on desktop */}
       {showFooter && (
         <div className="hidden sm:block">
           <Footer
