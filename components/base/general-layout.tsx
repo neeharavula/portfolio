@@ -41,7 +41,11 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
         setMenuOpen={setMenuOpen}
       />
 
-      <main className="flex-1 overflow-auto">
+      <main
+        className={`flex-1 ${
+          variant === "home" ? "overflow-hidden" : "overflow-auto"
+        }`}
+      >
         {children}
 
         <AnimatePresence>

@@ -18,7 +18,7 @@ export default function Play() {
 
   return (
     <Layout variant="play">
-      <section className="flex flex-col p-8 mt-8 items-center gap-6 text-sm font-[family-name:var(--font-geist-mono)]">
+      <section className="flex flex-col p-8 items-center gap-6 text-sm font-[family-name:var(--font-geist-mono)]">
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-12">
           {filters.map((filter) => (
