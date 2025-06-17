@@ -82,7 +82,7 @@ const AboutPageContent = () => {
 export default function AboutPage() {
   return (
     <Layout variant="about">
-      <div className="bg-[#111] text-white md:bg-transparent md:text-black min-h-screen">
+      <div className="bg-[var(--background)] text-[var(--foreground)] min-h-screen">
         <AboutPageContent />
       </div>
     </Layout>
