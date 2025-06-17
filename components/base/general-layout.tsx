@@ -33,7 +33,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
   const showFooter = variant !== "project";
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="flex flex-col sm:h-screen sm:overflow-hidden">
       <Nav
         variant={variant}
         projectTitle={variant === "project" ? projectTitle : undefined}
@@ -41,11 +41,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
         setMenuOpen={setMenuOpen}
       />
 
-      <main
-        className={`flex-1 ${
-          variant === "home" ? "overflow-hidden" : "overflow-auto"
-        }`}
-      >
+      <main className="flex-1 overflow-visible sm:overflow-auto">
         {children}
 
         <AnimatePresence>
