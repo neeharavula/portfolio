@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <Layout variant="home">
-      <section className="flex flex-col h-full w-full p-8 sm:p-20 grid grid-cols-1 sm:grid-cols-[1fr_3fr_1fr] sm:grid-rows-1 sm:gap-8 text-sm font-[family-name:var(--font-geist-mono)]">
+      <section className="flex flex-col h-full w-full p-8 sm:p-20 text-sm font-[family-name:var(--font-geist-mono)] sm:grid sm:grid-cols-[1fr_3fr_1fr] sm:grid-rows-1 sm:gap-8">
         {/* Desktop */}
         {/* Empty space */}
         <div className="hidden sm:block" />
@@ -31,15 +31,18 @@ export default function Home() {
         </div>
 
         {/* Mobile */}
-        {/* Room placeholder */}
-        <span className="sm:hidden text-gray-500 text-center">
-          Room under construction.
-        </span>
-        {/* Caption */}
-        <div className="sm:hidden mt-8 px-4">
-          <p className="text-center">
-            Welcome to my room! View on desktop for an interactive experience.
-          </p>
+        <div className="flex-1 flex flex-col justify-center items-center">
+          {/* Room placeholder */}
+          <span className="sm:hidden text-gray-500 text-center">
+            Room under construction.
+          </span>
+
+          {/* Caption */}
+          <div className="sm:hidden mt-8 px-4">
+            <p className="text-center">
+              Welcome to my room! View on desktop for an interactive experience.
+            </p>
+          </div>
         </div>
       </section>
     </Layout>

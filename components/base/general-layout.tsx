@@ -9,6 +9,7 @@ import {
   GithubLogoIcon,
   InstagramLogoIcon,
   SpotifyLogoIcon,
+  ArrowUpRightIcon,
 } from "@phosphor-icons/react";
 import Link from "next/link";
 import Nav from "@/components/base/nav";
@@ -30,10 +31,9 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const showFooter = variant !== "project";
-  const isScrollable = ["play", "about", "work"].includes(variant);
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="flex flex-col sm:h-screen sm:overflow-hidden">
       <Nav
         variant={variant}
         projectTitle={variant === "project" ? projectTitle : undefined}
@@ -41,7 +41,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
         setMenuOpen={setMenuOpen}
       />
 
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-visible sm:overflow-auto">
         {children}
 
         <AnimatePresence>
@@ -65,7 +65,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
               {/* X button */}
               <button
                 onClick={() => setMenuOpen(false)}
-                className="absolute top-8 right-8 p-2"
+                className="absolute top-8 right-8"
               >
                 <motion.div
                   key="x"
@@ -80,41 +80,48 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
 
               {/* Links */}
               <div className="flex-1 flex flex-col justify-center">
-                <nav className="flex flex-col gap-6 mt-16 text-sm font-[family-name:var(--font-geist-mono)]">
+                <nav className="flex flex-col gap-8 mt-16 text-sm font-[family-name:var(--font-geist-mono)]">
                   <Link
                     href="/"
                     onClick={() => setMenuOpen(false)}
-                    className="block"
+                    className="flex items-center gap-4"
                   >
-                    Home ↗
+                    Home
+                    <ArrowUpRightIcon size={16} />
                   </Link>
                   <Link
                     href="/work"
                     onClick={() => setMenuOpen(false)}
-                    className="block"
+                    className="flex items-center gap-4"
                   >
-                    Work ↗
+                    Work
+                    <ArrowUpRightIcon size={16} />
                   </Link>
                   <Link
                     href="/play"
                     onClick={() => setMenuOpen(false)}
-                    className="block"
+                    className="flex items-center gap-4"
                   >
-                    Play ↗
+                    Play
+                    <ArrowUpRightIcon size={16} />
                   </Link>
                   <Link
                     href="/about"
                     onClick={() => setMenuOpen(false)}
-                    className="block"
+                    className="flex items-center gap-4"
                   >
-                    About ↗
+                    About
+                    <ArrowUpRightIcon size={16} />
                   </Link>
                   <Link
-                    href="/resume"
+                    href="https://read.cv/nravula"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setMenuOpen(false)}
-                    className="block"
+                    className="flex items-center gap-4"
                   >
-                    Resume ↗
+                    Resume
+                    <ArrowUpRightIcon size={16} />
                   </Link>
                 </nav>
               </div>
@@ -122,35 +129,35 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
               {/* Social icons at bottom */}
               <div className="flex justify-center items-center gap-8 mt-8">
                 <Link
-                  href="mailto:your@email.com"
+                  href="mailto:ravulaneeha@gmail.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <EnvelopeIcon size={20} />
                 </Link>
                 <Link
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/neeharavula/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <LinkedinLogoIcon size={20} />
                 </Link>
                 <Link
-                  href="https://github.com/yourusername"
+                  href="https://github.com/neeharavula"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <GithubLogoIcon size={20} />
                 </Link>
                 <Link
-                  href="https://instagram.com/yourusername"
+                  href="https://www.instagram.com/neehasroll/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <InstagramLogoIcon size={20} />
                 </Link>
                 <Link
-                  href="https://open.spotify.com/user/yourusername"
+                  href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -163,10 +170,12 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
       </main>
 
       {showFooter && (
-        <Footer
-          variant={variant}
-          onAboutClick={() => setShowAboutOverlay(true)}
-        />
+        <div className="hidden sm:block">
+          <Footer
+            variant={variant}
+            onAboutClick={() => setShowAboutOverlay(true)}
+          />
+        </div>
       )}
     </div>
   );
