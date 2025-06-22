@@ -1,5 +1,7 @@
 import Layout from "@/components/base/general-layout";
 import { TextLoop } from "@/components/motion-primitives/text-loop";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
+
 import Link from "next/link";
 
 export default function Home() {
@@ -10,10 +12,8 @@ export default function Home() {
         <div className="flex-1 flex items-center">
           <h1 className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none">
             Neeha Ravula is a{" "}
-            <span className="inline sm:hidden text-[#94A75D]">developer</span>
-            {/* TextLoop on desktop */}
             <TextLoop
-              className="hidden sm:inline overflow-y-clip text-[#94A75D]"
+              className="overflow-y-clip text-[#94A75D]"
               transition={{
                 type: "spring",
                 stiffness: 900,
@@ -53,20 +53,26 @@ export default function Home() {
 
         {/* Links bottom left */}
         <div className="flex flex-col gap-6 text-sm font-[family-name:var(--font-geist-mono)] hidden sm:flex">
-          <Link href="/work" className="hover:underline">
-            [ Work ]
-          </Link>
-          <Link href="/play" className="hover:underline">
-            [ Play ]
-          </Link>
-          <Link
-            href="https://read.cv/nravula"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            [ Resume ]
-          </Link>
+          <div className="relative inline-block">
+            <Link href="/work" className="block">
+              [ Work ]
+            </Link>
+          </div>
+          <div className="relative inline-block">
+            <Link href="/play" className="block">
+              [ Play ]
+            </Link>
+          </div>
+          <div className="relative inline-block">
+            <Link
+              href="https://read.cv/nravula"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              [ Resume ]
+            </Link>
+          </div>
         </div>
       </section>
     </Layout>

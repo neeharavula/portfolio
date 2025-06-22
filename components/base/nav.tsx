@@ -94,7 +94,7 @@ const Nav: React.FC<NavProps> = ({
         >
           {isHomeAbout &&
             (variant === "home"
-              ? "Neeha's Room"
+              ? "Neeha Ravula"
               : variant === "about"
               ? "About"
               : "")}
