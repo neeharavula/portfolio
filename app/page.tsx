@@ -7,7 +7,7 @@ export default function Home() {
       <section className="flex flex-col justify-between h-full w-full px-8">
         {/* Large summary text */}
         <div className="flex-1 flex items-center">
-          <h1 className="font-offbit text-[2rem] sm:text-[4rem] lg:text-[6rem] xl:text-[6rem] leading-none">
+          <h1 className="font-offbit text-[4rem] md:text-[4em] lg:text-[4rem] xl:text-[6rem] leading-none">
             {/* Example summary */}
             Neeha Ravula is a developer <br></br>based in San Diego, CA,
             exploring <br></br> the intersection of design and <br></br>
@@ -16,12 +16,12 @@ export default function Home() {
         </div>
 
         {/* Links bottom left */}
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-[family-name:var(--font-geist-mono)] hidden sm:flex">
           <Link href="/work" className="hover:underline">
-            Work
+            [ Work ]
           </Link>
           <Link href="/play" className="hover:underline">
-            Play
+            [ Play ]
           </Link>
           <Link
             href="https://read.cv/nravula"
@@ -29,7 +29,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="hover:underline"
           >
-            Resume
+            [ Resume ]
           </Link>
         </div>
       </section>
