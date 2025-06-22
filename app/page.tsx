@@ -16,7 +16,7 @@ export default function Home() {
         </div>
 
         {/* Links bottom left */}
-        <div className="flex flex-col gap-2 text-sm font-[family-name:var(--font-geist-mono)] hidden sm:flex">
+        <div className="flex flex-col gap-6 text-sm font-[family-name:var(--font-geist-mono)] hidden sm:flex">
           <Link href="/work" className="hover:underline">
             [ Work ]
           </Link>
