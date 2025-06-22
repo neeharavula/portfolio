@@ -8,10 +8,12 @@ export default function Home() {
       <section className="flex flex-col justify-between h-full w-full px-8">
         {/* Large summary text */}
         <div className="flex-1 flex items-center">
-          <h1 className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-[1]">
+          <h1 className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none">
             Neeha Ravula is a{" "}
+            <span className="inline sm:hidden text-[#94A75D]">developer</span>
+            {/* TextLoop on desktop */}
             <TextLoop
-              className="overflow-y-clip text-[#94A75D] align-[0]"
+              className="hidden sm:inline overflow-y-clip text-[#94A75D]"
               transition={{
                 type: "spring",
                 stiffness: 900,
