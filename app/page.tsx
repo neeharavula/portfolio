@@ -42,8 +42,9 @@ export default function Home() {
               <span className="inline-block align-[0]">developer</span>
               <span className="inline-block align-[0]">creative</span>
             </TextLoop>
-            <br></br>based in San Diego, CA, exploring <br></br> the
-            intersection of design and <br></br>
+            <br />
+            based in San Diego, CA, exploring <br /> the intersection of design
+            and <br />
             computation.
           </h1>
         </div>
