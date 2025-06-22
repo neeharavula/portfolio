@@ -11,7 +11,7 @@ export default function Home() {
           <h1 className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none">
             Neeha Ravula is a{" "}
             <TextLoop
-              className="overflow-y-clip text-[#94A75D]"
+              className="overflow-y-clip text-[#94A75D] align-baseline"
               transition={{
                 type: "spring",
                 stiffness: 900,
