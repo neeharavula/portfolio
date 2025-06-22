@@ -8,7 +8,7 @@ export default function Home() {
       <section className="flex flex-col justify-between h-full w-full px-8">
         {/* Large summary text */}
         <div className="flex-1 flex items-center">
-          <h1 className="font-offbit mt-20 text-[4rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none">
+          <h1 className="font-offbit mt-20 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none">
             Neeha Ravula is a{" "}
             <TextLoop
               className="overflow-y-clip text-[#94A75D]"
