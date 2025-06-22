@@ -11,7 +11,7 @@ export default function Home() {
           <h1 className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none">
             Neeha Ravula is a{" "}
             <TextLoop
-              className="overflow-y-clip text-[#94A75D] align-baseline"
+              className="overflow-y-clip text-[#94A75D] align-[0]"
               transition={{
                 type: "spring",
                 stiffness: 900,
@@ -39,8 +39,8 @@ export default function Home() {
                 },
               }}
             >
-              <span>developer</span>
-              <span>creative</span>
+              <span className="inline-block align-[0]">developer</span>
+              <span className="inline-block align-[0]">creative</span>
             </TextLoop>
             <br></br>based in San Diego, CA, exploring <br></br> the
             intersection of design and <br></br>
