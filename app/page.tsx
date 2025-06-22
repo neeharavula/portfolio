@@ -7,7 +7,7 @@ export default function Home() {
       <section className="flex flex-col justify-between h-full w-full px-8">
         {/* Large summary text */}
         <div className="flex-1 flex items-center">
-          <h1 className="font-offbit mt-25 text-[3rem] md:text-[4em] lg:text-[4rem] xl:text-[6rem] leading-none">
+          <h1 className="font-offbit mt-50 text-[3rem] md:mt-25 md:text-[5em] lg:mt-25 lg:text-[5rem] xl:mt-25 xl:text-[6rem] leading-none">
             {/* Example summary */}
             Neeha Ravula is a developer <br></br>based in San Diego, CA,
             exploring <br></br> the intersection of design and <br></br>
