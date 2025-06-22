@@ -37,7 +37,7 @@ const Nav: React.FC<NavProps> = ({
         {isHomeAbout && (
           <>
             <Link href="/">
-              <div>{"Neeha's Room"}</div>
+              <div>{"Neeha Ravula"}</div>
             </Link>
             <SunIcon size={20} className={iconClass} />
           </>
@@ -48,7 +48,7 @@ const Nav: React.FC<NavProps> = ({
             <Link href="/">
               <div className="flex items-center gap-4">
                 <ArrowBendUpLeftIcon size={20} className={iconClass} />
-                <span>Back to room</span>
+                <span>Back</span>
               </div>
             </Link>
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
