@@ -7,7 +7,7 @@ export default function Home() {
       <section className="flex flex-col justify-between h-full w-full px-8">
         {/* Large summary text */}
         <div className="flex-1 flex items-center">
-          <h1 className="font-offbit mt-40 text-[3rem] md:mt-20 md:text-[5em] lg:mt-20 lg:text-[5rem] xl:mt-20 xl:text-[6rem] leading-none">
+          <h1 className="font-offbit mt-20 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none">
             {/* Example summary */}
             Neeha Ravula is a developer <br></br>based in San Diego, CA,
             exploring <br></br> the intersection of design and <br></br>
@@ -16,7 +16,7 @@ export default function Home() {
         </div>
 
         {/* Links bottom left */}
-        <div className="flex flex-col gap-5 text-sm font-[family-name:var(--font-geist-mono)] hidden sm:flex">
+        <div className="flex flex-col gap-6 text-sm font-[family-name:var(--font-geist-mono)] hidden sm:flex">
           <Link href="/work" className="hover:underline">
             [ Work ]
           </Link>
