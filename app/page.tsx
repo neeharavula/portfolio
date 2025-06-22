@@ -4,45 +4,33 @@ import Link from "next/link";
 export default function Home() {
   return (
     <Layout variant="home">
-      <section className="flex flex-col h-full w-full p-8 sm:p-20 text-sm font-[family-name:var(--font-geist-mono)] sm:grid sm:grid-cols-[1fr_3fr_1fr] sm:grid-rows-1 sm:gap-8">
-        {/* Desktop */}
-        {/* Empty space */}
-        <div className="hidden sm:block" />
-
-        {/* Room placeholder */}
-        <div className="flex justify-center items-center py-8 sm:py-0">
-          <div className="w-full h-[300px] sm:h-[500px] flex items-center justify-center">
-            <span className="hidden sm:block text-gray-500 text-center">
-              Room under construction.
-              <br />
-              <br />
-              <Link href="/work">Work</Link>
-              <br />
-              <Link href="/play">Play</Link>
-            </span>
-          </div>
+      <section className="flex flex-col justify-between h-full w-full p-8 sm:p-20">
+        {/* Large summary text */}
+        <div className="flex-1 flex items-center">
+          <h1 className="font-offbit sm:text-[6rem] lg:text-[6rem] xl:text-[8rem] leading-none">
+            {/* Example summary */}
+            Neeha Ravula is a developer <br></br>based in San Diego, CA,
+            exploring <br></br>the intersection of design and <br></br>{" "}
+            computation.
+          </h1>
         </div>
 
-        {/* Caption */}
-        <div className="hidden sm:flex items-center justify-center px-4">
-          <p className="text-center">
-            Welcome to my room! Explore and click around to learn more about me.
-          </p>
-        </div>
-
-        {/* Mobile */}
-        <div className="flex-1 flex flex-col justify-center items-center">
-          {/* Room placeholder */}
-          <span className="sm:hidden text-gray-500 text-center">
-            Room under construction.
-          </span>
-
-          {/* Caption */}
-          <div className="sm:hidden mt-8 px-4">
-            <p className="text-center">
-              Welcome to my room! View on desktop for an interactive experience.
-            </p>
-          </div>
+        {/* Links bottom left */}
+        <div className="flex flex-col gap-2 text-sm">
+          <Link href="/work" className="hover:underline">
+            Work
+          </Link>
+          <Link href="/play" className="hover:underline">
+            Play
+          </Link>
+          <Link
+            href="https://read.cv/nravula"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            Resume
+          </Link>
         </div>
       </section>
     </Layout>
