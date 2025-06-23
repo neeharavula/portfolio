@@ -1,6 +1,13 @@
 "use client";
 
-import { SunIcon, ArrowBendUpLeftIcon, ListIcon } from "@phosphor-icons/react";
+import { useState, useEffect } from "react";
+import {
+  SunIcon,
+  MoonIcon,
+  SunHorizonIcon,
+  ArrowBendUpLeftIcon,
+  ListIcon,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -21,6 +28,40 @@ const Nav: React.FC<NavProps> = ({
   const isHomeAbout = ["home", "about"].includes(variant);
   const isProject = variant === "project";
 
+  const [time, setTime] = useState<string>(() => formatTime(new Date()));
+  const [hour, setHour] = useState<number>(new Date().getHours());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      setTime(formatTime(now));
+      setHour(now.getHours());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  function formatTime(date: Date): string {
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    hours = hours % 12;
+    hours = hours === 0 ? 12 : hours;
+
+    const pad = (n: number) => n.toString().padStart(2, "0");
+    return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  }
+
+  const getIcon = () => {
+    if ((hour >= 6 && hour < 8) || (hour >= 18 && hour < 20)) {
+      return <SunHorizonIcon size={20} className={iconClass} />;
+    }
+    if (hour >= 8 && hour < 18) {
+      return <SunIcon size={20} className={iconClass} />;
+    }
+    return <MoonIcon size={20} className={iconClass} />;
+  };
+
   const navClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
     variant === "about"
       ? "bg-[var(--background)] text-white"
@@ -37,25 +78,31 @@ const Nav: React.FC<NavProps> = ({
         {isHomeAbout && (
           <>
             <Link href="/">
-              <div>{"Neeha's Room"}</div>
+              <div>{"Neeha Ravula"}</div>
             </Link>
-            <SunIcon size={20} className={iconClass} />
+            <div className="flex items-center gap-8">
+              <span>{time}</span>
+              {getIcon()}
+            </div>
           </>
         )}
 
         {isWorkPlay && (
           <>
             <Link href="/">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-8">
                 <ArrowBendUpLeftIcon size={20} className={iconClass} />
-                <span>Back to room</span>
+                <span>Back</span>
               </div>
             </Link>
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
             </div>
-            <SunIcon size={20} className={iconClass} />
+            <div className="flex items-center gap-8">
+              <span>{time}</span>
+              {getIcon()}
+            </div>
           </>
         )}
 
@@ -70,14 +117,16 @@ const Nav: React.FC<NavProps> = ({
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {projectTitle ?? "Project"}
             </div>
-            <SunIcon size={20} className={iconClass} />
+            <div className="flex items-center gap-4">
+              <span>{time}</span>
+              {getIcon()}
+            </div>
           </>
         )}
       </div>
 
       {/* Mobile */}
       <div className="flex sm:hidden items-center justify-between w-full">
-        {/* Left: Back arrow if project */}
         <div className={`flex justify-start ${isProject ? "w-8" : ""}`}>
           {isProject && (
             <Link href="/work" className="inline-flex items-center">
@@ -85,8 +134,6 @@ const Nav: React.FC<NavProps> = ({
             </Link>
           )}
         </div>
-
-        {/* Center: Title */}
         <div
           className={`flex-1 truncate ${
             isProject ? "text-center" : "text-left"
@@ -94,7 +141,7 @@ const Nav: React.FC<NavProps> = ({
         >
           {isHomeAbout &&
             (variant === "home"
-              ? "Neeha's Room"
+              ? "Neeha Ravula"
               : variant === "about"
               ? "About"
               : "")}
@@ -103,8 +150,6 @@ const Nav: React.FC<NavProps> = ({
           {isProject && (projectTitle ?? "Project")}
           {variant === "menu" && "Menu"}
         </div>
-
-        {/* Right: Menu button */}
         <div className="w-8 flex justify-end">
           {!menuOpen && (
             <button onClick={() => setMenuOpen(true)}>

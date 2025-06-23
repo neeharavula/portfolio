@@ -1,47 +1,82 @@
 import Layout from "@/components/base/general-layout";
+import { TextLoop } from "@/components/motion-primitives/text-loop";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <Layout variant="home">
-      <section className="flex flex-col h-full w-full p-8 sm:p-20 text-sm font-[family-name:var(--font-geist-mono)] sm:grid sm:grid-cols-[1fr_3fr_1fr] sm:grid-rows-1 sm:gap-8">
-        {/* Desktop */}
-        {/* Empty space */}
-        <div className="hidden sm:block" />
-
-        {/* Room placeholder */}
-        <div className="flex justify-center items-center py-8 sm:py-0">
-          <div className="w-full h-[300px] sm:h-[500px] flex items-center justify-center">
-            <span className="hidden sm:block text-gray-500 text-center">
-              Room under construction.
-              <br />
-              <br />
-              <Link href="/work">Work</Link>
-              <br />
-              <Link href="/play">Play</Link>
+      <section className="relative flex flex-col justify-between h-full w-full px-8">
+        {/* Large summary text */}
+        <div className="flex-1 flex items-center">
+          <h1 className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none">
+            Neeha Ravula is a {/* Mobile: static "developer" */}
+            <span className="sm:hidden text-[#94A75D]">developer</span>
+            {/* Desktop: animated TextLoop */}
+            <span className="hidden sm:inline">
+              <TextLoop
+                className="overflow-y-clip text-[#94A75D]"
+                transition={{
+                  type: "spring",
+                  stiffness: 900,
+                  damping: 80,
+                  mass: 10,
+                }}
+                variants={{
+                  initial: {
+                    y: 20,
+                    rotateX: 90,
+                    opacity: 0,
+                    filter: "blur(4px)",
+                  },
+                  animate: {
+                    y: 0,
+                    rotateX: 0,
+                    opacity: 1,
+                    filter: "blur(0px)",
+                  },
+                  exit: {
+                    y: -20,
+                    rotateX: -90,
+                    opacity: 0,
+                    filter: "blur(4px)",
+                  },
+                }}
+              >
+                <span>developer</span>
+                <span>creative</span>
+              </TextLoop>
             </span>
+            <br />
+            based in San Diego, CA, exploring <br /> the intersection of design
+            and <br />
+            computation.
+          </h1>
+        </div>
+
+        {/* Links bottom right */}
+        <div className="hidden sm:flex flex-col gap-8 text-right text-sm font-[family-name:var(--font-geist-mono)] absolute bottom-8 right-8">
+          <div className="relative inline-block">
+            <Link href="/work" className="block hover:text-[#94A75D]">
+              <span className="text-gray-500">[</span> Work{" "}
+              <span className="text-gray-500">]</span>
+            </Link>
           </div>
-        </div>
-
-        {/* Caption */}
-        <div className="hidden sm:flex items-center justify-center px-4">
-          <p className="text-center">
-            Welcome to my room! Explore and click around to learn more about me.
-          </p>
-        </div>
-
-        {/* Mobile */}
-        <div className="flex-1 flex flex-col justify-center items-center">
-          {/* Room placeholder */}
-          <span className="sm:hidden text-gray-500 text-center">
-            Room under construction.
-          </span>
-
-          {/* Caption */}
-          <div className="sm:hidden mt-8 px-4">
-            <p className="text-center">
-              Welcome to my room! View on desktop for an interactive experience.
-            </p>
+          <div className="relative inline-block">
+            <Link href="/play" className="block hover:text-[#94A75D]">
+              <span className="text-gray-500">[</span> Play{" "}
+              <span className="text-gray-500">]</span>
+            </Link>
+          </div>
+          <div className="relative inline-block">
+            <Link
+              href="https://read.cv/nravula"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:text-[#94A75D]"
+            >
+              <span className="text-gray-500">[</span> Resume{" "}
+              <span className="text-gray-500">]</span>
+            </Link>
           </div>
         </div>
       </section>

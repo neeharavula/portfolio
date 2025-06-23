@@ -9,7 +9,6 @@ import {
   InstagramLogoIcon,
   SpotifyLogoIcon,
   LinkedinLogoIcon,
-  XIcon,
 } from "@phosphor-icons/react";
 
 type AboutOverlayProps = {
@@ -35,15 +34,6 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
         className="w-full h-full bg-[#111] text-white rounded-xl relative flex gap-12 p-8"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-8 right-8 text-white"
-          aria-label="Close"
-        >
-          <XIcon size={20} />
-        </button>
-
         {/* Image */}
         <div className="relative w-1/3 aspect-[3/4]">
           <Image

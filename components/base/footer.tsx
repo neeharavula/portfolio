@@ -10,14 +10,19 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
   const footerClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
-    variant === "about" ? "bg-[#111] text-white" : "bg-transparent text-black"
+    variant === "about"
+      ? "bg-[#111] text-white"
+      : "bg-transparent text-black dark:text-white"
   }`;
 
   return (
     <footer className={footerClass}>
-      {/* Desktop */}
       <div className="hidden sm:flex justify-between items-center">
         <div>© 2025</div>
+        <Magnetic>
+          <div>Collab / Say Hi</div>
+        </Magnetic>
+
         <Magnetic>
           <button
             onClick={onAboutClick}
