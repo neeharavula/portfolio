@@ -9,7 +9,6 @@ import {
   InstagramLogoIcon,
   SpotifyLogoIcon,
   LinkedinLogoIcon,
-  XIcon,
 } from "@phosphor-icons/react";
 
 type AboutOverlayProps = {

@@ -9,7 +9,6 @@ import {
   GithubLogoIcon,
   InstagramLogoIcon,
   SpotifyLogoIcon,
-  ArrowUpRightIcon,
 } from "@phosphor-icons/react";
 import Link from "next/link";
 import Nav from "@/components/base/nav";

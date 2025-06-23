@@ -30,7 +30,6 @@ const Nav: React.FC<NavProps> = ({
 
   const [time, setTime] = useState<string>(() => formatTime(new Date()));
   const [hour, setHour] = useState<number>(new Date().getHours());
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,20 +38,6 @@ const Nav: React.FC<NavProps> = ({
       setHour(now.getHours());
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
-      setIsDarkMode(e.matches);
-    };
-
-    handleChange(mediaQuery);
-    mediaQuery.addEventListener("change", handleChange);
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-    };
   }, []);
 
   function formatTime(date: Date): string {
