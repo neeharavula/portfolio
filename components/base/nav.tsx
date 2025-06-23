@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import {
   SunIcon,
   MoonIcon,
+  SunHorizonIcon,
   ArrowBendUpLeftIcon,
   ListIcon,
 } from "@phosphor-icons/react";
@@ -28,29 +29,17 @@ const Nav: React.FC<NavProps> = ({
   const isProject = variant === "project";
 
   const [time, setTime] = useState<string>(() => formatTime(new Date()));
+  const [hour, setHour] = useState<number>(new Date().getHours());
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime(formatTime(new Date()));
+      const now = new Date();
+      setTime(formatTime(now));
+      setHour(now.getHours());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  function formatTime(date: Date): string {
-    let hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-
-    // Convert to 12-hour format
-    hours = hours % 12;
-    hours = hours === 0 ? 12 : hours;
-
-    const pad = (n: number) => n.toString().padStart(2, "0");
-
-    return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-  }
-
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -59,16 +48,34 @@ const Nav: React.FC<NavProps> = ({
       setIsDarkMode(e.matches);
     };
 
-    // Set initial value
     handleChange(mediaQuery);
-
-    // Listen for changes
     mediaQuery.addEventListener("change", handleChange);
-
     return () => {
       mediaQuery.removeEventListener("change", handleChange);
     };
   }, []);
+
+  function formatTime(date: Date): string {
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    hours = hours % 12;
+    hours = hours === 0 ? 12 : hours;
+
+    const pad = (n: number) => n.toString().padStart(2, "0");
+    return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  }
+
+  const getIcon = () => {
+    if ((hour >= 6 && hour < 8) || (hour >= 18 && hour < 20)) {
+      return <SunHorizonIcon size={20} className={iconClass} />;
+    }
+    if (hour >= 8 && hour < 18) {
+      return <SunIcon size={20} className={iconClass} />;
+    }
+    return <MoonIcon size={20} className={iconClass} />;
+  };
 
   const navClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
     variant === "about"
@@ -90,11 +97,7 @@ const Nav: React.FC<NavProps> = ({
             </Link>
             <div className="flex items-center gap-8">
               <span>{time}</span>
-              {isDarkMode ? (
-                <MoonIcon size={20} className={iconClass} />
-              ) : (
-                <SunIcon size={20} className={iconClass} />
-              )}
+              {getIcon()}
             </div>
           </>
         )}
@@ -113,11 +116,7 @@ const Nav: React.FC<NavProps> = ({
             </div>
             <div className="flex items-center gap-8">
               <span>{time}</span>
-              {isDarkMode ? (
-                <MoonIcon size={20} className={iconClass} />
-              ) : (
-                <SunIcon size={20} className={iconClass} />
-              )}
+              {getIcon()}
             </div>
           </>
         )}
@@ -135,11 +134,7 @@ const Nav: React.FC<NavProps> = ({
             </div>
             <div className="flex items-center gap-4">
               <span>{time}</span>
-              {isDarkMode ? (
-                <MoonIcon size={20} className={iconClass} />
-              ) : (
-                <SunIcon size={20} className={iconClass} />
-              )}
+              {getIcon()}
             </div>
           </>
         )}
@@ -147,7 +142,6 @@ const Nav: React.FC<NavProps> = ({
 
       {/* Mobile */}
       <div className="flex sm:hidden items-center justify-between w-full">
-        {/* Left: Back arrow if project */}
         <div className={`flex justify-start ${isProject ? "w-8" : ""}`}>
           {isProject && (
             <Link href="/work" className="inline-flex items-center">
@@ -155,8 +149,6 @@ const Nav: React.FC<NavProps> = ({
             </Link>
           )}
         </div>
-
-        {/* Center: Title */}
         <div
           className={`flex-1 truncate ${
             isProject ? "text-center" : "text-left"
@@ -173,8 +165,6 @@ const Nav: React.FC<NavProps> = ({
           {isProject && (projectTitle ?? "Project")}
           {variant === "menu" && "Menu"}
         </div>
-
-        {/* Right: Menu button */}
         <div className="w-8 flex justify-end">
           {!menuOpen && (
             <button onClick={() => setMenuOpen(true)}>
