@@ -86,32 +86,28 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-4"
                   >
-                    Home
-                    <ArrowUpRightIcon size={16} />
+                    [ Home ]
                   </Link>
                   <Link
                     href="/work"
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-4"
                   >
-                    Work
-                    <ArrowUpRightIcon size={16} />
+                    [ Work ]
                   </Link>
                   <Link
                     href="/play"
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-4"
                   >
-                    Play
-                    <ArrowUpRightIcon size={16} />
+                    [ Play ]
                   </Link>
                   <Link
                     href="/about"
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-4"
                   >
-                    About
-                    <ArrowUpRightIcon size={16} />
+                    [ About ]
                   </Link>
                   <Link
                     href="https://read.cv/nravula"
@@ -120,8 +116,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-4"
                   >
-                    Resume
-                    <ArrowUpRightIcon size={16} />
+                    [ Resume ]
                   </Link>
                 </nav>
               </div>
