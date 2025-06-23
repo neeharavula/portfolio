@@ -54,12 +54,12 @@ export default function Home() {
         {/* Links bottom left */}
         <div className="flex flex-col gap-6 text-sm font-[family-name:var(--font-geist-mono)] hidden sm:flex">
           <div className="relative inline-block">
-            <Link href="/work" className="block">
+            <Link href="/work" className="block hover:text-[#94A75D]">
               [ Work ]
             </Link>
           </div>
           <div className="relative inline-block">
-            <Link href="/play" className="block">
+            <Link href="/play" className="block hover:text-[#94A75D]">
               [ Play ]
             </Link>
           </div>
@@ -68,7 +68,7 @@ export default function Home() {
               href="https://read.cv/nravula"
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              className="block hover:text-[#94A75D]"
             >
               [ Resume ]
             </Link>

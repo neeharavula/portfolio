@@ -1,6 +1,12 @@
 "use client";
 
-import { SunIcon, ArrowBendUpLeftIcon, ListIcon } from "@phosphor-icons/react";
+import { useState, useEffect } from "react";
+import {
+  SunIcon,
+  MoonIcon,
+  ArrowBendUpLeftIcon,
+  ListIcon,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -21,6 +27,49 @@ const Nav: React.FC<NavProps> = ({
   const isHomeAbout = ["home", "about"].includes(variant);
   const isProject = variant === "project";
 
+  const [time, setTime] = useState<string>(() => formatTime(new Date()));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(formatTime(new Date()));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  function formatTime(date: Date): string {
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    // Convert to 12-hour format
+    hours = hours % 12;
+    hours = hours === 0 ? 12 : hours;
+
+    const pad = (n: number) => n.toString().padStart(2, "0");
+
+    return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  }
+
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsDarkMode(e.matches);
+    };
+
+    // Set initial value
+    handleChange(mediaQuery);
+
+    // Listen for changes
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
   const navClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
     variant === "about"
       ? "bg-[var(--background)] text-white"
@@ -39,14 +88,21 @@ const Nav: React.FC<NavProps> = ({
             <Link href="/">
               <div>{"Neeha Ravula"}</div>
             </Link>
-            <SunIcon size={20} className={iconClass} />
+            <div className="flex items-center gap-8">
+              <span>{time}</span>
+              {isDarkMode ? (
+                <MoonIcon size={20} className={iconClass} />
+              ) : (
+                <SunIcon size={20} className={iconClass} />
+              )}
+            </div>
           </>
         )}
 
         {isWorkPlay && (
           <>
             <Link href="/">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-8">
                 <ArrowBendUpLeftIcon size={20} className={iconClass} />
                 <span>Back</span>
               </div>
@@ -55,7 +111,14 @@ const Nav: React.FC<NavProps> = ({
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
             </div>
-            <SunIcon size={20} className={iconClass} />
+            <div className="flex items-center gap-8">
+              <span>{time}</span>
+              {isDarkMode ? (
+                <MoonIcon size={20} className={iconClass} />
+              ) : (
+                <SunIcon size={20} className={iconClass} />
+              )}
+            </div>
           </>
         )}
 
@@ -70,7 +133,14 @@ const Nav: React.FC<NavProps> = ({
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {projectTitle ?? "Project"}
             </div>
-            <SunIcon size={20} className={iconClass} />
+            <div className="flex items-center gap-4">
+              <span>{time}</span>
+              {isDarkMode ? (
+                <MoonIcon size={20} className={iconClass} />
+              ) : (
+                <SunIcon size={20} className={iconClass} />
+              )}
+            </div>
           </>
         )}
       </div>
