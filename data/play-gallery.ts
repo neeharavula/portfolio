@@ -1,4 +1,4 @@
-export const filters = ["film", "digital", "video", "art"] as const;
+export const filters = ["film", "digital", "art"] as const;
 export type FilterType = (typeof filters)[number];
 
 export const imageFiles: Record<FilterType, string[]> = {
@@ -43,10 +43,10 @@ export const imageFiles: Record<FilterType, string[]> = {
     "17-sandiego.JPG",
     "18-sandiego.JPG",
   ],
-  video: [
+  /*video: [
     "pilot.mp4",
     // ...
-  ],
+  ],*/
   art: [
     "florence.jpg",
     // ...
