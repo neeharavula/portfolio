@@ -9,7 +9,6 @@ import { filters, imageFiles, FilterType } from "@/data/play-gallery";
 const captions: Record<FilterType, string> = {
   film: "Loading film roll...",
   digital: "Cleaning sensor...",
-  // video: "Rendering clips...", // video caption commented out
   art: "Opening sketchbook...",
 };
 
@@ -50,8 +49,8 @@ export default function Play() {
     0: 1,
   };
 
-  // Filters excluding 'video'
-  const visibleFilters = filters.filter((f) => f !== "video");
+  // filters already only ["film", "digital", "art"], so use as is
+  const visibleFilters = filters;
 
   return (
     <Layout variant="play">
@@ -103,24 +102,7 @@ export default function Play() {
             >
               {imageFiles[activeFilter].map((file, index) => (
                 <div key={index}>
-                  {/* 
-                  {activeFilter === "video" ? (
-                    <video
-                      src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
-                      muted
-                      loop
-                      preload="metadata"
-                      playsInline
-                      className="w-full h-auto object-cover rounded-lg"
-                      onMouseOver={(e) => {
-                        e.currentTarget.play();
-                      }}
-                      onMouseOut={(e) => {
-                        e.currentTarget.pause();
-                        e.currentTarget.currentTime = 0;
-                      }}
-                    />
-                  ) : ( */}
+                  {/* Video filter disabled, so only images */}
                   <Image
                     src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
                     alt={`${activeFilter} ${index}`}
@@ -128,7 +110,6 @@ export default function Play() {
                     height={600}
                     className="w-full h-auto object-cover rounded-lg"
                   />
-                  {/* )} */}
                 </div>
               ))}
 
