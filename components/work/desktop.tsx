@@ -2,18 +2,16 @@
 
 import { iconMap } from "@/utils/icons";
 import { workData } from "@/data/work-projects";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 const WorkDesktop = () => {
-  const router = useRouter();
-
   return (
     <div className="h-full flex flex-col justify-center items-center px-6 gap-8 max-w-4xl mx-auto font-[family-name:var(--font-geist-mono)]">
-      {workData.map((project, index) => (
-        <button
-          key={index}
-          onClick={() => router.push(`/work/${project.slug}`)}
+      {workData.map((project) => (
+        <Link
+          key={project.slug}
+          href={`/work/${project.slug}`}
           className="w-full flex items-center justify-between border-none text-left group cursor-pointer"
         >
           {/* Left section — Title + dot */}
@@ -47,7 +45,7 @@ const WorkDesktop = () => {
               })}
             </div>
           </div>
-        </button>
+        </Link>
       ))}
     </div>
   );
