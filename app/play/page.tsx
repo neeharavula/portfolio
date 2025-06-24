@@ -9,7 +9,7 @@ import { filters, imageFiles, FilterType } from "@/data/play-gallery";
 const captions: Record<FilterType, string> = {
   film: "Loading film roll...",
   digital: "Cleaning sensor...",
-  video: "Rendering clips...",
+  // video: "Rendering clips...", // video caption commented out
   art: "Opening sketchbook...",
 };
 
@@ -50,6 +50,9 @@ export default function Play() {
     0: 1,
   };
 
+  // Filters excluding 'video'
+  const visibleFilters = filters.filter((f) => f !== "video");
+
   return (
     <Layout variant="play">
       <section className="flex flex-col p-8 items-center gap-6 text-sm font-[family-name:var(--font-geist-mono)] relative">
@@ -72,7 +75,7 @@ export default function Play() {
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-12">
-          {filters.map((filter) => (
+          {visibleFilters.map((filter) => (
             <button
               key={filter}
               onClick={() => {
@@ -100,6 +103,7 @@ export default function Play() {
             >
               {imageFiles[activeFilter].map((file, index) => (
                 <div key={index}>
+                  {/* 
                   {activeFilter === "video" ? (
                     <video
                       src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
@@ -116,15 +120,15 @@ export default function Play() {
                         e.currentTarget.currentTime = 0;
                       }}
                     />
-                  ) : (
-                    <Image
-                      src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
-                      alt={`${activeFilter} ${index}`}
-                      width={500}
-                      height={600}
-                      className="w-full h-auto object-cover rounded-lg"
-                    />
-                  )}
+                  ) : ( */}
+                  <Image
+                    src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
+                    alt={`${activeFilter} ${index}`}
+                    width={500}
+                    height={600}
+                    className="w-full h-auto object-cover rounded-lg"
+                  />
+                  {/* )} */}
                 </div>
               ))}
 

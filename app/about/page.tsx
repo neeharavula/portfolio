@@ -124,7 +124,7 @@ export default function AboutPage() {
               className="mt-2 text-sm text-white"
               style={{ fontFamily: "var(--font-geist-mono)" }}
             >
-              Loading about page...
+              Loading info...
             </div>
           </div>
         )}
