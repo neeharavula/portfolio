@@ -64,7 +64,7 @@ const Nav: React.FC<NavProps> = ({
 
   const navClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
     variant === "about"
-      ? "bg-[var(--background)] text-white"
+      ? "bg-black text-white"
       : "bg-[var(--background)] text-black dark:text-white"
   }`;
 
