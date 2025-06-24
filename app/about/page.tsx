@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Layout from "@/components/base/general-layout";
 import Image from "next/image";
 import {
@@ -80,10 +81,55 @@ const AboutPageContent = () => {
 };
 
 export default function AboutPage() {
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    setProgress(0);
+
+    const interval = setInterval(() => {
+      start = Math.min(start + Math.floor(Math.random() * 15) + 5, 100);
+      setProgress(start);
+
+      if (start >= 100) {
+        clearInterval(interval);
+      }
+    }, 200);
+
+    const loadTimeout = setTimeout(() => {
+      clearInterval(interval);
+      setProgress(100);
+      setLoading(false);
+    }, 1500);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(loadTimeout);
+    };
+  }, []);
+
   return (
     <Layout variant="about">
-      <div className="bg-black text-white min-h-screen">
-        <AboutPageContent />
+      <div className="bg-black text-white min-h-screen relative">
+        {loading && (
+          <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black transition-colors">
+            <div
+              className="text-2xl text-white"
+              style={{ fontFamily: "var(--font-offbit)", fontWeight: "bold" }}
+            >
+              {progress}
+            </div>
+            <div
+              className="mt-2 text-sm text-white"
+              style={{ fontFamily: "var(--font-geist-mono)" }}
+            >
+              Loading about page...
+            </div>
+          </div>
+        )}
+
+        {!loading && <AboutPageContent />}
       </div>
     </Layout>
   );
