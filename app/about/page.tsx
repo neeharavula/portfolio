@@ -16,12 +16,12 @@ const AboutPageContent = () => {
   return (
     <div className="flex flex-col items-center px-6 py-10 font-[family-name:var(--font-geist-mono)]">
       {/* Image */}
-      <div className="relative w-2/3 max-w-sm aspect-[3/4] mb-8">
+      <div className="relative w-2/3 max-w-sm aspect-[3/4] mb-4">
         <Image
-          src="https://nravula-portfolio-assets.s3.amazonaws.com/about/me.JPG"
+          src="https://nravula-portfolio-assets.s3.amazonaws.com/about/polaroid.png"
           alt="About Image"
           fill
-          className="object-cover rounded-lg"
+          className="object-contain"
         />
       </div>
 

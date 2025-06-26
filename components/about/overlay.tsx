@@ -31,16 +31,16 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
       onClick={onClose}
     >
       <div
-        className="w-full h-full bg-[#111] text-white rounded-xl relative flex gap-12 p-8"
+        className="w-full h-full bg-[#111] text-white rounded-xl relative flex flex-col items-center p-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Image */}
-        <div className="relative w-1/3 aspect-[3/4]">
+        <div className="relative w-1/3 max-w-xs aspect-[3/4] mb-4">
           <Image
-            src="https://nravula-portfolio-assets.s3.amazonaws.com/about/me.JPG"
+            src="https://nravula-portfolio-assets.s3.amazonaws.com/about/polaroid.png"
             alt="About Image"
             fill
-            className="object-cover rounded-lg"
+            className="object-contain"
           />
         </div>
 
