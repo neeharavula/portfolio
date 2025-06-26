@@ -64,8 +64,8 @@ const Nav: React.FC<NavProps> = ({
 
   const navClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
     variant === "about"
-      ? "bg-black text-white"
-      : "bg-[var(--background)] text-black dark:text-white"
+      ? "bg-transparent text-white"
+      : "bg-transparent text-black dark:text-white"
   }`;
 
   const iconClass =
@@ -78,9 +78,9 @@ const Nav: React.FC<NavProps> = ({
         {isHomeAbout && (
           <>
             <Link href="/">
-              <div>{"Neeha Ravula"}</div>
+              <div className="relative z-10">{"Neeha Ravula"}</div>
             </Link>
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-8 relative z-10">
               <span>{time}</span>
               {getIcon()}
             </div>
@@ -90,7 +90,7 @@ const Nav: React.FC<NavProps> = ({
         {isWorkPlay && (
           <>
             <Link href="/">
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-8 relative z-10">
                 <ArrowBendUpLeftIcon size={20} className={iconClass} />
                 <span>Back</span>
               </div>
@@ -99,7 +99,7 @@ const Nav: React.FC<NavProps> = ({
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
             </div>
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-8 relative z-10">
               <span>{time}</span>
               {getIcon()}
             </div>
@@ -109,7 +109,7 @@ const Nav: React.FC<NavProps> = ({
         {isProject && (
           <>
             <Link href="/work">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 relative z-10">
                 <ArrowBendUpLeftIcon size={20} className={iconClass} />
                 <span>All work</span>
               </div>
@@ -117,7 +117,7 @@ const Nav: React.FC<NavProps> = ({
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {projectTitle ?? "Project"}
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 relative z-10">
               <span>{time}</span>
               {getIcon()}
             </div>

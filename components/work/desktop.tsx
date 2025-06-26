@@ -26,13 +26,13 @@ const WorkDesktop = () => {
               />
             </div>
 
-            <span className="text-sm group-hover:underline">
+            <span className="text-sm group-hover:underline relative z-10">
               {project.title}
             </span>
           </div>
 
           {/* Right section — Type, season, icons */}
-          <div className="flex items-center gap-4 text-sm">
+          <div className="flex items-center gap-4 text-sm relative z-10">
             <span>
               {project.type} / {project.date} /
             </span>
@@ -40,7 +40,7 @@ const WorkDesktop = () => {
               {project.tools.map((tool) => {
                 const Icon = iconMap[tool];
                 return Icon ? (
-                  <Icon key={tool} className="min-w-5 min-h-5" />
+                  <Icon key={tool} className="min-w-5 min-h-5 relative z-10" />
                 ) : null;
               })}
             </div>
