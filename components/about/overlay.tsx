@@ -31,7 +31,7 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
       onClick={onClose}
     >
       <div
-        className="w-full h-full bg-[#111] text-white rounded-xl relative flex flex-col items-center p-8"
+        className="w-full h-full overflow-y-auto bg-[#111] text-white rounded-xl relative flex flex-col items-center p-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Image */}
