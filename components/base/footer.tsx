@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
+import Link from "next/link";
 
 interface FooterProps {
   variant: "home" | "work" | "project" | "play" | "about" | "menu";
@@ -20,7 +21,13 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
       <div className="hidden sm:flex justify-between items-center">
         <div className="relative z-10">© 2025</div>
         <Magnetic>
-          <div>Collab / Say Hi</div>
+          <Link
+            href="mailto:ravulaneeha@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>Collab / Say Hi</div>
+          </Link>
         </Magnetic>
 
         <Magnetic>
