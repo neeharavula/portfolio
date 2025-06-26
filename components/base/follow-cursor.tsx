@@ -57,7 +57,11 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
     const onMouseMove = (e: MouseEvent) => {
       cursor.x = e.clientX;
       cursor.y = e.clientY;
-      hasMoved = true;
+      if (!hasMoved) {
+        dot.position.x = e.clientX;
+        dot.position.y = e.clientY;
+        hasMoved = true;
+      }
     };
 
     const onWindowResize = () => {
@@ -80,7 +84,10 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
     };
 
     const loop = () => {
-      updateDot();
+      if (hasMoved) {
+        context?.clearRect(0, 0, width, height);
+        dot.moveTowards(cursor.x, cursor.y, context!);
+      }
       animationFrame = requestAnimationFrame(loop);
     };
 
