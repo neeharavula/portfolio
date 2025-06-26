@@ -13,11 +13,16 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
     let animationFrame: number;
     let width = window.innerWidth;
     let height = window.innerHeight;
-    const dpr = window.devicePixelRatio || 1; // High-DPI support
-    const cursor = { x: width / 2, y: height / 2 };
+    const dpr = window.devicePixelRatio || 1;
+    const cursor = { x: 0, y: 0 };
+    let hasMoved = false;
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     );
+
+    const isTouchDevice = () =>
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
     class Dot {
       position: { x: number; y: number };
@@ -47,11 +52,12 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
       }
     }
 
-    const dot = new Dot(width / 2, height / 2, 7, 10); // radius = 4px (8px diameter)
+    const dot = new Dot(0, 0, 7, 10); // Initial position doesn't matter anymore
 
     const onMouseMove = (e: MouseEvent) => {
       cursor.x = e.clientX;
       cursor.y = e.clientY;
+      hasMoved = true;
     };
 
     const onWindowResize = () => {
@@ -62,15 +68,15 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
         canvas.height = height * dpr;
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
+        context.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
         context.scale(dpr, dpr);
       }
     };
 
     const updateDot = () => {
-      if (context) {
-        context.clearRect(0, 0, width, height);
-        dot.moveTowards(cursor.x, cursor.y, context);
-      }
+      if (!hasMoved || !context) return;
+      context.clearRect(0, 0, width, height);
+      dot.moveTowards(cursor.x, cursor.y, context);
     };
 
     const loop = () => {
@@ -79,10 +85,7 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
     };
 
     const init = () => {
-      if (prefersReducedMotion.matches) {
-        console.log("Reduced motion enabled, cursor effect skipped.");
-        return;
-      }
+      if (prefersReducedMotion.matches || isTouchDevice()) return;
 
       canvas = document.createElement("canvas");
       context = canvas.getContext("2d");
@@ -99,7 +102,7 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
       canvas.height = height * dpr;
       context?.scale(dpr, dpr);
 
-      document.body.prepend(canvas); // behind all content
+      document.body.prepend(canvas);
 
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("resize", onWindowResize);
@@ -114,7 +117,7 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
     };
 
     prefersReducedMotion.onchange = () => {
-      if (prefersReducedMotion.matches) {
+      if (prefersReducedMotion.matches || isTouchDevice()) {
         destroy();
       } else {
         init();
