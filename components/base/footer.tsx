@@ -18,7 +18,7 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
   return (
     <footer className={footerClass}>
       <div className="hidden sm:flex justify-between items-center">
-        <div>© 2025</div>
+        <div className="relative z-10">© 2025</div>
         <Magnetic>
           <div>Collab / Say Hi</div>
         </Magnetic>

@@ -19,7 +19,7 @@ export default async function Project({ params }: Props) {
 
   return (
     <Layout variant="project" projectTitle={project.title}>
-      <div className="max-w-5xl mx-auto px-8 py-16 font-[family-name:var(--font-geist-mono)] text-sm">
+      <div className="max-w-5xl mx-auto px-8 py-16 font-[family-name:var(--font-geist-mono)] text-sm relative z-10">
         {project.overview && (
           <Section title="Overview">
             <p>{project.overview}</p>
