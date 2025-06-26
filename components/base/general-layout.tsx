@@ -14,6 +14,7 @@ import Link from "next/link";
 import Nav from "@/components/base/nav";
 import Footer from "@/components/base/footer";
 import AboutOverlay from "@/components/about/overlay";
+import FollowCursor from "@/components/base/follow-cursor";
 
 export interface LayoutConfig {
   variant: "home" | "work" | "project" | "play" | "about" | "menu";
@@ -33,6 +34,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
 
   return (
     <div className="flex flex-col sm:h-screen sm:overflow-hidden">
+      <FollowCursor />
       <Nav
         variant={variant}
         projectTitle={variant === "project" ? projectTitle : undefined}
