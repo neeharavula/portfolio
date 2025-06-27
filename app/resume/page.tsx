@@ -11,7 +11,7 @@ export default function ResumePage() {
     <Layout variant="resume">
       <div className="max-w-5xl mx-auto p-8 text-sm font-[family-name:var(--font-geist-mono)]">
         {/* Profile Header */}
-        <div className="flex items-center gap-8 mb-16">
+        <div className="flex items-center gap-8 mb-10">
           <Image
             src={`https://nravula-portfolio-assets.s3.amazonaws.com/resume/pfp.jpg`}
             alt="Profile"
