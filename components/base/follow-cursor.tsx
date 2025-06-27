@@ -77,12 +77,6 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
       }
     };
 
-    const updateDot = () => {
-      if (!hasMoved || !context) return;
-      context.clearRect(0, 0, width, height);
-      dot.moveTowards(cursor.x, cursor.y, context);
-    };
-
     const loop = () => {
       if (hasMoved) {
         context?.clearRect(0, 0, width, height);
