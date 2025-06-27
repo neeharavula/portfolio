@@ -28,7 +28,9 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div>Collab / Say Hi</div>
+            <div>
+              Collab <span className="text-gray-500">/</span> Say Hi
+            </div>
           </Link>
         </Magnetic>
 

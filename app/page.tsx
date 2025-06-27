@@ -1,5 +1,6 @@
 import Layout from "@/components/base/general-layout";
 import { TextLoop } from "@/components/motion-primitives/text-loop";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
 import Link from "next/link";
 
 export default function Home() {
@@ -55,24 +56,30 @@ export default function Home() {
 
         {/* Links bottom right */}
         <div className="hidden sm:flex flex-col gap-8 text-right text-sm font-[family-name:var(--font-geist-mono)] absolute bottom-8 right-8">
-          <div className="relative inline-block">
-            <Link href="/work" className="block hover:text-[#94A75D]">
-              <span className="text-gray-500">[</span> Work{" "}
-              <span className="text-gray-500">]</span>
-            </Link>
-          </div>
-          <div className="relative inline-block">
-            <Link href="/play" className="block hover:text-[#94A75D]">
-              <span className="text-gray-500">[</span> Play{" "}
-              <span className="text-gray-500">]</span>
-            </Link>
-          </div>
-          <div className="relative inline-block">
-            <Link href="/resume" className="block hover:text-[#94A75D]">
-              <span className="text-gray-500">[</span> Resume{" "}
-              <span className="text-gray-500">]</span>
-            </Link>
-          </div>
+          <Magnetic>
+            <div className="relative inline-block">
+              <Link href="/work" className="block hover:text-[#94A75D]">
+                <span className="text-gray-500">[</span> Work{" "}
+                <span className="text-gray-500">]</span>
+              </Link>
+            </div>
+          </Magnetic>
+          <Magnetic>
+            <div className="relative inline-block">
+              <Link href="/play" className="block hover:text-[#94A75D]">
+                <span className="text-gray-500">[</span> Play{" "}
+                <span className="text-gray-500">]</span>
+              </Link>
+            </div>
+          </Magnetic>
+          <Magnetic>
+            <div className="relative inline-block">
+              <Link href="/resume" className="block hover:text-[#94A75D]">
+                <span className="text-gray-500">[</span> Resume{" "}
+                <span className="text-gray-500">]</span>
+              </Link>
+            </div>
+          </Magnetic>
         </div>
       </section>
     </Layout>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Section from "@/components/work/section";
 import { resumeSections } from "@/data/resume-data";
+import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
 
 export default function ResumePage() {
   return (
@@ -39,36 +40,54 @@ export default function ResumePage() {
         {resumeSections.map((section) => (
           <Section key={section.title} title={section.title}>
             <ul className="space-y-8">
-              {section.entries.map((entry, i) => (
-                <li key={i} className="flex gap-8 items-start">
-                  <p className="w-24 text-neutral-400 shrink-0">{entry.date}</p>
-                  <div className="flex-1">
-                    <Link
-                      href={entry.link || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-black dark:text-white hover:underline"
-                    >
-                      {entry.role}
-                    </Link>
-                    <p className="text-neutral-400 text-sm">{entry.location}</p>
-                    {entry.images && (
-                      <div className="flex gap-2 mt-2">
-                        {entry.images.map((src, idx) => (
-                          <Image
-                            key={idx}
-                            src={src}
-                            alt="preview"
-                            width={120}
-                            height={80}
-                            className="rounded-md object-cover"
-                          />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </li>
-              ))}
+              <AnimatedBackground
+                enableHover
+                className="rounded-md bg-zinc-100 dark:bg-zinc-800"
+                transition={{
+                  type: "spring",
+                  bounce: 0,
+                  duration: 0.2,
+                }}
+              >
+                {section.entries.map((entry, i) => (
+                  <li
+                    key={i}
+                    data-id={`${section.title}-${i}`}
+                    className="flex gap-8 items-start px-3 py-3 rounded-md cursor-pointer"
+                  >
+                    <p className="w-24 text-neutral-400 shrink-0">
+                      {entry.date}
+                    </p>
+                    <div className="flex-1">
+                      <Link
+                        href={entry.link || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-black dark:text-white relative z-10"
+                      >
+                        {entry.role}
+                      </Link>
+                      <p className="text-neutral-400 text-sm">
+                        {entry.location}
+                      </p>
+                      {entry.images && (
+                        <div className="flex gap-2 mt-2">
+                          {entry.images.map((src, idx) => (
+                            <Image
+                              key={idx}
+                              src={src}
+                              alt="preview"
+                              width={120}
+                              height={80}
+                              className="rounded-md object-cover"
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </AnimatedBackground>
             </ul>
           </Section>
         ))}
