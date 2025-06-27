@@ -17,7 +17,7 @@ import AboutOverlay from "@/components/about/overlay";
 import FollowCursor from "@/components/base/follow-cursor";
 
 export interface LayoutConfig {
-  variant: "home" | "work" | "project" | "play" | "about" | "menu";
+  variant: "home" | "work" | "project" | "play" | "about" | "menu" | "resume";
 }
 
 type LayoutProps = {
@@ -111,9 +111,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                     [ About ]
                   </Link>
                   <Link
-                    href="https://read.cv/nravula"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/resume"
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-4"
                   >

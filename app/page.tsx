@@ -68,12 +68,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="relative inline-block">
-            <Link
-              href="https://read.cv/nravula"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block hover:text-[#94A75D]"
-            >
+            <Link href="/resume" className="block hover:text-[#94A75D]">
               <span className="text-gray-500">[</span> Resume{" "}
               <span className="text-gray-500">]</span>
             </Link>

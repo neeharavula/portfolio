@@ -1,3 +1,5 @@
+// components/base/nav.tsx
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -12,7 +14,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface NavProps {
-  variant: "home" | "work" | "project" | "play" | "about" | "menu";
+  variant: "home" | "work" | "project" | "play" | "about" | "menu" | "resume";
   projectTitle?: string;
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;
@@ -24,7 +26,7 @@ const Nav: React.FC<NavProps> = ({
   menuOpen,
   setMenuOpen,
 }) => {
-  const isWorkPlay = ["work", "play"].includes(variant);
+  const isWorkPlayResume = ["work", "play", "resume"].includes(variant);
   const isHomeAbout = ["home", "about"].includes(variant);
   const isProject = variant === "project";
 
@@ -87,7 +89,7 @@ const Nav: React.FC<NavProps> = ({
           </>
         )}
 
-        {isWorkPlay && (
+        {isWorkPlayResume && (
           <>
             <Link href="/">
               <div className="flex items-center gap-8 relative z-10">
@@ -98,6 +100,7 @@ const Nav: React.FC<NavProps> = ({
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
+              {variant === "resume" && "Resume"}
             </div>
             <div className="flex items-center gap-8 relative z-10">
               <span>{time}</span>
@@ -145,8 +148,14 @@ const Nav: React.FC<NavProps> = ({
               : variant === "about"
               ? "About"
               : "")}
-          {isWorkPlay &&
-            (variant === "work" ? "Work" : variant === "play" ? "Play" : "")}
+          {isWorkPlayResume &&
+            (variant === "work"
+              ? "Work"
+              : variant === "play"
+              ? "Play"
+              : variant === "resume"
+              ? "Resume"
+              : "")}
           {isProject && (projectTitle ?? "Project")}
           {variant === "menu" && "Menu"}
         </div>

@@ -1,3 +1,5 @@
+// components/base/footer.tsx
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -5,7 +7,7 @@ import { Magnetic } from "@/components/motion-primitives/magnetic";
 import Link from "next/link";
 
 interface FooterProps {
-  variant: "home" | "work" | "project" | "play" | "about" | "menu";
+  variant: "home" | "work" | "project" | "play" | "about" | "menu" | "resume";
   onAboutClick?: () => void;
 }
 
