@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 import Layout from "@/components/base/general-layout";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
+import {
+  MorphingDialog,
+  MorphingDialogTrigger,
+  MorphingDialogContent,
+  MorphingDialogContainer,
+} from "@/components/motion-primitives/morphing-dialog";
 import { filters, imageFiles, FilterType } from "@/data/play-gallery";
 
 const captions: Record<FilterType, string> = {
@@ -103,13 +109,33 @@ export default function Play() {
               {imageFiles[activeFilter].map((file, index) => (
                 <div key={index}>
                   {/* Video filter disabled, so only images */}
-                  <Image
-                    src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
-                    alt={`${activeFilter} ${index}`}
-                    width={500}
-                    height={600}
-                    className="w-full h-auto object-cover rounded-lg"
-                  />
+                  <MorphingDialog
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <MorphingDialogTrigger>
+                      <Image
+                        src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
+                        alt={`${activeFilter} ${index}`}
+                        width={500}
+                        height={600}
+                        className="w-full h-auto object-cover rounded-lg"
+                      />
+                    </MorphingDialogTrigger>
+                    <MorphingDialogContainer>
+                      <MorphingDialogContent className="relative">
+                        <Image
+                          src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
+                          alt={`${activeFilter} ${index}`}
+                          width={1200}
+                          height={1600}
+                          className="h-auto w-full max-w-[90vw] rounded-lg object-cover lg:h-[90vh]"
+                        />
+                      </MorphingDialogContent>
+                    </MorphingDialogContainer>
+                  </MorphingDialog>
                 </div>
               ))}
 

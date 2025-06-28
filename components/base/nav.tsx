@@ -1,5 +1,3 @@
-// components/base/nav.tsx
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -11,10 +9,12 @@ import {
   ListIcon,
 } from "@phosphor-icons/react";
 import Link from "next/link";
+import { Magnetic } from "../motion-primitives/magnetic";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface NavProps {
   variant: "home" | "work" | "project" | "play" | "about" | "menu" | "resume";
+
   projectTitle?: string;
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;
@@ -79,9 +79,11 @@ const Nav: React.FC<NavProps> = ({
       <div className="hidden sm:flex w-full items-center justify-between">
         {isHomeAbout && (
           <>
-            <Link href="/">
-              <div className="relative z-10">{"Neeha Ravula"}</div>
-            </Link>
+            <Magnetic>
+              <Link href="/">
+                <div className="relative z-10">{"Neeha Ravula"}</div>
+              </Link>
+            </Magnetic>
             <div className="flex items-center gap-8 relative z-10">
               <span>{time}</span>
               {getIcon()}
@@ -91,12 +93,14 @@ const Nav: React.FC<NavProps> = ({
 
         {isWorkPlayResume && (
           <>
-            <Link href="/">
-              <div className="flex items-center gap-8 relative z-10">
-                <ArrowBendUpLeftIcon size={20} className={iconClass} />
-                <span>Back</span>
-              </div>
-            </Link>
+            <Magnetic>
+              <Link href="/">
+                <div className="flex items-center gap-8 relative z-10">
+                  <ArrowBendUpLeftIcon size={20} className={iconClass} />
+                  <span>Back</span>
+                </div>
+              </Link>
+            </Magnetic>
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {variant === "work" && "Work"}
               {variant === "play" && "Play"}
@@ -111,12 +115,14 @@ const Nav: React.FC<NavProps> = ({
 
         {isProject && (
           <>
-            <Link href="/work">
-              <div className="flex items-center gap-4 relative z-10">
-                <ArrowBendUpLeftIcon size={20} className={iconClass} />
-                <span>All work</span>
-              </div>
-            </Link>
+            <Magnetic>
+              <Link href="/work">
+                <div className="flex items-center gap-4 relative z-10">
+                  <ArrowBendUpLeftIcon size={20} className={iconClass} />
+                  <span>All work</span>
+                </div>
+              </Link>
+            </Magnetic>
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {projectTitle ?? "Project"}
             </div>
