@@ -48,8 +48,14 @@ export default async function Project({ params }: Props) {
         )}
 
         {project.tasks && (
-          <Section title="Task 1">
+          <Section title="Tasks">
             <p>{project.tasks}</p>
+          </Section>
+        )}
+
+        {project.reflections && (
+          <Section title="Reflection">
+            <p>{project.reflections}</p>
           </Section>
         )}
       </div>
