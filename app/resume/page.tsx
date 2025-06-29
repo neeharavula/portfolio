@@ -53,7 +53,7 @@ export default function ResumePage() {
             <ul className="space-y-8">
               <AnimatedBackground
                 enableHover
-                className="rounded-md bg-zinc-100 dark:bg-zinc-800"
+                className="rounded-md bg-zinc-100 dark:bg-zinc-900"
                 transition={{
                   type: "spring",
                   bounce: 0,
@@ -71,38 +71,41 @@ export default function ResumePage() {
                       duration: 0.5,
                       ease: [0.33, 1, 0.68, 1],
                     }}
-                    className="flex gap-8 items-start px-3 py-3 rounded-md cursor-pointer"
+                    className="rounded-md cursor-pointer" // make cursor pointer on entire item
                   >
-                    <p className="w-24 text-neutral-400 shrink-0">
-                      {entry.date}
-                    </p>
-                    <div className="flex-1">
-                      <Link
-                        href={entry.link || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block text-black dark:text-white relative z-10"
-                      >
-                        {entry.role}
-                      </Link>
-                      <p className="text-neutral-400 text-sm">
-                        {entry.location}
+                    <Link
+                      href={entry.link || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex gap-8 items-start px-3 py-3"
+                      // full size clickable container with flex for layout
+                    >
+                      <p className="w-24 text-neutral-400 shrink-0">
+                        {entry.date}
                       </p>
-                      {entry.images && (
-                        <div className="flex gap-2 mt-2">
-                          {entry.images.map((src, idx) => (
-                            <Image
-                              key={idx}
-                              src={src}
-                              alt="preview"
-                              width={120}
-                              height={80}
-                              className="rounded-md object-cover"
-                            />
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                      <div className="flex-1">
+                        <p className="block text-black dark:text-white relative z-10">
+                          {entry.role}
+                        </p>
+                        <p className="text-neutral-400 text-sm">
+                          {entry.location}
+                        </p>
+                        {entry.images && (
+                          <div className="flex gap-2 mt-2">
+                            {entry.images.map((src, idx) => (
+                              <Image
+                                key={idx}
+                                src={src}
+                                alt="preview"
+                                width={120}
+                                height={80}
+                                className="rounded-md object-cover"
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </Link>
                   </motion.li>
                 ))}
               </AnimatedBackground>

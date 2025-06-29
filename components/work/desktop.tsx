@@ -12,7 +12,7 @@ const WorkDesktop = () => {
     <div className="h-full flex flex-col justify-center items-center px-6 gap-4 max-w-4xl mx-auto font-[family-name:var(--font-geist-mono)]">
       <AnimatedBackground
         enableHover
-        className="rounded-md bg-zinc-100 dark:bg-zinc-800"
+        className="rounded-md bg-zinc-100 dark:bg-zinc-900"
         transition={{
           type: "spring",
           bounce: 0,
