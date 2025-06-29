@@ -11,22 +11,49 @@ import {
   SpotifyLogoIcon,
 } from "@phosphor-icons/react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const AboutPageContent = () => {
+  const { ref: imageRef, inView: imageInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: textRef, inView: textInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: iconsRef, inView: iconsInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
     <div className="flex flex-col items-center px-6 py-10 font-[family-name:var(--font-geist-mono)]">
       {/* Image */}
-      <div className="relative w-2/3 max-w-sm aspect-[3/4] mb-4">
+      <motion.div
+        ref={imageRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={imageInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+        className="relative w-2/3 max-w-sm aspect-[3/4] mb-4"
+      >
         <Image
           src="https://nravula-portfolio-assets.s3.amazonaws.com/about/polaroid.png"
           alt="About Image"
           fill
           className="object-contain"
         />
-      </div>
+      </motion.div>
 
       {/* Text */}
-      <p className="text-center whitespace-pre-wrap leading-relaxed text-sm mt-8">
+      <motion.p
+        ref={textRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={textInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: 0.1, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+        className="text-center whitespace-pre-wrap leading-relaxed text-sm mt-8"
+      >
         Hi, I’m Neeha! I’m a developer and creative based in San Diego, CA
         exploring the intersection of design and computation. I currently work
         as a software developer at a defense and aerospace company called
@@ -36,10 +63,16 @@ const AboutPageContent = () => {
         Outside of work, you can find me hiking by the beach, messing around on
         my DJ controller, or finding my new song fixation. Feel free to reach
         out or say hi!
-      </p>
+      </motion.p>
 
       {/* Social icons at bottom */}
-      <div className="flex justify-center items-center gap-8 mt-8">
+      <motion.div
+        ref={iconsRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={iconsInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: 0.2, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+        className="flex justify-center items-center gap-8 mt-8"
+      >
         <Link
           href="mailto:ravulaneeha@gmail.com"
           target="_blank"
@@ -75,7 +108,7 @@ const AboutPageContent = () => {
         >
           <SpotifyLogoIcon size={20} />
         </Link>
-      </div>
+      </motion.div>
     </div>
   );
 };
