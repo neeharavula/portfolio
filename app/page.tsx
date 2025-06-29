@@ -1,7 +1,10 @@
+"use client";
+
 import Layout from "@/components/base/general-layout";
 import { TextLoop } from "@/components/motion-primitives/text-loop";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -9,7 +12,12 @@ export default function Home() {
       <section className="relative flex flex-col justify-between h-full w-full px-8">
         {/* Large summary text */}
         <div className="flex-1 flex items-center">
-          <h1 className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+            className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none"
+          >
             Neeha Ravula is a {/* Mobile: static "developer" */}
             <span className="sm:hidden text-[#94A75D]">developer</span>
             {/* Desktop: animated TextLoop */}
@@ -51,7 +59,7 @@ export default function Home() {
             based in San Diego, CA, exploring <br /> the intersection of design
             and <br />
             computation.
-          </h1>
+          </motion.h1>
         </div>
 
         {/* Links bottom right */}

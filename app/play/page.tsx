@@ -11,6 +11,7 @@ import {
   MorphingDialogContainer,
 } from "@/components/motion-primitives/morphing-dialog";
 import { filters, imageFiles, FilterType } from "@/data/play-gallery";
+import { motion } from "framer-motion"; // <-- import framer-motion
 
 const captions: Record<FilterType, string> = {
   film: "Loading film roll...",
@@ -55,7 +56,6 @@ export default function Play() {
     0: 1,
   };
 
-  // filters already only ["film", "digital", "art"], so use as is
   const visibleFilters = filters;
 
   return (
@@ -107,7 +107,12 @@ export default function Play() {
               columnClassName="masonry-column"
             >
               {imageFiles[activeFilter].map((file, index) => (
-                <div key={index}>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
                   {/* Video filter disabled, so only images */}
                   <MorphingDialog
                     transition={{
@@ -136,7 +141,7 @@ export default function Play() {
                       </MorphingDialogContent>
                     </MorphingDialogContainer>
                   </MorphingDialog>
-                </div>
+                </motion.div>
               ))}
 
               {/* Spacer div to shift lone image to the left on mobile */}
