@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, HTMLAttributes } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -8,12 +8,13 @@ type SectionProps = {
   title: string;
   children: ReactNode;
   className?: string;
-};
+} & HTMLAttributes<HTMLElement>; // <-- Add this to accept extra props
 
 export default function Section({
   title,
   children,
   className = "",
+  ...rest // capture extra props like onMouseEnter, style, etc.
 }: SectionProps) {
   const [titleRef, titleInView] = useInView({
     triggerOnce: true,
@@ -26,7 +27,10 @@ export default function Section({
   });
 
   return (
-    <section className={`flex flex-col md:flex-row md:py-8 py-4 ${className}`}>
+    <section
+      className={`flex flex-col md:flex-row md:py-8 py-4 ${className}`}
+      {...rest} // <-- Forward all extra props here
+    >
       <motion.div
         ref={titleRef}
         initial={{ opacity: 0, y: 20 }}

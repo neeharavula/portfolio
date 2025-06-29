@@ -12,6 +12,7 @@ import {
   LinkedinLogoIcon,
 } from "@phosphor-icons/react";
 import { useInView } from "react-intersection-observer";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
 
 type AboutOverlayProps = {
   onClose: () => void;
@@ -110,41 +111,61 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
           transition={{ delay: 0.4, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
           className="flex gap-8 mt-12"
         >
-          <Link
-            href="mailto:ravulaneeha@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <EnvelopeIcon size={20} />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/neeharavula/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <LinkedinLogoIcon size={20} />
-          </Link>
-          <Link
-            href="https://github.com/neeharavula"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GithubLogoIcon size={20} />
-          </Link>
-          <Link
-            href="https://www.instagram.com/neehasroll/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <InstagramLogoIcon size={20} />
-          </Link>
-          <Link
-            href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <SpotifyLogoIcon size={20} />
-          </Link>
+          <Magnetic>
+            <div className="hover:text-[#adbcc4]">
+              <Link
+                href="mailto:ravulaneeha@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <EnvelopeIcon size={20} />
+              </Link>
+            </div>
+          </Magnetic>
+          <Magnetic>
+            <div className="hover:text-[#60a0c4]">
+              <Link
+                href="https://www.linkedin.com/in/neeharavula/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedinLogoIcon size={20} />
+              </Link>
+            </div>
+          </Magnetic>
+          <Magnetic>
+            <div className="hover:text-[#d1996b]">
+              <Link
+                href="https://github.com/neeharavula"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GithubLogoIcon size={20} />
+              </Link>
+            </div>
+          </Magnetic>
+          <Magnetic>
+            <div className="hover:text-[#bd6881]">
+              <Link
+                href="https://www.instagram.com/neehasroll/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <InstagramLogoIcon size={20} />
+              </Link>
+            </div>
+          </Magnetic>
+          <Magnetic>
+            <div className="hover:text-[#94A75D]">
+              <Link
+                href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SpotifyLogoIcon size={20} />
+              </Link>
+            </div>
+          </Magnetic>
         </motion.div>
       </div>
     </motion.div>
