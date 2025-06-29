@@ -25,9 +25,9 @@ export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   python: PythonOriginal,
   javascript: JavascriptOriginal,
   typescript: TypescriptOriginal,
-  html5: Html5Original,
+  html: Html5Original,
   angular: AngularOriginal,
-  css3: Css3Original,
+  css: Css3Original,
   tailwind: TailwindcssOriginal,
   // frameworks
   react: ReactOriginal,

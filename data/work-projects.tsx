@@ -160,8 +160,45 @@ export const workData: WorkProject[] = [
     title: "AthenaHacks / USC SOS",
     type: "Hackathon",
     date: "Spring 2021",
-    tools: ["javascript", "twilio"],
-    overview: <p>blah blah blah</p>,
-    tasks: <p>blah blah</p>,
+    tools: ["javascript", "html", "css", "Twilio"],
+    overview: (
+      <p>
+        For <strong>USC's AthenaHacks</strong> hackathon, I worked in a team of
+        four to develop <strong>USC SOS</strong>, a service that provides users
+        with a hub of various emergency contacts at USC at their fingertips. USC
+        is located near South Los Angeles, Inglewood, and Watts— cities known
+        for their high crime and gang rates. While USC offers various services
+        to students who may encounter emergencies off campus, in a life or death
+        situation, it can be hard to quickly find the right person to call for
+        help. <strong>USC SOS</strong> makes it easy to get connected quickly by
+        providing a place for all important emergency contacts at just a click
+        or call away.
+      </p>
+    ),
+    tasks: (
+      <p>
+        I worked on developing the flow control and voice functions of our
+        application using <strong>Twilio Console Studio</strong>, using
+        interactions such as split based on dial or speech and connect call to.
+        We linked our Twilio flow chart to our mobile user interface using{" "}
+        <strong>React-Native</strong> and published the application through the{" "}
+        <strong>Expo-CLI</strong> framework.
+        <Image
+          src="/images/athenahacks/uscsos1.png"
+          alt="Twilio flow chart"
+          width={800}
+          height={450}
+          className="rounded-lg my-6"
+        />
+      </p>
+    ),
+    reflections: (
+      <p>
+        As a first-time hacker, I found the experience to be both challenging
+        and incredibly rewarding. It was fun to work with friends and leverage
+        each of our unique abilities to produce a tangible, working result in
+        just 24 hours!
+      </p>
+    ),
   },
 ];
