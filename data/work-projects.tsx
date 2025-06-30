@@ -125,17 +125,29 @@ export const workData: WorkProject[] = [
     tools: ["figma"],
     overview: <p>blah blah blah</p>,
     tasks: (
-      <p>
-        blah blah
+      <>
+        <p>blah blah</p>
+
         <Image
-          src="/images/northwestern-mutual/pipeline.png"
-          alt="Client communication pipeline diagram"
+          src="/images/melodics/userflow.png"
+          alt="User flow diagram"
           width={800}
           height={450}
-          className="rounded-xl shadow-md my-6"
+          className="rounded-lg my-6"
         />
-      </p>
+
+        <p>blah blah blah</p>
+
+        <div className="my-6 aspect-video w-full max-w-[800px]">
+          <iframe
+            className="w-full h-full rounded-lg"
+            src="https://embed.figma.com/proto/Km3IVKxY8c88kSVnJC26kP/Melodics?node-id=1-4&starting-point-node-id=1%3A4&embed-host=share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </>
     ),
+    reflections: <p>blah blah blah blah blah</p>,
   },
   {
     slug: "tech4good",
