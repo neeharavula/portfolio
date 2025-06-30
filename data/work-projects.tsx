@@ -156,7 +156,30 @@ export const workData: WorkProject[] = [
     date: "Spring 2023",
     tools: ["javascript", "angular", "stackblitz"],
     overview: <p>blah blah blah</p>,
-    tasks: <p>blah blah</p>,
+    tasks: (
+      <>
+        <p>blah blah</p>
+
+        <Image
+          src="/images/tech4good/ide1.png"
+          alt="User flow diagram"
+          width={800}
+          height={450}
+          className="rounded-lg my-6"
+        />
+
+        <p>blah blah blah</p>
+
+        <Image
+          src="/images/tech4good/ide2.gif"
+          alt="User flow diagram"
+          width={800}
+          height={450}
+          className="rounded-lg my-6"
+        />
+      </>
+    ),
+    reflections: <p>blah</p>,
   },
   {
     slug: "general-atomics",
@@ -166,6 +189,7 @@ export const workData: WorkProject[] = [
     tools: ["python"],
     overview: <p>blah blah blah</p>,
     tasks: <p>blah blah</p>,
+    reflections: <p>blah blah</p>,
   },
   {
     slug: "athenahacks",
