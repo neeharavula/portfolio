@@ -154,7 +154,7 @@ export const workData: WorkProject[] = [
     title: "Tech4Good / Causeway",
     type: "Lab",
     date: "Spring 2023",
-    tools: ["javascript", "angular", "stackblitz"],
+    tools: ["javascript", "html", "css", "angular", "stackblitz"],
     overview: <p>blah blah blah</p>,
     tasks: (
       <>
@@ -196,7 +196,7 @@ export const workData: WorkProject[] = [
     title: "AthenaHacks / USC SOS",
     type: "Hackathon",
     date: "Spring 2021",
-    tools: ["javascript", "html", "css", "Twilio"],
+    tools: ["javascript", "html", "css", "twilio"],
     overview: (
       <p>
         For <strong>USC's AthenaHacks</strong> hackathon, I worked in a team of

@@ -35,9 +35,21 @@ export default async function Project({ params }: Props) {
                   <li
                     key={tool}
                     title={tool}
-                    className="min-w-[24px] min-h-[24px]"
+                    className="min-w-[24px] min-h-[24px] inline-flex items-center"
                   >
-                    <Icon className="w-6 h-6" />
+                    <Icon
+                      className={`w-6 h-6 ${
+                        ["twilio", "stackblitz"].includes(tool.toLowerCase())
+                          ? "scale-70"
+                          : ""
+                      } ${
+                        tool.toLowerCase() === "twilio"
+                          ? "text-red-600"
+                          : tool.toLowerCase() === "stackblitz"
+                          ? "text-blue-500"
+                          : "text-gray-800" // default color
+                      }`}
+                    />
                   </li>
                 ) : (
                   <li key={tool}>{tool}</li>

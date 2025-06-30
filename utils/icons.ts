@@ -18,6 +18,7 @@ import {
   // design
   FigmaOriginal,
 } from "devicons-react";
+import { SiTwilio, SiStackblitz } from "react-icons/si";
 import { ComponentType } from "react";
 
 export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
@@ -32,8 +33,10 @@ export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   // frameworks
   react: ReactOriginal,
   nextjs: NextjsOriginal,
+  twilio: SiTwilio,
   // apis
   postman: PostmanOriginal,
+  stackblitz: SiStackblitz,
   // data
   aws: AmazonwebservicesOriginalWordmark,
   mysql: MysqlOriginal,

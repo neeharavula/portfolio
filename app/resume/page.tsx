@@ -159,6 +159,8 @@ export default function ResumePage() {
             </Section>
           );
         })}
+        {/* Contact Section
+        <Section title="Contact">Instagram</Section> */}
       </div>
     </Layout>
   );
