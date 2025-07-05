@@ -54,15 +54,13 @@ const AboutPageContent = () => {
         transition={{ delay: 0.1, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
         className="text-center whitespace-pre-wrap leading-relaxed text-sm mt-8"
       >
-        Hi, I’m Neeha! I’m a developer and creative based in San Diego, CA
-        exploring the intersection of design and computation. I currently work
-        as a software developer at a defense and aerospace company called
-        General Atomics Aeronautical.
-        <br />
-        <br />
-        Outside of work, you can find me hiking by the beach, messing around on
-        my DJ controller, or finding my new song fixation. Feel free to reach
-        out or say hi!
+        Hi! I&apos;m Neeha. I grew up in San Diego, CA and studied Computer Science at UC Santa Cruz in northern California. Currently, I develop simulation and flight control software solutions in the aerospace/defense sector.
+        <br/>
+        <br/>
+        I approach my work with a mix of intentionality, playfulness, and care, balancing thoughtful design with scalable, functional solutions. I&apos;m driven by curiosity and exploration and I&apos;m always looking for opportunities that lie at the intersection of design, tech, and social impact.
+        <br/>
+        <br/>
+        Outside of tech, you can find me hiking by the beach, taking photos on my Fujifilm XT30ii, browsing my next travel destination (it&apos;s an obsession), or finding my next song fixation on Spotify. Feel free to reach out and say hi!
       </motion.p>
 
       {/* Social icons at bottom */}
