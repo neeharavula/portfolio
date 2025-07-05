@@ -64,7 +64,7 @@ function WorkMobileCard({
 
 const WorkMobile = () => {
   return (
-    <div className="flex flex-col gap-6 p-8 md:hidden text-sm font-[family-name:var(--font-geist-mono)]">
+    <div className="flex flex-col gap-6 pt-2 px-8 pb-8 md:hidden text-sm font-[family-name:var(--font-geist-mono)]">
       {workData.map((project, index) => (
         <WorkMobileCard
           key={project.slug}

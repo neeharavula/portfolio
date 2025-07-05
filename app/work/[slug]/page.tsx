@@ -19,7 +19,7 @@ export default async function Project({ params }: Props) {
 
   return (
     <Layout variant="project" projectTitle={project.title}>
-      <div className="max-w-5xl mx-auto px-8 py-16 font-[family-name:var(--font-geist-mono)] text-sm relative z-10">
+      <div className="max-w-5xl mx-auto px-8 py-2 font-[family-name:var(--font-geist-mono)] text-sm relative z-10">
         {project.overview && (
           <Section title="Overview">
             <p>{project.overview}</p>
@@ -31,16 +31,28 @@ export default async function Project({ params }: Props) {
             <ul className="flex gap-2 flex-wrap">
               {project.tools.map((tool) => {
                 const Icon = iconMap[tool.toLowerCase()];
+                const lowerTool = tool.toLowerCase();
+
                 return Icon ? (
                   <li
                     key={tool}
                     title={tool}
-                    className="min-w-[24px] min-h-[24px]"
+                    className="w-6 h-6 flex items-center justify-center relative"
                   >
-                    <Icon className="w-6 h-6" />
+                    <Icon
+                      className={`w-5 h-5 ${
+                        lowerTool === "twilio"
+                          ? "text-red-600 scale-[0.8]"
+                          : lowerTool === "stackblitz"
+                          ? "scale-[0.8]"
+                          : "text-gray-800"
+                      }`}
+                    />
                   </li>
                 ) : (
-                  <li key={tool}>{tool}</li>
+                  <li key={tool} className="text-sm text-neutral-500">
+                    {tool}
+                  </li>
                 );
               })}
             </ul>
@@ -48,8 +60,14 @@ export default async function Project({ params }: Props) {
         )}
 
         {project.tasks && (
-          <Section title="Task 1">
+          <Section title="Contributions">
             <p>{project.tasks}</p>
+          </Section>
+        )}
+
+        {project.reflections && (
+          <Section title="Reflections">
+            <p>{project.reflections}</p>
           </Section>
         )}
       </div>

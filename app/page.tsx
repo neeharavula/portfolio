@@ -5,6 +5,13 @@ import { TextLoop } from "@/components/motion-primitives/text-loop";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import {
+  EnvelopeIcon,
+  LinkedinLogoIcon,
+  GithubLogoIcon,
+  InstagramLogoIcon,
+  SpotifyLogoIcon,
+} from "@phosphor-icons/react";
 
 export default function Home() {
   return (
@@ -88,6 +95,45 @@ export default function Home() {
               </Link>
             </div>
           </Magnetic>
+        </div>
+        {/* Mobile social icons only */}
+        {/* Mobile-only social icons fixed to bottom */}
+        <div className="fixed bottom-8 left-0 w-full flex justify-center gap-8 sm:hidden text-xl text-zinc-600 dark:text-zinc-400 z-40">
+          <Link
+            href="mailto:ravulaneeha@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <EnvelopeIcon size={20} />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/neeharavula/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedinLogoIcon size={20} />
+          </Link>
+          <Link
+            href="https://github.com/neeharavula"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubLogoIcon size={20} />
+          </Link>
+          <Link
+            href="https://www.instagram.com/neehasroll/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <InstagramLogoIcon size={20} />
+          </Link>
+          <Link
+            href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SpotifyLogoIcon size={20} />
+          </Link>
         </div>
       </section>
     </Layout>

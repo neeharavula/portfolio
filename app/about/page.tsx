@@ -29,7 +29,7 @@ const AboutPageContent = () => {
   });
 
   return (
-    <div className="flex flex-col items-center px-6 py-10 font-[family-name:var(--font-geist-mono)]">
+    <div className="flex flex-col items-center px-6 py-2 pb-8 font-[family-name:var(--font-geist-mono)]">
       {/* Image */}
       <motion.div
         ref={imageRef}
@@ -39,7 +39,7 @@ const AboutPageContent = () => {
         className="relative w-2/3 max-w-sm aspect-[3/4] mb-4"
       >
         <Image
-          src="https://nravula-portfolio-assets.s3.amazonaws.com/about/polaroid.png"
+          src="/images/about/polaroid.png"
           alt="About Image"
           fill
           className="object-contain"
@@ -47,23 +47,33 @@ const AboutPageContent = () => {
       </motion.div>
 
       {/* Text */}
-      <motion.p
+      <motion.div
         ref={textRef}
         initial={{ opacity: 0, y: 20 }}
         animate={textInView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.1, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-        className="text-center whitespace-pre-wrap leading-relaxed text-sm mt-8"
+        className="text-center leading-relaxed text-sm mt-6 space-y-8"
       >
-        Hi, I’m Neeha! I’m a developer and creative based in San Diego, CA
-        exploring the intersection of design and computation. I currently work
-        as a software developer at a defense and aerospace company called
-        General Atomics Aeronautical.
-        <br />
-        <br />
-        Outside of work, you can find me hiking by the beach, messing around on
-        my DJ controller, or finding my new song fixation. Feel free to reach
-        out or say hi!
-      </motion.p>
+        <p className="indent-8">
+          Hi! I&apos;m Neeha. I grew up in San Diego, California and studied
+          Computer Science at UC Santa Cruz in northern California. Currently, I
+          develop simulation and flight control software solutions in the
+          aerospace/defense sector.
+        </p>
+        <p className="indent-8">
+          I approach my work with a mix of intentionality, playfulness, and
+          care, balancing thoughtful design with scalable, functional solutions.
+          I&apos;m driven by curiosity and exploration and I&apos;m always
+          looking for opportunities that lie at the intersection of design,
+          tech, and social impact.
+        </p>
+        <p className="indent-8">
+          Outside of tech, you can find me hiking by the beach, taking photos on
+          my Fujifilm XT30II, browsing my next travel destination (it&apos;s an
+          obsession), or finding my next song fixation on Spotify. Feel free to
+          reach out and say hi!
+        </p>
+      </motion.div>
 
       {/* Social icons at bottom */}
       <motion.div
