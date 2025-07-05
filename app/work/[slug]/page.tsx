@@ -29,33 +29,34 @@ export default async function Project({ params }: Props) {
         {project.tools && (
           <Section title="Stack">
             <ul className="flex gap-2 flex-wrap">
-              {project.tools.map((tool) => {
-                const Icon = iconMap[tool.toLowerCase()];
-                return Icon ? (
-                  <li
-                    key={tool}
-                    title={tool}
-                    className="min-w-[24px] min-h-[24px] inline-flex items-center"
-                  >
-                    <Icon
-                      className={`w-6 h-6 ${
-                        ["twilio", "stackblitz"].includes(tool.toLowerCase())
-                          ? "scale-70"
-                          : ""
-                      } ${
-                        tool.toLowerCase() === "twilio"
-                          ? "text-red-600"
-                          : tool.toLowerCase() === "stackblitz"
-                          ? "text-blue-500"
-                          : "text-gray-800" // default color
-                      }`}
-                    />
-                  </li>
-                ) : (
-                  <li key={tool}>{tool}</li>
-                );
-              })}
-            </ul>
+  {project.tools.map((tool) => {
+    const Icon = iconMap[tool.toLowerCase()];
+    const lowerTool = tool.toLowerCase();
+
+    return Icon ? (
+      <li
+        key={tool}
+        title={tool}
+        className="w-6 h-6 flex items-center justify-center relative"
+      >
+        <Icon
+          className={`w-5 h-5 ${
+            lowerTool === "twilio"
+              ? "text-red-600 scale-[0.8]"
+              : lowerTool === "stackblitz"
+              ? "scale-[0.8]"
+              : "text-gray-800"
+          }`}
+        />
+      </li>
+    ) : (
+      <li key={tool} className="text-sm text-neutral-500">
+        {tool}
+      </li>
+    );
+  })}
+</ul>
+
           </Section>
         )}
 

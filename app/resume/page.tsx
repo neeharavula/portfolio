@@ -9,6 +9,14 @@ import { resumeSections } from "@/data/resume-data";
 import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
+import {
+  EnvelopeIcon,
+  GithubLogoIcon,
+  InstagramLogoIcon,
+  SpotifyLogoIcon,
+  LinkedinLogoIcon,
+} from "@phosphor-icons/react";
 
 export default function ResumePage() {
   const [profileRef, profileInView] = useInView({
@@ -49,13 +57,6 @@ export default function ResumePage() {
             <p className="text-neutral-400">San Diego, CA</p>
           </div>
         </motion.div>
-
-        {/* About Section */}
-        <Section title="About">
-          Software engineer passionate about the intersection of design and
-          technology. Currently developing flight control and simulation
-          software solutions in the aerospace/defense sector. 🛩️
-        </Section>
 
         {/* Resume Sections */}
         {resumeSections.map((section) => {
@@ -159,8 +160,71 @@ export default function ResumePage() {
             </Section>
           );
         })}
-        {/* Contact Section
-        <Section title="Contact">Instagram</Section> */}
+
+        {/* Contact Section */}
+        <Section title="Contact">
+  <div className="flex gap-8 items-start px-3 py-3">
+    <div className="flex-1 flex gap-8 items-center">
+      <Magnetic>
+        <div className="hover:text-[#adbcc4]">
+          <Link
+            href="mailto:ravulaneeha@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <EnvelopeIcon size={20} />
+          </Link>
+        </div>
+      </Magnetic>
+      <Magnetic>
+        <div className="hover:text-[#60a0c4]">
+          <Link
+            href="https://www.linkedin.com/in/neeharavula/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedinLogoIcon size={20} />
+          </Link>
+        </div>
+      </Magnetic>
+      <Magnetic>
+        <div className="hover:text-[#d1996b]">
+          <Link
+            href="https://github.com/neeharavula"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubLogoIcon size={20} />
+          </Link>
+        </div>
+      </Magnetic>
+      <Magnetic>
+        <div className="hover:text-[#bd6881]">
+          <Link
+            href="https://www.instagram.com/neehasroll/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <InstagramLogoIcon size={20} />
+          </Link>
+        </div>
+      </Magnetic>
+      <Magnetic>
+        <div className="hover:text-[#94A75D]">
+          <Link
+            href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SpotifyLogoIcon size={20} />
+          </Link>
+        </div>
+      </Magnetic>
+    </div>
+  </div>
+</Section>
+
+
       </div>
     </Layout>
   );

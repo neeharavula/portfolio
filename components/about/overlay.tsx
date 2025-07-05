@@ -91,15 +91,13 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
           className="w-2/3 flex flex-col justify-center"
         >
           <p className="whitespace-pre-wrap leading-relaxed text-sm">
-            Hi, I’m Neeha! I’m a developer and creative based in San Diego, CA
-            exploring the intersection of design and computation. I currently
-            work as a software developer at a defense and aerospace company
-            called General Atomics Aeronautical.
-            <br />
-            <br />
-            Outside of work, you can find me hiking by the beach, messing around
-            on my DJ controller, or finding my new song fixation. Feel free to
-            reach out or say hi!
+            Hi! I&apos;m Neeha. I grew up in San Diego, CA and studied Computer Science at UC Santa Cruz in northern California. Currently, I develop simulation and flight control software solutions in the aerospace/defense sector. 🛩️
+            <br/>
+            <br/>
+            I approach my work with a mix of intentionality, playfulness, and care, balancing thoughtful design with scalable, functional solutions. I’m driven by curiosity and exploration, and am always looking for opportunities that lie at the intersection of design, tech, and social impact.
+            <br/>
+            <br/>
+            Outside of tech, you can find me hiking by the beach, taking photos on my Fujifilm XT30ii, browsing my next travel destination (it&apos;s an obsession), or finding my next song fixation on Spotify. Feel free to reach out and say hi!
           </p>
         </motion.div>
 
