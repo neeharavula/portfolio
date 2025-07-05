@@ -91,9 +91,9 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
           className="w-2/3 flex flex-col justify-center"
         >
           <p className="whitespace-pre-wrap leading-relaxed text-sm">
-            Hi! I&apos;m Neeha. I grew up in San Diego, CA and studied Computer
-            Science at UC Santa Cruz in northern California. Currently, I
-            develop simulation and flight control software solutions in the
+            Hi! I&apos;m Neeha. I grew up in San Diego, California and studied
+            Computer Science at UC Santa Cruz in northern California. Currently,
+            I develop simulation and flight control software solutions in the
             aerospace/defense sector. 🛩️
             <br />
             <br />
@@ -105,7 +105,7 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
             <br />
             <br />
             Outside of tech, you can find me hiking by the beach, taking photos
-            on my Fujifilm XT30ii, browsing my next travel destination
+            on my Fujifilm XT30II, browsing my next travel destination
             (it&apos;s an obsession), or finding my next song fixation on
             Spotify. Feel free to reach out and say hi!
           </p>
