@@ -45,7 +45,7 @@ export default function ResumePage() {
           className="flex items-center gap-8 mb-10"
         >
           <Image
-            src={`https://nravula-portfolio-assets.s3.amazonaws.com/resume/pfp.jpg`}
+            src="/images/about/pfp.jpg"
             alt="Profile"
             width={96}
             height={96}
