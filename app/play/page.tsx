@@ -60,7 +60,7 @@ export default function Play() {
 
   return (
     <Layout variant="play">
-      <section className="flex flex-col p-8 items-center gap-6 text-sm font-[family-name:var(--font-geist-mono)] relative">
+      <section className="flex flex-col px-8 py-4 items-center gap-6 text-sm font-[family-name:var(--font-geist-mono)] relative">
         {loading && (
           <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-black transition-colors">
             <div
