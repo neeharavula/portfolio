@@ -56,7 +56,10 @@ export function TextLoop({
 
   return (
     <div
-      className={`relative inline-block whitespace-nowrap ${className ?? ""}`}
+      className={`relative inline-block align-middle h-[1em] ${
+        className ?? ""
+      }`}
+      style={{ lineHeight: "1em" }}
     >
       <AnimatePresence mode={mode} initial={false}>
         <motion.div
@@ -66,6 +69,7 @@ export function TextLoop({
           exit="exit"
           transition={transition}
           variants={variants || motionVariants}
+          className="absolute top-0 left-0 w-full h-full flex items-center justify-start"
         >
           {items[currentIndex]}
         </motion.div>

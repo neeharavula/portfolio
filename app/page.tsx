@@ -28,12 +28,10 @@ export default function Home() {
             transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
             className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none"
           >
-            Neeha Ravula is a {/* Mobile: Static "developer" */}
-            <span className="sm:hidden text-[#94A75D]">developer</span>
-            {/* Desktop: Animated TextLoop component */}
-            <span className="hidden sm:inline">
+            Neeha Ravula is a{" "}
+            <span className="inline-block sm:inline">
               <TextLoop
-                className="overflow-y-clip text-[#94A75D]"
+                className="overflow-y-clip text-[#94A75D] leading-[1] align-baseline"
                 transition={{
                   type: "spring",
                   stiffness: 900,
