@@ -34,7 +34,7 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
     threshold: 0.1,
   });
 
-  // State for checking if screen width is < 640 (mobile)
+  // State for checking if viewport is mobile
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -123,7 +123,7 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
           {/* Email */}
           <Magnetic>
               <Link
-                href="mailto:ravulaneeha@gmail.com"
+                href="mailto:hello@neeharavula.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#adbcc4]"

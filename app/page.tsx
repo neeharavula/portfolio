@@ -104,7 +104,7 @@ export default function Home() {
         <div className="fixed bottom-8 left-0 w-full flex justify-center gap-8 sm:hidden text-xl text-zinc-600 dark:text-zinc-400 z-40">
           {/* Email */}
           <Link
-            href="mailto:ravulaneeha@gmail.com"
+            href="mailto:hello@neeharavula.com"
             target="_blank"
             rel="noopener noreferrer"
           >

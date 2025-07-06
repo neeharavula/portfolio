@@ -170,7 +170,7 @@ export default function ResumePage() {
               {/* Email */}
               <Magnetic>
                 <Link
-                  href="mailto:ravulaneeha@gmail.com"
+                  href="mailto:hello@neeharavula.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#adbcc4]"

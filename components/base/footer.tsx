@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
         {/* Collab note */}
         <Magnetic>
           <Link
-            href="mailto:ravulaneeha@gmail.com"
+            href="mailto:hello@neeharavula.com"
             target="_blank"
             rel="noopener noreferrer"
           >

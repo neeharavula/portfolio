@@ -86,7 +86,7 @@ const AboutPageContent = () => {
         className="flex justify-center items-center gap-8 mt-8"
       >
         <Link
-          href="mailto:ravulaneeha@gmail.com"
+          href="mailto:hello@neeharavula.com"
           target="_blank"
           rel="noopener noreferrer"
         >
