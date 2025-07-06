@@ -1,9 +1,11 @@
+/* Home page */
+
 "use client";
 
 import Layout from "@/components/base/general-layout";
+import Link from "next/link";
 import { TextLoop } from "@/components/motion-primitives/text-loop";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   EnvelopeIcon,
@@ -13,11 +15,12 @@ import {
   SpotifyLogoIcon,
 } from "@phosphor-icons/react";
 
+/* Home */
 export default function Home() {
   return (
     <Layout variant="home">
       <section className="relative flex flex-col justify-between h-full w-full px-8">
-        {/* Large summary text */}
+        {/* Summary */}
         <div className="flex-1 flex items-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -25,9 +28,9 @@ export default function Home() {
             transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
             className="font-offbit mt-17 text-[3rem] md:text-[5em] lg:text-[5rem] xl:text-[6rem] leading-none"
           >
-            Neeha Ravula is a {/* Mobile: static "developer" */}
+            Neeha Ravula is a {/* Mobile: Static "developer" */}
             <span className="sm:hidden text-[#94A75D]">developer</span>
-            {/* Desktop: animated TextLoop */}
+            {/* Desktop: Animated TextLoop component */}
             <span className="hidden sm:inline">
               <TextLoop
                 className="overflow-y-clip text-[#94A75D]"
@@ -69,8 +72,9 @@ export default function Home() {
           </motion.h1>
         </div>
 
-        {/* Links bottom right */}
+        {/* Bottom right nav */}
         <div className="hidden sm:flex flex-col gap-8 text-right text-sm font-[family-name:var(--font-geist-mono)] absolute bottom-8 right-8">
+          {/* Work */}
           <Magnetic>
             <div className="relative inline-block">
               <Link href="/work" className="block hover:text-[#94A75D]">
@@ -79,6 +83,7 @@ export default function Home() {
               </Link>
             </div>
           </Magnetic>
+          {/* Play */}
           <Magnetic>
             <div className="relative inline-block">
               <Link href="/play" className="block hover:text-[#94A75D]">
@@ -87,6 +92,7 @@ export default function Home() {
               </Link>
             </div>
           </Magnetic>
+          {/* Resume */}
           <Magnetic>
             <div className="relative inline-block">
               <Link href="/resume" className="block hover:text-[#94A75D]">
@@ -96,9 +102,9 @@ export default function Home() {
             </div>
           </Magnetic>
         </div>
-        {/* Mobile social icons only */}
-        {/* Mobile-only social icons fixed to bottom */}
+        {/* Mobile: Socials */}
         <div className="fixed bottom-8 left-0 w-full flex justify-center gap-8 sm:hidden text-xl text-zinc-600 dark:text-zinc-400 z-40">
+          {/* Email */}
           <Link
             href="mailto:ravulaneeha@gmail.com"
             target="_blank"
@@ -106,6 +112,7 @@ export default function Home() {
           >
             <EnvelopeIcon size={20} />
           </Link>
+          {/* LinkedIn */}
           <Link
             href="https://www.linkedin.com/in/neeharavula/"
             target="_blank"
@@ -113,6 +120,7 @@ export default function Home() {
           >
             <LinkedinLogoIcon size={20} />
           </Link>
+          {/* Github */}
           <Link
             href="https://github.com/neeharavula"
             target="_blank"
@@ -120,6 +128,7 @@ export default function Home() {
           >
             <GithubLogoIcon size={20} />
           </Link>
+          {/* Instagram */}
           <Link
             href="https://www.instagram.com/neehasroll/"
             target="_blank"
@@ -127,6 +136,7 @@ export default function Home() {
           >
             <InstagramLogoIcon size={20} />
           </Link>
+          {/* Spotify */}
           <Link
             href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
             target="_blank"

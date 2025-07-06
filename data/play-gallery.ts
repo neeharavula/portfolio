@@ -1,6 +1,13 @@
 export const filters = ["film", "digital", "art"] as const;
 export type FilterType = (typeof filters)[number];
 
+// Loading captions (per filter)
+export const captions: Record<FilterType, string> = {
+  film: "Loading film roll...",
+  digital: "Cleaning sensor...",
+  art: "Opening sketchbook...",
+};
+
 export const imageFiles: Record<FilterType, string[]> = {
   film: [
     "01-monaco.JPG",

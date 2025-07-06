@@ -1,29 +1,27 @@
+/* Play page */
+
 "use client";
 
 import { useEffect, useState } from "react";
-import Layout from "@/components/base/general-layout";
-import Image from "next/image";
-import Masonry from "react-masonry-css";
+import { motion } from "framer-motion";
+import { captions, filters, imageFiles, FilterType } from "@/data/play-gallery";
 import {
   MorphingDialog,
   MorphingDialogTrigger,
   MorphingDialogContent,
   MorphingDialogContainer,
 } from "@/components/motion-primitives/morphing-dialog";
-import { filters, imageFiles, FilterType } from "@/data/play-gallery";
-import { motion } from "framer-motion"; // <-- import framer-motion
+import Layout from "@/components/base/general-layout";
+import Image from "next/image";
+import Masonry from "react-masonry-css";
 
-const captions: Record<FilterType, string> = {
-  film: "Loading film roll...",
-  digital: "Cleaning sensor...",
-  art: "Opening sketchbook...",
-};
-
+// Play
 export default function Play() {
   const [activeFilter, setActiveFilter] = useState<FilterType>("film");
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
+  // Loading and progress handling
   useEffect(() => {
     let start = 0;
     setProgress(0);
@@ -58,9 +56,13 @@ export default function Play() {
 
   const visibleFilters = filters;
 
+  const imageUrl = (file: string) =>
+    `https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`;
+
   return (
     <Layout variant="play">
       <section className="flex flex-col px-8 py-4 items-center gap-6 text-sm font-[family-name:var(--font-geist-mono)] relative">
+        {/* Loading dialog */}
         {loading && (
           <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-black transition-colors">
             <div
@@ -78,7 +80,7 @@ export default function Play() {
           </div>
         )}
 
-        {/* Filter Buttons */}
+        {/* Gallery gilters */}
         <div className="flex flex-wrap justify-center gap-12">
           {visibleFilters.map((filter) => (
             <button
@@ -98,7 +100,7 @@ export default function Play() {
           ))}
         </div>
 
-        {/* Masonry Grid */}
+        {/* Masonry image grid */}
         {!loading && (
           <div className="w-full max-w-6xl px-2 sm:px-4 mt-8">
             <Masonry
@@ -113,7 +115,7 @@ export default function Play() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  {/* Video filter disabled, so only images */}
+                  {/* Expand image */}
                   <MorphingDialog
                     transition={{
                       duration: 0.3,
@@ -122,7 +124,7 @@ export default function Play() {
                   >
                     <MorphingDialogTrigger>
                       <Image
-                        src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
+                        src={imageUrl(file)}
                         alt={`${activeFilter} ${index}`}
                         width={500}
                         height={600}
@@ -132,7 +134,7 @@ export default function Play() {
                     <MorphingDialogContainer>
                       <MorphingDialogContent className="relative">
                         <Image
-                          src={`https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`}
+                          src={imageUrl(file)}
                           alt={`${activeFilter} ${index}`}
                           width={1200}
                           height={1600}
@@ -144,7 +146,7 @@ export default function Play() {
                 </motion.div>
               ))}
 
-              {/* Spacer div to shift lone image to the left on mobile */}
+              {/* Spacer to shift lone image to the left on mobile */}
               {imageFiles[activeFilter].length % 2 === 1 && (
                 <div key="spacer" className="block sm:hidden h-0"></div>
               )}

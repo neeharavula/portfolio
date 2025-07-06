@@ -1,15 +1,19 @@
+/* Project pages */
+
+import Layout from "@/components/base/general-layout";
+import Section from "@/components/work/section";
 import { iconMap } from "@/utils/icons";
 import { workData } from "@/data/work-projects";
 import { notFound } from "next/navigation";
-import Layout from "@/components/base/general-layout";
-import Section from "@/components/work/section";
 
+/* Props */
 type Props = {
   params: Promise<{
     slug: string;
   }>;
 };
 
+/* Pull project data */
 export default async function Project({ params }: Props) {
   const { slug } = await params;
 
@@ -20,12 +24,14 @@ export default async function Project({ params }: Props) {
   return (
     <Layout variant="project" projectTitle={project.title}>
       <div className="max-w-5xl mx-auto px-8 py-2 font-[family-name:var(--font-geist-mono)] text-sm relative z-10">
+        {/* Overview */}
         {project.overview && (
           <Section title="Overview">
             <p>{project.overview}</p>
           </Section>
         )}
 
+        {/* Stack */}
         {project.tools && (
           <Section title="Stack">
             <ul className="flex gap-2 flex-wrap">
@@ -59,12 +65,14 @@ export default async function Project({ params }: Props) {
           </Section>
         )}
 
+        {/* Contributions */}
         {project.tasks && (
           <Section title="Contributions">
             <p>{project.tasks}</p>
           </Section>
         )}
 
+        {/* Reflections */}
         {project.reflections && (
           <Section title="Reflections">
             <p>{project.reflections}</p>

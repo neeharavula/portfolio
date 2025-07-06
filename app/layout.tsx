@@ -1,8 +1,10 @@
-import { SpeedInsights } from "@vercel/speed-insights/next";
+/* Base layout */
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+/* Fonts */
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -13,11 +15,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+/* Metadata */
 export const metadata: Metadata = {
   title: "Neeha Ravula",
-  description: "Portfolio",
+  keywords: ["Neeha Ravula", "Portfolio"],
+  description:
+    "Neeha Ravula is a developer and creative based in San Diego, CA, exploring the intersection of design and computation.",
 };
 
+/* Root layout */
 export default function RootLayout({
   children,
 }: Readonly<{

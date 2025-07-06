@@ -1,4 +1,9 @@
+/* Global CSS */
+
 @import "tailwindcss";
+
+/* Base */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -9,12 +14,21 @@
   --font-offbit: "Offbit Trail", sans-serif;
 }
 
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Dark/Light mode */
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+
+/* Fonts */
 
 @font-face {
   font-family: "Offbit Trail";
@@ -24,51 +38,40 @@
   font-style: normal;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
-
 .font-offbit {
   font-family: var(--font-offbit);
 }
+
+/* Image grid */
 
 .masonry-grid {
   display: flex;
   margin-left: -2rem;
   margin-right: -1rem;
-  /* mobile horizontal gap (px-2) */
 }
 
 @media (min-width: 640px) {
   .masonry-grid {
     margin-left: -3rem;
-    /* desktop horizontal gap (px-4) */
   }
 }
 
 .masonry-column {
   padding-left: 1rem;
-  /* mobile horizontal gap */
 }
 
 @media (min-width: 640px) {
   .masonry-column {
     padding-left: 2rem;
-    /* desktop horizontal gap */
   }
 }
 
-/* Vertical gap between images */
-
 .masonry-column > div {
   margin-bottom: 1rem;
-  /* mobile vertical gap */
 }
 
 @media (min-width: 640px) {
   .masonry-column > div {
     margin-bottom: 2rem;
-    /* desktop vertical gap */
   }
 }
