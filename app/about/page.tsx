@@ -1,8 +1,7 @@
+/* Mobile about page */
+
 "use client";
 
-import { useEffect, useState } from "react";
-import Layout from "@/components/base/general-layout";
-import Image from "next/image";
 import {
   EnvelopeIcon,
   LinkedinLogoIcon,
@@ -10,9 +9,12 @@ import {
   InstagramLogoIcon,
   SpotifyLogoIcon,
 } from "@phosphor-icons/react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Layout from "@/components/base/general-layout";
+import Image from "next/image";
+import Link from "next/link";
 
 const AboutPageContent = () => {
   const { ref: imageRef, inView: imageInView } = useInView({

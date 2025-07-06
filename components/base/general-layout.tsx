@@ -1,7 +1,7 @@
+/* Base layout component */
+
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import {
   XIcon,
   EnvelopeIcon,
@@ -10,11 +10,13 @@ import {
   InstagramLogoIcon,
   SpotifyLogoIcon,
 } from "@phosphor-icons/react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import Nav from "@/components/base/nav";
 import Footer from "@/components/base/footer";
 import AboutOverlay from "@/components/about/overlay";
-import FollowCursor from "@/components/base/follow-cursor";
+import FollowCursor from "@/components/ui/follow-cursor";
 
 export interface LayoutConfig {
   variant: "home" | "work" | "project" | "play" | "about" | "menu" | "resume";
@@ -45,12 +47,14 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
       <main className="flex-1 overflow-visible sm:overflow-auto">
         {children}
 
+        {/* About overlay */}
         <AnimatePresence>
           {showAboutOverlay && (
             <AboutOverlay onClose={() => setShowAboutOverlay(false)} />
           )}
         </AnimatePresence>
 
+        {/* Mobile menu */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -63,7 +67,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
               <div className="absolute top-8 left-8 text-sm font-[family-name:var(--font-geist-mono)]">
                 Menu
               </div>
-              {/* X button */}
+              {/* Close menu */}
               <button
                 onClick={() => setMenuOpen(false)}
                 className="absolute top-8 right-8"
@@ -79,7 +83,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                 </motion.div>
               </button>
 
-              {/* Links */}
+              {/* Page links */}
               <div className="flex-1 flex flex-col justify-center">
                 <nav className="flex flex-col gap-8 mt-16 text-sm font-[family-name:var(--font-geist-mono)]">
                   <Link
@@ -120,8 +124,9 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                 </nav>
               </div>
 
-              {/* Social icons at bottom */}
+              {/* Social buttons */}
               <div className="flex justify-center items-center gap-8 mt-8">
+                {/* Email */}
                 <Link
                   href="mailto:ravulaneeha@gmail.com"
                   target="_blank"
@@ -129,6 +134,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                 >
                   <EnvelopeIcon size={20} />
                 </Link>
+                {/* LinkedIn */}
                 <Link
                   href="https://www.linkedin.com/in/neeharavula/"
                   target="_blank"
@@ -136,6 +142,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                 >
                   <LinkedinLogoIcon size={20} />
                 </Link>
+                {/* Github */}
                 <Link
                   href="https://github.com/neeharavula"
                   target="_blank"
@@ -143,6 +150,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                 >
                   <GithubLogoIcon size={20} />
                 </Link>
+                {/* Instagram */}
                 <Link
                   href="https://www.instagram.com/neehasroll/"
                   target="_blank"
@@ -150,6 +158,7 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                 >
                   <InstagramLogoIcon size={20} />
                 </Link>
+                {/* Spotify */}
                 <Link
                   href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
                   target="_blank"
@@ -162,7 +171,8 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
           )}
         </AnimatePresence>
       </main>
-
+      
+      {/* Footer */}
       {showFooter && (
         <div className="hidden sm:block">
           <Footer

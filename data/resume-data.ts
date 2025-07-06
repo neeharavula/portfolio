@@ -1,5 +1,8 @@
+/* Resume data */
+
 export const resumeSections = [
   {
+    /* Professional */
     title: "Professional",
     entries: [
       {
@@ -23,6 +26,7 @@ export const resumeSections = [
     ],
   },
   {
+    /* Extracirricular */
     title: "Extracirricular",
     entries: [
       {
@@ -30,7 +34,7 @@ export const resumeSections = [
         role: "Web Developer at UCSC Tech4Good Lab",
         location: "Santa Cruz, CA",
         link: "https://tech4good.soe.ucsc.edu/",
-        images: [], //["/images/tech4good/ide2.gif"],
+        images: [],
       },
       {
         date: "2022 - 2023",
@@ -41,6 +45,7 @@ export const resumeSections = [
     ],
   },
   {
+    /* Education */
     title: "Education",
     entries: [
       {

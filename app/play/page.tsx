@@ -10,12 +10,11 @@ import {
   MorphingDialogTrigger,
   MorphingDialogContent,
   MorphingDialogContainer,
-} from "@/components/motion-primitives/morphing-dialog";
+} from "@/components/ui/morphing-dialog";
 import Layout from "@/components/base/general-layout";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
 
-// Play
 export default function Play() {
   const [activeFilter, setActiveFilter] = useState<FilterType>("film");
   const [loading, setLoading] = useState(true);

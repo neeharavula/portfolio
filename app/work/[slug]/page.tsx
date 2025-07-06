@@ -1,19 +1,18 @@
 /* Project pages */
 
 import Layout from "@/components/base/general-layout";
-import Section from "@/components/work/section";
+import Section from "@/components/base/section";
 import { iconMap } from "@/utils/icons";
 import { workData } from "@/data/work-projects";
 import { notFound } from "next/navigation";
 
-/* Props */
 type Props = {
   params: Promise<{
     slug: string;
   }>;
 };
 
-/* Pull project data */
+// Pull project data
 export default async function Project({ params }: Props) {
   const { slug } = await params;
 

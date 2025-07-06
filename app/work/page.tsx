@@ -7,7 +7,6 @@ import WorkDesktop from "@/components/work/desktop";
 import WorkMobile from "@/components/work/mobile";
 import useMediaQuery from "@/hooks/use-media-query";
 
-/* Work */
 export default function Work() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 

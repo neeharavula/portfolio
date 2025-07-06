@@ -1,3 +1,5 @@
+/* Top nav bar component */
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,9 +10,9 @@ import {
   ArrowBendUpLeftIcon,
   ListIcon,
 } from "@phosphor-icons/react";
-import Link from "next/link";
-import { Magnetic } from "../motion-primitives/magnetic";
+import { Magnetic } from "../ui/magnetic";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface NavProps {
   variant: "home" | "work" | "project" | "play" | "about" | "menu" | "resume";

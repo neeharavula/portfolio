@@ -1,3 +1,5 @@
+/* Cursor follow component */
+
 "use client";
 
 import React, { useEffect } from "react";
@@ -52,7 +54,7 @@ const FollowCursor: React.FC<FollowCursorProps> = ({ color = "#94A75D" }) => {
       }
     }
 
-    const dot = new Dot(0, 0, 7, 10); // Initial position doesn't matter anymore
+    const dot = new Dot(0, 0, 7, 10);
 
     const onMouseMove = (e: MouseEvent) => {
       cursor.x = e.clientX;

@@ -1,8 +1,10 @@
-// app/data/work-projects.tsx
+/* Work data */
+
 import { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Elements and sections of project pages
 export type WorkProject = {
   slug: string;
   title: string;
@@ -15,6 +17,7 @@ export type WorkProject = {
 };
 
 export const workData: WorkProject[] = [
+  // Northwestern Mutual
   {
     slug: "northwestern-mutual",
     title: "Northwestern Mutual",
@@ -118,6 +121,7 @@ export const workData: WorkProject[] = [
       </p>
     ),
   },
+  // Melodics
   {
     slug: "melodics",
     title: "Melodics",
@@ -221,6 +225,7 @@ export const workData: WorkProject[] = [
       </p>
     ),
   },
+  // Tech4Good / Causeway
   {
     slug: "tech4good",
     title: "Tech4Good / Causeway",
@@ -325,6 +330,7 @@ export const workData: WorkProject[] = [
       </>
     ),
   },
+  // General Atomics Aeronautical
   {
     slug: "general-atomics",
     title: "General Atomics Aeronautical",
@@ -431,6 +437,7 @@ export const workData: WorkProject[] = [
       </p>
     ),
   },
+  // Athenahacks / USC SOS
   {
     slug: "athenahacks",
     title: "AthenaHacks / USC SOS",

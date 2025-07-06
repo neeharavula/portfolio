@@ -1,15 +1,7 @@
+/* Resume page */
+
 "use client";
 
-import React, { useState } from "react";
-import Layout from "@/components/base/general-layout";
-import Image from "next/image";
-import Link from "next/link";
-import Section from "@/components/work/section";
-import { resumeSections } from "@/data/resume-data";
-import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Magnetic } from "@/components/motion-primitives/magnetic";
 import {
   EnvelopeIcon,
   GithubLogoIcon,
@@ -17,8 +9,17 @@ import {
   SpotifyLogoIcon,
   LinkedinLogoIcon,
 } from "@phosphor-icons/react";
+import React, { useState } from "react";
+import { resumeSections } from "@/data/resume-data";
+import { AnimatedBackground } from "@/components/ui/animated-background";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Magnetic } from "@/components/ui/magnetic";
+import Layout from "@/components/base/general-layout";
+import Image from "next/image";
+import Link from "next/link";
+import Section from "@/components/base/section";
 
-// Resume
 export default function ResumePage() {
   const [profileRef, profileInView] = useInView({
     triggerOnce: true,

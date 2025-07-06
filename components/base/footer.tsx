@@ -1,9 +1,9 @@
-// components/base/footer.tsx
+/* Desktop footer component */
 
 "use client";
 
 import { motion } from "framer-motion";
-import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { Magnetic } from "@/components/ui/magnetic";
 import Link from "next/link";
 
 interface FooterProps {
@@ -21,7 +21,9 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
   return (
     <footer className={footerClass}>
       <div className="hidden sm:flex justify-between items-center">
+        {/* Copyright */}
         <div className="relative z-10">© 2025</div>
+        {/* Collab note */}
         <Magnetic>
           <Link
             href="mailto:ravulaneeha@gmail.com"
@@ -34,6 +36,7 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
           </Link>
         </Magnetic>
 
+        {/* About button */}
         <Magnetic>
           <button
             onClick={onAboutClick}

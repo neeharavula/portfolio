@@ -1,3 +1,5 @@
+/* Section component */
+
 "use client";
 
 import { ReactNode, HTMLAttributes } from "react";
@@ -8,13 +10,13 @@ type SectionProps = {
   title: string;
   children: ReactNode;
   className?: string;
-} & HTMLAttributes<HTMLElement>; // <-- Add this to accept extra props
+} & HTMLAttributes<HTMLElement>;
 
 export default function Section({
   title,
   children,
   className = "",
-  ...rest // capture extra props like onMouseEnter, style, etc.
+  ...rest // Capture extra props
 }: SectionProps) {
   const [titleRef, titleInView] = useInView({
     triggerOnce: true,
@@ -29,8 +31,9 @@ export default function Section({
   return (
     <section
       className={`flex flex-col md:flex-row md:py-8 py-4 ${className}`}
-      {...rest} // <-- Forward all extra props here
+      {...rest} // Forward all extra props here
     >
+      {/* Title */}
       <motion.div
         ref={titleRef}
         initial={{ opacity: 0, y: 20 }}
@@ -41,6 +44,7 @@ export default function Section({
         {title}
       </motion.div>
 
+      {/* Content */}
       <motion.div
         ref={contentRef}
         initial={{ opacity: 0, y: 20 }}
