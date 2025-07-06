@@ -4,8 +4,8 @@
 
 import Layout from "@/components/base/general-layout";
 import Link from "next/link";
-import { TextLoop } from "@/components/motion-primitives/text-loop";
-import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { TextLoop } from "@/components/ui/text-loop";
+import { Magnetic } from "@/components/ui/magnetic";
 import { motion } from "framer-motion";
 import {
   EnvelopeIcon,

@@ -10,7 +10,7 @@ import {
   MorphingDialogTrigger,
   MorphingDialogContent,
   MorphingDialogContainer,
-} from "@/components/motion-primitives/morphing-dialog";
+} from "@/components/ui/morphing-dialog";
 import Layout from "@/components/base/general-layout";
 import Image from "next/image";
 import Masonry from "react-masonry-css";

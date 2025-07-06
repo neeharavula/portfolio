@@ -12,7 +12,7 @@ import {
   LinkedinLogoIcon,
 } from "@phosphor-icons/react";
 import { useInView } from "react-intersection-observer";
-import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { Magnetic } from "@/components/ui/magnetic";
 
 type AboutOverlayProps = {
   onClose: () => void;

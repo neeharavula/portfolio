@@ -1,39 +1,38 @@
 import {
-  // languages
+  // Languages
   PythonOriginal,
   JavascriptOriginal,
   TypescriptOriginal,
   Html5Original,
   Css3Original,
   TailwindcssOriginal,
-  // frameworks
+  // Frameworks
   AngularOriginal,
   ReactOriginal,
   NextjsOriginal,
-  // apis
+  // APIs
   PostmanOriginal,
-  // data
+  // Data
   AmazonwebservicesOriginalWordmark,
   MysqlOriginal,
-  // design
+  // Design
   FigmaOriginal,
 } from "devicons-react";
-
 import { SiTwilio, SiStackblitz } from "react-icons/si";
 import { ComponentType } from "react";
 
-// ✅ React wrapper components with proper props
+// Rare icon components
 const TwilioIcon: ComponentType<{ className?: string }> = ({ className }) => (
   <SiTwilio className={`text-[#F22F46] ${className ?? ""}`} />
 );
 
-const StackblitzIcon: ComponentType<{ className?: string }> = ({ className }) => (
-  <SiStackblitz className={`text-[#1389FD] ${className ?? ""}`} />
-);
+const StackblitzIcon: ComponentType<{ className?: string }> = ({
+  className,
+}) => <SiStackblitz className={`text-[#1389FD] ${className ?? ""}`} />;
 
-// ✅ Unified icon map with consistent types
+// Icon map
 export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
-  // languages
+  // Languages
   python: PythonOriginal,
   javascript: JavascriptOriginal,
   typescript: TypescriptOriginal,
@@ -41,20 +40,20 @@ export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   css: Css3Original,
   tailwind: TailwindcssOriginal,
 
-  // frameworks
+  // Frameworks
   angular: AngularOriginal,
   react: ReactOriginal,
   nextjs: NextjsOriginal,
 
-  // apis
+  // APIs
   postman: PostmanOriginal,
   twilio: TwilioIcon,
   stackblitz: StackblitzIcon,
 
-  // data
+  // Data
   aws: AmazonwebservicesOriginalWordmark,
   mysql: MysqlOriginal,
 
-  // design
+  // Design
   figma: FigmaOriginal,
 };

@@ -3,7 +3,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { Magnetic } from "@/components/ui/magnetic";
 import Link from "next/link";
 
 interface FooterProps {

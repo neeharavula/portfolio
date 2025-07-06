@@ -9,7 +9,7 @@ import {
   ListIcon,
 } from "@phosphor-icons/react";
 import Link from "next/link";
-import { Magnetic } from "../motion-primitives/magnetic";
+import { Magnetic } from "../ui/magnetic";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface NavProps {

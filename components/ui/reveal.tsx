@@ -1,4 +1,5 @@
-// components/reveal.tsx
+/* Reveal component */
+
 "use client";
 
 import { motion } from "framer-motion";

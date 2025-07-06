@@ -1,4 +1,7 @@
+/* Text loop component */
+
 "use client";
+import { useState, useEffect, Children } from "react";
 import {
   motion,
   AnimatePresence,
@@ -6,7 +9,6 @@ import {
   Variants,
   AnimatePresenceProps,
 } from "motion/react";
-import { useState, useEffect, Children } from "react";
 
 export type TextLoopProps = {
   children: React.ReactNode[];

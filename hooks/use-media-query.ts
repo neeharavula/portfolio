@@ -1,3 +1,5 @@
+/* Media query hook */
+
 import { useState, useEffect } from "react";
 
 export default function useMediaQuery(query: string): boolean {

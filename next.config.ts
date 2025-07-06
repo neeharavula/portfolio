@@ -1,13 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  /* Config options */
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "nravula-portfolio-assets.s3.amazonaws.com",
-        pathname: "/**", // Match all paths under your S3 bucket
+        pathname: "/**",
       },
     ],
   },
