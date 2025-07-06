@@ -79,7 +79,7 @@ export default function Play() {
           </div>
         )}
 
-        {/* Gallery gilters */}
+        {/* Gallery filters */}
         <div className="flex flex-wrap justify-center gap-12">
           {visibleFilters.map((filter) => (
             <button
