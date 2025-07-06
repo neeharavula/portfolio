@@ -1,9 +1,7 @@
+/* About overlay component */
+
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
 import {
   EnvelopeIcon,
   GithubLogoIcon,
@@ -11,15 +9,18 @@ import {
   SpotifyLogoIcon,
   LinkedinLogoIcon,
 } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Magnetic } from "@/components/ui/magnetic";
+import Image from "next/image";
+import Link from "next/link";
 
 type AboutOverlayProps = {
   onClose: () => void;
 };
 
 const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
-  // Hook calls always happen unconditionally
   const { ref: textRef, inView: textInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -37,11 +38,11 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check window width only on client side
+    // Check window width
     if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth < 640);
 
-      // Optional: listen for resize if you want dynamic updates
+      // Listen for resize
       const handleResize = () => setIsMobile(window.innerWidth < 640);
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
@@ -111,7 +112,7 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
           </p>
         </motion.div>
 
-        {/* Icons */}
+        {/* Social icons */}
         <motion.div
           ref={iconsRef}
           initial={{ opacity: 0, y: 20 }}
@@ -119,60 +120,60 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
           transition={{ delay: 0.4, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
           className="flex gap-8 mt-12"
         >
+          {/* Email */}
           <Magnetic>
-            <div className="hover:text-[#adbcc4]">
               <Link
                 href="mailto:ravulaneeha@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="hover:text-[#adbcc4]"
               >
                 <EnvelopeIcon size={20} />
               </Link>
-            </div>
           </Magnetic>
+          {/* LinkedIn */}
           <Magnetic>
-            <div className="hover:text-[#60a0c4]">
               <Link
                 href="https://www.linkedin.com/in/neeharavula/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="hover:text-[#60a0c4]"
               >
                 <LinkedinLogoIcon size={20} />
               </Link>
-            </div>
           </Magnetic>
+          {/* Github */}
           <Magnetic>
-            <div className="hover:text-[#d1996b]">
               <Link
                 href="https://github.com/neeharavula"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="hover:text-[#d1996b]"
               >
                 <GithubLogoIcon size={20} />
               </Link>
-            </div>
           </Magnetic>
+          {/* Instagram */}
           <Magnetic>
-            <div className="hover:text-[#bd6881]">
               <Link
                 href="https://www.instagram.com/neehasroll/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="hover:text-[#bd6881]"
               >
                 <InstagramLogoIcon size={20} />
               </Link>
-            </div>
           </Magnetic>
+          {/* Spotify */}
           <Magnetic>
-            <div className="hover:text-[#94A75D]">
               <Link
                 href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="hover:text-[#94A75D]"
               >
                 <SpotifyLogoIcon size={20} />
               </Link>
-            </div>
           </Magnetic>
         </motion.div>
       </div>

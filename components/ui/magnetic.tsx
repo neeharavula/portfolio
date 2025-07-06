@@ -1,3 +1,5 @@
+/* Magnetic component (motion primitives) */
+
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";

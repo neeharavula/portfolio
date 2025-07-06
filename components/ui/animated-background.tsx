@@ -1,3 +1,5 @@
+/* Animated background component */
+
 "use client";
 
 import { AnimatePresence, Transition, motion } from "motion/react";

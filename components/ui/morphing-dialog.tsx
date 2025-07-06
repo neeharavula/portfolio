@@ -1,3 +1,5 @@
+/* Morphing dialog component (motion primitives) */
+
 "use client";
 
 import React, {
@@ -18,7 +20,7 @@ import {
 } from "motion/react";
 import { createPortal } from "react-dom";
 import { XIcon } from "@phosphor-icons/react";
-import useClickOutside from "@/hooks/useClickOutside";
+import useClickOutside from "@/hooks/use-click-outside";
 
 function cn(...classes: (string | undefined | null | false)[]): string {
   return classes.filter(Boolean).join(" ");

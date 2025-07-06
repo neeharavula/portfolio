@@ -1,4 +1,4 @@
-/* Text loop component */
+/* Text loop component (motion primitives) */
 
 "use client";
 import { useState, useEffect, Children } from "react";

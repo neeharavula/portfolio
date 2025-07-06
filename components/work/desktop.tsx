@@ -53,7 +53,7 @@ const WorkDesktop = () => {
                 <span className="text-sm relative z-10">{project.title}</span>
               </div>
 
-              {/* Left section: type, date, tools */}
+              {/* Right section: type, date, tools */}
               <div className="flex items-center gap-4 text-sm relative z-10">
                 <span>
                   {project.type} / {project.date} /

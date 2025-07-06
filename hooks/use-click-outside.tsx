@@ -1,3 +1,5 @@
+/* Click outside hook */
+
 import { RefObject, useEffect } from "react";
 
 function useClickOutside<T extends HTMLElement>(

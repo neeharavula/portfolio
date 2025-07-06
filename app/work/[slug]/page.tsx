@@ -6,14 +6,13 @@ import { iconMap } from "@/utils/icons";
 import { workData } from "@/data/work-projects";
 import { notFound } from "next/navigation";
 
-/* Props */
 type Props = {
   params: Promise<{
     slug: string;
   }>;
 };
 
-/* Pull project data */
+// Pull project data
 export default async function Project({ params }: Props) {
   const { slug } = await params;
 
