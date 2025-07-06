@@ -119,7 +119,7 @@ const Nav: React.FC<NavProps> = ({
           <>
             <Magnetic>
               <Link href="/work">
-                <div className="flex items-center gap-4 relative z-10">
+                <div className="flex items-center gap-8 relative z-10">
                   <ArrowBendUpLeftIcon size={20} className={iconClass} />
                   <span>All work</span>
                 </div>
@@ -128,7 +128,7 @@ const Nav: React.FC<NavProps> = ({
             <div className="text-center absolute left-1/2 transform -translate-x-1/2">
               {projectTitle ?? "Project"}
             </div>
-            <div className="flex items-center gap-4 relative z-10">
+            <div className="flex items-center gap-8 relative z-10">
               <span>{time}</span>
               {getIcon()}
             </div>
