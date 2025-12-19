@@ -129,19 +129,19 @@ export default function Play() {
                         ease: [0.32, 0.72, 0, 1],
                       }}
                     >
-                      <MorphingDialogTrigger className="w-full h-auto object-cover rounded-lg overflow-hidden">
+                      <MorphingDialogTrigger className="w-full rounded-lg overflow-hidden block">
                         <MorphingDialogImage
                           src={imageUrl(file)}
                           alt={`${activeFilter} ${index}`}
-                          className="w-full h-auto object-cover"
+                          className="w-full h-auto object-cover rounded-lg"
                         />
                       </MorphingDialogTrigger>
                       <MorphingDialogContainer>
-                        <MorphingDialogContent className="relative h-auto w-full max-w-[90vw] rounded-lg object-cover lg:h-[90vh]">
+                        <MorphingDialogContent className="relative overflow-hidden rounded-lg">
                           <MorphingDialogImage
                             src={imageUrl(file)}
                             alt={`${activeFilter} ${index}`}
-                            className="h-auto w-full max-w-[90vw] rounded-lg object-cover lg:h-[90vh]"
+                            className="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain rounded-lg"
                           />
                         </MorphingDialogContent>
                       </MorphingDialogContainer>
