@@ -10,9 +10,9 @@ import {
   MorphingDialogTrigger,
   MorphingDialogContent,
   MorphingDialogContainer,
+  MorphingDialogImage,
 } from "@/components/ui/morphing-dialog";
 import Layout from "@/components/base/general-layout";
-import Image from "next/image";
 import Masonry from "react-masonry-css";
 
 export default function Play() {
@@ -125,30 +125,23 @@ export default function Play() {
                     {/* Expand image */}
                     <MorphingDialog
                       transition={{
-                        duration: 0.2,
-                        ease: "easeOut",
+                        duration: 0.3,
+                        ease: [0.32, 0.72, 0, 1],
                       }}
                     >
-                      <MorphingDialogTrigger>
-                        <Image
+                      <MorphingDialogTrigger className="w-full h-auto object-cover rounded-lg overflow-hidden">
+                        <MorphingDialogImage
                           src={imageUrl(file)}
                           alt={`${activeFilter} ${index}`}
-                          width={500}
-                          height={600}
-                          className="w-full h-auto object-cover rounded-lg"
-                          priority={index < 4}
-                          loading={index < 4 ? "eager" : "lazy"}
+                          className="w-full h-auto object-cover"
                         />
                       </MorphingDialogTrigger>
                       <MorphingDialogContainer>
-                        <MorphingDialogContent className="relative">
-                          <Image
+                        <MorphingDialogContent className="relative h-auto w-full max-w-[90vw] rounded-lg object-cover lg:h-[90vh]">
+                          <MorphingDialogImage
                             src={imageUrl(file)}
                             alt={`${activeFilter} ${index}`}
-                            width={1200}
-                            height={1600}
                             className="h-auto w-full max-w-[90vw] rounded-lg object-cover lg:h-[90vh]"
-                            quality={90}
                           />
                         </MorphingDialogContent>
                       </MorphingDialogContainer>
