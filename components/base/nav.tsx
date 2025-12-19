@@ -6,13 +6,13 @@ import { useState, useEffect } from "react";
 import {
   SunIcon,
   MoonIcon,
-  SunHorizonIcon,
   ArrowBendUpLeftIcon,
   ListIcon,
 } from "@phosphor-icons/react";
 import { Magnetic } from "../ui/magnetic";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 interface NavProps {
   variant: "home" | "work" | "project" | "play" | "about" | "menu" | "resume";
@@ -34,6 +34,12 @@ const Nav: React.FC<NavProps> = ({
 
   const [time, setTime] = useState<string>(() => formatTime(new Date()));
   const [hour, setHour] = useState<number>(new Date().getHours());
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,24 +62,34 @@ const Nav: React.FC<NavProps> = ({
     return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
   }
 
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
+
   const getIcon = () => {
-    if ((hour >= 6 && hour < 8) || (hour >= 18 && hour < 20)) {
-      return <SunHorizonIcon size={20} className={iconClass} />;
+    if (!mounted) {
+      // Show time-based icon during SSR to prevent hydration mismatch
+      if (hour >= 6 && hour < 18) {
+        return <SunIcon size={20} className={iconClass} />;
+      }
+      return <MoonIcon size={20} className={iconClass} />;
     }
-    if (hour >= 8 && hour < 18) {
-      return <SunIcon size={20} className={iconClass} />;
-    }
-    return <MoonIcon size={20} className={iconClass} />;
+
+    // After mounting, show theme-based icon
+    return resolvedTheme === "dark" ? (
+      <MoonIcon size={20} className={iconClass} />
+    ) : (
+      <SunIcon size={20} className={iconClass} />
+    );
   };
 
   const navClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
     variant === "about"
       ? "bg-black text-white"
-      : "bg-[var(--background)] text-black dark:text-white"
+      : "bg-[var(--background)]"
   }`;
 
-  const iconClass =
-    variant === "about" ? "text-white" : "text-black dark:text-white";
+  const iconClass = variant === "about" ? "text-white" : "";
 
   return (
     <nav className={navClass}>
@@ -88,7 +104,11 @@ const Nav: React.FC<NavProps> = ({
             </Magnetic>
             <div className="flex items-center gap-8 relative z-10">
               <span>{time}</span>
-              {getIcon()}
+              <Magnetic>
+                <button onClick={toggleTheme} className="cursor-pointer flex items-center">
+                  {getIcon()}
+                </button>
+              </Magnetic>
             </div>
           </>
         )}
@@ -110,7 +130,11 @@ const Nav: React.FC<NavProps> = ({
             </div>
             <div className="flex items-center gap-8 relative z-10">
               <span>{time}</span>
-              {getIcon()}
+              <Magnetic>
+                <button onClick={toggleTheme} className="cursor-pointer flex items-center">
+                  {getIcon()}
+                </button>
+              </Magnetic>
             </div>
           </>
         )}
@@ -130,7 +154,11 @@ const Nav: React.FC<NavProps> = ({
             </div>
             <div className="flex items-center gap-8 relative z-10">
               <span>{time}</span>
-              {getIcon()}
+              <Magnetic>
+                <button onClick={toggleTheme} className="cursor-pointer flex items-center">
+                  {getIcon()}
+                </button>
+              </Magnetic>
             </div>
           </>
         )}

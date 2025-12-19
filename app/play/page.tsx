@@ -63,7 +63,7 @@ export default function Play() {
       <section className="flex flex-col px-8 py-4 items-center gap-6 text-sm font-[family-name:var(--font-geist-mono)] relative">
         {/* Loading dialog */}
         {loading && (
-          <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-black transition-colors">
+          <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[var(--background)] transition-colors">
             <div
               className="text-2xl"
               style={{ fontFamily: "var(--font-offbit)", fontWeight: "bold" }}
