@@ -45,7 +45,7 @@ export default function ResumePage() {
           className="flex items-center gap-8 mb-10"
         >
           <Image
-            src="/images/about/pfp.jpg"
+            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/resume/pfp.jpeg"
             alt="Profile"
             width={96}
             height={96}

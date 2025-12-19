@@ -40,7 +40,7 @@ function WorkMobileCard({
         <div className="w-14 h-14 rounded-xl overflow-hidden relative">
           {/* Logo */}
           <Image
-            src={`https://nravula-portfolio-assets.s3.amazonaws.com/work/logos/${project.slug}.png`}
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/logos/${project.slug}.png`}
             alt={`${project.title} logo`}
             fill
             className="object-cover"

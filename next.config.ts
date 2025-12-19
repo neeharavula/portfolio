@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "nravula-portfolio-assets.s3.amazonaws.com",
+        hostname: "f6ciazohrats9a1e.public.blob.vercel-storage.com",
         pathname: "/**",
       },
     ],
