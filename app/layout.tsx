@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Neeha Ravula",
   keywords: ["Neeha Ravula", "Portfolio"],
   description:
-    "Neeha Ravula is a developer and creative based in San Diego, CA, exploring the intersection of design and computation.",
+    "Developer and creative based in San Diego, CA, exploring the intersection of design and computation.",
 };
 
 /* Root layout */

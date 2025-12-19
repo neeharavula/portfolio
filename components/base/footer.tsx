@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
     <footer className={footerClass}>
       <div className="hidden sm:flex justify-between items-center">
         {/* Copyright */}
-        <div className="relative z-10">© 2025</div>
+        <div className="relative z-10">© {new Date().getFullYear()}</div>
         {/* Collab note */}
         <Magnetic>
           <Link

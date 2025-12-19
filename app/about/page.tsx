@@ -59,7 +59,7 @@ const AboutPageContent = () => {
         <p className="indent-8">
           Hi! I&apos;m Neeha. I grew up in San Diego, California and studied
           Computer Science at UC Santa Cruz in northern California. Currently, I
-          develop simulation and flight control software solutions in the
+          develop flight control and mission systems simulation software in the
           aerospace/defense sector.
         </p>
         <p className="indent-8">
