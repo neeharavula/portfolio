@@ -56,7 +56,7 @@ export default function Play() {
   const visibleFilters = filters;
 
   const imageUrl = (file: string) =>
-    `https://nravula-portfolio-assets.s3.amazonaws.com/play/${activeFilter}/${file}`;
+    `https://f6ciazohrats9a1e.public.blob.vercel-storage.com/play/${activeFilter}/${file}`;
 
   return (
     <Layout variant="play">

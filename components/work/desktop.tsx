@@ -43,7 +43,7 @@ const WorkDesktop = () => {
               <div className="flex items-center gap-4">
                 <div className="w-6 h-6 rounded-sm overflow-hidden relative">
                   <Image
-                    src={`https://nravula-portfolio-assets.s3.amazonaws.com/work/logos/${project.slug}.png`}
+                    src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/logos/${project.slug}.png`}
                     alt={`${project.title} logo`}
                     fill
                     className="object-cover"
