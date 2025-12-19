@@ -21,11 +21,14 @@ body {
 
 /* Dark/Light mode */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --hover-bg: #f4f4f5;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --hover-bg: #18181b;
 }
 
 /* Fonts */

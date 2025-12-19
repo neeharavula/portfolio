@@ -15,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
   const footerClass = `w-full text-sm px-8 py-8 font-[family-name:var(--font-geist-mono)] ${
     variant === "about"
       ? "bg-[#111] text-white"
-      : "bg-transparent text-black dark:text-white"
+      : "bg-transparent"
   }`;
 
   return (
@@ -40,14 +40,14 @@ const Footer: React.FC<FooterProps> = ({ variant, onAboutClick }) => {
         <Magnetic>
           <button
             onClick={onAboutClick}
-            className="relative px-3 py-1 rounded-lg cursor-pointer overflow-hidden group text-black dark:text-white"
+            className="relative px-3 py-1 rounded-lg cursor-pointer overflow-hidden group"
           >
             <div className="absolute inset-0 rounded-lg bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             <motion.div
               layoutId="about-overlay"
               className="absolute inset-0 rounded-lg pointer-events-none"
             />
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-white">
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
               About
             </span>
           </button>

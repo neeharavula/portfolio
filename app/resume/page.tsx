@@ -53,7 +53,7 @@ export default function ResumePage() {
           />
           <div>
             <h1 className="text-sm font-medium">Neeha Ravula</h1>
-            <p className="text-black dark:text-white">Software Engineer</p>
+            <p>Software Engineer</p>
             <p className="text-neutral-400">San Diego, CA</p>
           </div>
         </motion.div>
@@ -80,7 +80,7 @@ export default function ResumePage() {
               <ul className="space-y-8">
                 <AnimatedBackground
                   enableHover
-                  className="rounded-md bg-zinc-100 dark:bg-zinc-900"
+                  className="rounded-md bg-[var(--hover-bg)]"
                   transition={{
                     type: "spring",
                     bounce: 0,
@@ -112,7 +112,7 @@ export default function ResumePage() {
                         </p>
                         {/* Role and location */}
                         <div className="flex-1">
-                          <p className="block text-black dark:text-white relative z-10">
+                          <p className="block relative z-10">
                             {entry.role}
                           </p>
                           <p className="text-neutral-400 text-sm">
