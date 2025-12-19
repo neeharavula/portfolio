@@ -81,22 +81,35 @@ export default function Play() {
 
         {/* Gallery filters */}
         <div className="flex flex-wrap justify-center gap-12">
-          {visibleFilters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => {
-                setLoading(true);
-                setActiveFilter(filter);
-              }}
-              className={`capitalize tracking-wide cursor-pointer ${
-                activeFilter === filter
-                  ? "text-[color:var(--foreground)] dark:text-[color:var(--foreground)]"
-                  : "text-gray-400"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
+          {visibleFilters.map((filter) => {
+            const handleFilterHover = () => {
+              // Preload images for this filter on hover
+              if (filter !== activeFilter) {
+                imageFiles[filter].forEach((file) => {
+                  const img = new window.Image();
+                  img.src = `https://f6ciazohrats9a1e.public.blob.vercel-storage.com/play/${filter}/${file}`;
+                });
+              }
+            };
+
+            return (
+              <button
+                key={filter}
+                onClick={() => {
+                  setLoading(true);
+                  setActiveFilter(filter);
+                }}
+                onMouseEnter={handleFilterHover}
+                className={`capitalize tracking-wide cursor-pointer ${
+                  activeFilter === filter
+                    ? "text-[color:var(--foreground)] dark:text-[color:var(--foreground)]"
+                    : "text-gray-400"
+                }`}
+              >
+                {filter}
+              </button>
+            );
+          })}
         </div>
 
         {/* Masonry image grid */}
