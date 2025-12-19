@@ -100,8 +100,7 @@ export default function Play() {
         </div>
 
         {/* Masonry image grid */}
-        {!loading && (
-          <div className="w-full max-w-6xl px-2 sm:px-4 mt-8">
+        <div className={`w-full max-w-6xl px-2 sm:px-4 mt-8 ${loading ? 'opacity-0 pointer-events-none' : 'opacity-100'} transition-opacity duration-300`}>
             <Masonry
               breakpointCols={breakpointColumnsObj}
               className="masonry-grid"
@@ -155,8 +154,7 @@ export default function Play() {
                 <div key="spacer" className="block sm:hidden h-0"></div>
               )}
             </Masonry>
-          </div>
-        )}
+        </div>
       </section>
     </Layout>
   );
