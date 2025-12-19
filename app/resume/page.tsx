@@ -164,7 +164,7 @@ export default function ResumePage() {
         })}
 
         {/* Contact Section */}
-        <Section title="Contact">
+        <Section title="Connect">
           <div className="flex flex-col items-center px-3 py-3 md:flex-row md:items-start md:justify-start">
             <div className="flex gap-8 items-center justify-center">
               {/* Email */}

@@ -7,7 +7,7 @@ export const resumeSections = [
     entries: [
       {
         date: "2024 — Now",
-        role: "Software Developer at General Atomics Aeronautical Systems",
+        role: "Software Engineer at General Atomics Aeronautical Systems",
         location: "San Diego, CA",
         link: "https://www.ga-asi.com/",
       },
@@ -26,8 +26,8 @@ export const resumeSections = [
     ],
   },
   {
-    /* Extracirricular */
-    title: "Extracirricular",
+    /* Extracurricular */
+    title: "Extracurricular",
     entries: [
       {
         date: "2023",
