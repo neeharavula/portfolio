@@ -107,43 +107,55 @@ export default function Play() {
               className="masonry-grid"
               columnClassName="masonry-column"
             >
-              {imageFiles[activeFilter].map((file, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  {/* Expand image */}
-                  <MorphingDialog
-                    transition={{
-                      duration: 0.3,
-                      ease: "easeInOut",
-                    }}
+              {imageFiles[activeFilter].map((file, index) => {
+                const handleMouseEnter = () => {
+                  // Preload the full-resolution image on hover
+                  const img = new window.Image();
+                  img.src = imageUrl(file);
+                };
+
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    onMouseEnter={handleMouseEnter}
                   >
-                    <MorphingDialogTrigger>
-                      <Image
-                        src={imageUrl(file)}
-                        alt={`${activeFilter} ${index}`}
-                        width={500}
-                        height={600}
-                        className="w-full h-auto object-cover rounded-lg"
-                      />
-                    </MorphingDialogTrigger>
-                    <MorphingDialogContainer>
-                      <MorphingDialogContent className="relative">
+                    {/* Expand image */}
+                    <MorphingDialog
+                      transition={{
+                        duration: 0.2,
+                        ease: "easeOut",
+                      }}
+                    >
+                      <MorphingDialogTrigger>
                         <Image
                           src={imageUrl(file)}
                           alt={`${activeFilter} ${index}`}
-                          width={1200}
-                          height={1600}
-                          className="h-auto w-full max-w-[90vw] rounded-lg object-cover lg:h-[90vh]"
+                          width={500}
+                          height={600}
+                          className="w-full h-auto object-cover rounded-lg"
+                          priority={index < 4}
+                          loading={index < 4 ? "eager" : "lazy"}
                         />
-                      </MorphingDialogContent>
-                    </MorphingDialogContainer>
-                  </MorphingDialog>
-                </motion.div>
-              ))}
+                      </MorphingDialogTrigger>
+                      <MorphingDialogContainer>
+                        <MorphingDialogContent className="relative">
+                          <Image
+                            src={imageUrl(file)}
+                            alt={`${activeFilter} ${index}`}
+                            width={1200}
+                            height={1600}
+                            className="h-auto w-full max-w-[90vw] rounded-lg object-cover lg:h-[90vh]"
+                            quality={90}
+                          />
+                        </MorphingDialogContent>
+                      </MorphingDialogContainer>
+                    </MorphingDialog>
+                  </motion.div>
+                );
+              })}
 
               {/* Spacer to shift lone image to the left on mobile */}
               {imageFiles[activeFilter].length % 2 === 1 && (
