@@ -2,6 +2,8 @@
 
 "use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -23,6 +25,8 @@ export default function ExpandableImage({
   alt,
   className = "",
 }: ExpandableImageProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <MorphingDialog
       transition={{
@@ -31,11 +35,19 @@ export default function ExpandableImage({
       }}
     >
       <MorphingDialogTrigger className="inline-block cursor-pointer">
-        <MorphingDialogImage
-          src={src}
-          alt={alt}
-          className={`rounded-lg ${className}`}
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: imageLoaded ? 1 : 0 }}
+          transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+        >
+          <MorphingDialogImage
+            src={src}
+            alt={alt}
+            className={`rounded-lg ${className}`}
+            style={{ opacity: imageLoaded ? 1 : 0 }}
+            onLoad={() => setImageLoaded(true)}
+          />
+        </motion.div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="relative overflow-hidden rounded-lg">
