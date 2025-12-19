@@ -115,10 +115,10 @@ export default function Play() {
 
                 return (
                   <motion.div
-                    key={index}
+                    key={`${activeFilter}-${file}-${index}`}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    animate={loading ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: loading ? 0 : index * 0.1 }}
                     onMouseEnter={handleMouseEnter}
                   >
                     {/* Expand image */}
