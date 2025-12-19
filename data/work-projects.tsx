@@ -1,8 +1,8 @@
 /* Work data */
 
 import { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import ExpandableImage from "@/components/ui/expandable-image";
 
 // Elements and sections of project pages
 export type WorkProject = {
@@ -89,33 +89,25 @@ export const workData: WorkProject[] = [
         with and learn from a team of talented engineers in the fintech sector,
         and also experience my first Midwestern summer!
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 my-6">
-          <Image
-            src="/images/nm/nm1.jpg"
+          <ExpandableImage
+            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm1.jpeg"
             alt="Northwestern Mutual building"
-            width={800}
-            height={450}
-            className="rounded-lg my-6"
+            className="my-6"
           />
-          <Image
-            src="/images/nm/nm2.jpg"
+          <ExpandableImage
+            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm2.jpeg"
             alt="View from UWM"
-            width={800}
-            height={450}
-            className="rounded-lg my-6"
+            className="my-6"
           />
-          <Image
-            src="/images/nm/nm3.jpg"
+          <ExpandableImage
+            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm3.jpeg"
             alt="Milwaukee Art Museum"
-            width={800}
-            height={450}
-            className="rounded-lg my-6"
+            className="my-6"
           />
-          <Image
-            src="/images/nm/nm4.jpg"
+          <ExpandableImage
+            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm4.jpeg"
             alt="Summerfest"
-            width={800}
-            height={450}
-            className="rounded-lg my-6"
+            className="my-6"
           />
         </div>
       </p>
@@ -183,12 +175,10 @@ export const workData: WorkProject[] = [
           revising a music stem based on feedback received from other users.
         </p>
 
-        <Image
-          src="/images/melodics/userflow.png"
+        <ExpandableImage
+          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/melodics/userflow.jpeg"
           alt="User flow diagram"
-          width={800}
-          height={450}
-          className="rounded-lg my-6"
+          className="my-6"
         />
 
         <p>
@@ -266,12 +256,10 @@ export const workData: WorkProject[] = [
             <strong>Express JS</strong> app into the{" "}
             <strong>WebContainer</strong> to test our code.
           </li>
-          <Image
-            src="/images/tech4good/ide1.png"
+          <ExpandableImage
+            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/tech4good/ide1.png"
             alt="User flow diagram"
-            width={800}
-            height={450}
-            className="rounded-lg my-6"
+            className="my-6"
           />
           <li>
             <strong>Terminal:</strong> In order to perform actions like
@@ -295,12 +283,10 @@ export const workData: WorkProject[] = [
           </li>
         </ul>
 
-        <Image
-          src="/images/tech4good/ide2.gif"
+        <ExpandableImage
+          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/tech4good/ide2.gif"
           alt="User flow diagram"
-          width={800}
-          height={450}
-          className="rounded-lg my-6"
+          className="my-6"
         />
       </>
     ),
@@ -349,12 +335,10 @@ export const workData: WorkProject[] = [
           <strong>Modeling and Simulation</strong> team, responsible for the
           development and delivery of flight-critical simulation software.
         </p>
-        <Image
-          src="/images/ga/mq9b.jpg"
+        <ExpandableImage
+          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/mq9b.jpeg"
           alt="User flow diagram"
-          width={800}
-          height={450}
-          className="rounded-lg my-6"
+          className="my-6"
         />
       </>
     ),
@@ -379,12 +363,10 @@ export const workData: WorkProject[] = [
           and quickly identify and troubleshoot errors that may be affecting
           aircraft behavior.
         </p>
-        <Image
-          src="/images/ga/station.jpg"
+        <ExpandableImage
+          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/station.jpeg"
           alt="Ground control station"
-          width={800}
-          height={450}
-          className="rounded-lg my-6"
+          className="my-6"
         />
         <p>
           To accomplish this task, I worked though the entire
@@ -466,12 +448,10 @@ export const workData: WorkProject[] = [
         We linked our Twilio flow chart to our mobile user interface using{" "}
         <strong>React-Native</strong> and published the application through the{" "}
         <strong>Expo-CLI</strong> framework.
-        <Image
-          src="/images/athenahacks/uscsos1.png"
+        <ExpandableImage
+          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/athenahacks/uscsos1.jpeg"
           alt="Twilio flow chart"
-          width={800}
-          height={450}
-          className="rounded-lg my-6"
+          className="my-6"
         />
       </p>
     ),

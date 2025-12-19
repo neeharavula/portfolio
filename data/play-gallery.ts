@@ -58,5 +58,5 @@ export const imageFiles: Record<FilterType, string[]> = {
     "pilot.mp4",
     // ...
   ],*/
-  art: ["florence.jpg"],
+  art: ["florence.jpeg"],
 };

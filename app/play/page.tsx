@@ -5,13 +5,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { captions, filters, imageFiles, FilterType } from "@/data/play-gallery";
-import {
-  MorphingDialog,
-  MorphingDialogTrigger,
-  MorphingDialogContent,
-  MorphingDialogContainer,
-  MorphingDialogImage,
-} from "@/components/ui/morphing-dialog";
+import ExpandableImage from "@/components/ui/expandable-image";
 import Layout from "@/components/base/general-layout";
 import Masonry from "react-masonry-css";
 
@@ -134,30 +128,11 @@ export default function Play() {
                     transition={{ duration: 0.5, delay: loading ? 0 : index * 0.1 }}
                     onMouseEnter={handleMouseEnter}
                   >
-                    {/* Expand image */}
-                    <MorphingDialog
-                      transition={{
-                        duration: 0.3,
-                        ease: [0.32, 0.72, 0, 1],
-                      }}
-                    >
-                      <MorphingDialogTrigger className="w-full rounded-lg overflow-hidden block">
-                        <MorphingDialogImage
-                          src={imageUrl(file)}
-                          alt={`${activeFilter} ${index}`}
-                          className="w-full h-auto object-cover rounded-lg"
-                        />
-                      </MorphingDialogTrigger>
-                      <MorphingDialogContainer>
-                        <MorphingDialogContent className="relative overflow-hidden rounded-lg">
-                          <MorphingDialogImage
-                            src={imageUrl(file)}
-                            alt={`${activeFilter} ${index}`}
-                            className="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain rounded-lg"
-                          />
-                        </MorphingDialogContent>
-                      </MorphingDialogContainer>
-                    </MorphingDialog>
+                    <ExpandableImage
+                      src={imageUrl(file)}
+                      alt={`${activeFilter} ${index}`}
+                      className="w-full h-auto object-cover"
+                    />
                   </motion.div>
                 );
               })}
