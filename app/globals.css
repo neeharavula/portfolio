@@ -14,9 +14,14 @@
   --font-offbit: "Offbit Trail", sans-serif;
 }
 
+html {
+  transition: background-color ease, color ease;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
+  transition: background-color ease, color ease;
 }
 
 /* Dark/Light mode */
