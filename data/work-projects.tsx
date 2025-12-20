@@ -337,7 +337,7 @@ export const workData: WorkProject[] = [
           development and delivery of flight-critical simulation software.
         </p>
         <ExpandableImage
-          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/mq9b.jpeg?v=${IMAGE_VERSION}`}
+          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/mq9b.jpg?v=${IMAGE_VERSION}`}
           alt="User flow diagram"
           className="my-6"
         />
@@ -365,7 +365,7 @@ export const workData: WorkProject[] = [
           aircraft behavior.
         </p>
         <ExpandableImage
-          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/station.jpeg?v=${IMAGE_VERSION}`}
+          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/station.jpg?v=${IMAGE_VERSION}`}
           alt="Ground control station"
           className="my-6"
         />
