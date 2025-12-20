@@ -8,6 +8,7 @@ import { iconMap } from "@/utils/icons";
 import { workData } from "@/data/work-projects";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { IMAGE_VERSION } from "@/config/image-version";
 
 // Card
 function WorkMobileCard({
@@ -40,7 +41,7 @@ function WorkMobileCard({
         <div className="w-14 h-14 rounded-xl overflow-hidden relative">
           {/* Logo */}
           <Image
-            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/logos/${project.slug}.png`}
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/logos/${project.slug}.png?v=${IMAGE_VERSION}`}
             alt={`${project.title} logo`}
             fill
             className="object-cover"
