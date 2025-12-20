@@ -18,6 +18,7 @@ import { Magnetic } from "@/components/ui/magnetic";
 import Layout from "@/components/base/general-layout";
 import Image from "next/image";
 import Link from "next/link";
+import { IMAGE_VERSION } from "@/config/image-version";
 import Section from "@/components/base/section";
 
 export default function ResumePage() {
@@ -45,7 +46,7 @@ export default function ResumePage() {
           className="flex items-center gap-8 mb-10"
         >
           <Image
-            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/resume/pfp.jpeg"
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/resume/pfp.jpeg?v=${IMAGE_VERSION}`}
             alt="Profile"
             width={96}
             height={96}

@@ -8,6 +8,7 @@ import { captions, filters, imageFiles, FilterType } from "@/data/play-gallery";
 import ExpandableImage from "@/components/ui/expandable-image";
 import Layout from "@/components/base/general-layout";
 import Masonry from "react-masonry-css";
+import { IMAGE_VERSION } from "@/config/image-version";
 
 export default function Play() {
   const [activeFilter, setActiveFilter] = useState<FilterType>("film");
@@ -50,7 +51,7 @@ export default function Play() {
   const visibleFilters = filters;
 
   const imageUrl = (file: string) =>
-    `https://f6ciazohrats9a1e.public.blob.vercel-storage.com/play/${activeFilter}/${file}`;
+    `https://f6ciazohrats9a1e.public.blob.vercel-storage.com/play/${activeFilter}/${file}?v=${IMAGE_VERSION}`;
 
   return (
     <Layout variant="play">
