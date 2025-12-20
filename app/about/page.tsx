@@ -15,6 +15,7 @@ import { useInView } from "react-intersection-observer";
 import Layout from "@/components/base/general-layout";
 import Image from "next/image";
 import Link from "next/link";
+import { IMAGE_VERSION } from "@/config/image-version";
 
 const AboutPageContent = () => {
   const { ref: imageRef, inView: imageInView } = useInView({
@@ -41,7 +42,7 @@ const AboutPageContent = () => {
         className="relative w-2/3 max-w-sm aspect-[3/4] mb-4"
       >
         <Image
-          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.jpeg"
+          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.jpeg?v=${IMAGE_VERSION}`}
           alt="About Image"
           fill
           className="object-contain"

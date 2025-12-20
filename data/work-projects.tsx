@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 import ExpandableImage from "@/components/ui/expandable-image";
+import { IMAGE_VERSION } from "@/config/image-version";
 
 // Elements and sections of project pages
 export type WorkProject = {
@@ -90,22 +91,22 @@ export const workData: WorkProject[] = [
         and also experience my first Midwestern summer!
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 my-6">
           <ExpandableImage
-            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm1.jpeg"
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm1.jpeg?v=${IMAGE_VERSION}`}
             alt="Northwestern Mutual building"
             className="my-6"
           />
           <ExpandableImage
-            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm2.jpeg"
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm2.jpeg?v=${IMAGE_VERSION}`}
             alt="View from UWM"
             className="my-6"
           />
           <ExpandableImage
-            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm3.jpeg"
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm3.jpeg?v=${IMAGE_VERSION}`}
             alt="Milwaukee Art Museum"
             className="my-6"
           />
           <ExpandableImage
-            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm4.jpeg"
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/nm/nm4.jpeg?v=${IMAGE_VERSION}`}
             alt="Summerfest"
             className="my-6"
           />
@@ -176,7 +177,7 @@ export const workData: WorkProject[] = [
         </p>
 
         <ExpandableImage
-          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/melodics/userflow.jpeg"
+          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/melodics/userflow.jpeg?v=${IMAGE_VERSION}`}
           alt="User flow diagram"
           className="my-6"
         />
@@ -257,7 +258,7 @@ export const workData: WorkProject[] = [
             <strong>WebContainer</strong> to test our code.
           </li>
           <ExpandableImage
-            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/tech4good/ide1.png"
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/tech4good/ide1.png?v=${IMAGE_VERSION}`}
             alt="User flow diagram"
             className="my-6"
           />
@@ -284,7 +285,7 @@ export const workData: WorkProject[] = [
         </ul>
 
         <ExpandableImage
-          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/tech4good/ide2.gif"
+          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/tech4good/ide2.gif?v=${IMAGE_VERSION}`}
           alt="User flow diagram"
           className="my-6"
         />
@@ -336,7 +337,7 @@ export const workData: WorkProject[] = [
           development and delivery of flight-critical simulation software.
         </p>
         <ExpandableImage
-          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/mq9b.jpeg"
+          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/mq9b.jpeg?v=${IMAGE_VERSION}`}
           alt="User flow diagram"
           className="my-6"
         />
@@ -364,7 +365,7 @@ export const workData: WorkProject[] = [
           aircraft behavior.
         </p>
         <ExpandableImage
-          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/station.jpeg"
+          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/ga/station.jpeg?v=${IMAGE_VERSION}`}
           alt="Ground control station"
           className="my-6"
         />
@@ -449,7 +450,7 @@ export const workData: WorkProject[] = [
         <strong>React-Native</strong> and published the application through the{" "}
         <strong>Expo-CLI</strong> framework.
         <ExpandableImage
-          src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/athenahacks/uscsos1.jpeg"
+          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/athenahacks/uscsos1.jpeg?v=${IMAGE_VERSION}`}
           alt="Twilio flow chart"
           className="my-6"
         />

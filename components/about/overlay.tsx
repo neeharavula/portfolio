@@ -15,6 +15,7 @@ import { useInView } from "react-intersection-observer";
 import { Magnetic } from "@/components/ui/magnetic";
 import Image from "next/image";
 import Link from "next/link";
+import { IMAGE_VERSION } from "@/config/image-version";
 
 type AboutOverlayProps = {
   onClose: () => void;
@@ -76,7 +77,7 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
           className="relative w-1/3 max-w-xs aspect-[3/4] mb-4"
         >
           <Image
-            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.jpeg"
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.jpeg?v=${IMAGE_VERSION}`}
             alt="About Image"
             fill
             className="object-contain"
