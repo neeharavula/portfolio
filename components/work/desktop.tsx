@@ -8,6 +8,7 @@ import { iconMap } from "@/utils/icons";
 import { workData } from "@/data/work-projects";
 import { AnimatedBackground } from "../ui/animated-background";
 import { motion } from "framer-motion";
+import { IMAGE_VERSION } from "@/config/image-version";
 
 // Page
 const WorkDesktop = () => {
@@ -43,7 +44,7 @@ const WorkDesktop = () => {
               <div className="flex items-center gap-4">
                 <div className="w-6 h-6 rounded-sm overflow-hidden relative">
                   <Image
-                    src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/logos/${project.slug}.png`}
+                    src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/logos/${project.slug}.jpeg?v=${IMAGE_VERSION}`}
                     alt={`${project.title} logo`}
                     fill
                     className="object-cover"
