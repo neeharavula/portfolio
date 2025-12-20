@@ -450,7 +450,7 @@ export const workData: WorkProject[] = [
         <strong>React-Native</strong> and published the application through the{" "}
         <strong>Expo-CLI</strong> framework.
         <ExpandableImage
-          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/athenahacks/uscsos1.jpeg?v=${IMAGE_VERSION}`}
+          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/athenahacks/uscsos1.png?v=${IMAGE_VERSION}`}
           alt="Twilio flow chart"
           className="my-6"
         />
