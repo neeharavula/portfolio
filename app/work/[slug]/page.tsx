@@ -26,7 +26,7 @@ export default async function Project({ params }: Props) {
         {/* Overview */}
         {project.overview && (
           <Section title="Overview">
-            <p>{project.overview}</p>
+            <div>{project.overview}</div>
           </Section>
         )}
 
@@ -67,14 +67,14 @@ export default async function Project({ params }: Props) {
         {/* Contributions */}
         {project.tasks && (
           <Section title="Contributions">
-            <p>{project.tasks}</p>
+            <div>{project.tasks}</div>
           </Section>
         )}
 
         {/* Reflections */}
         {project.reflections && (
           <Section title="Reflections">
-            <p>{project.reflections}</p>
+            <div>{project.reflections}</div>
           </Section>
         )}
       </div>

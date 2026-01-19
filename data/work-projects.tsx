@@ -219,7 +219,7 @@ export const workData: WorkProject[] = [
   // Tech4Good / Causeway
   {
     slug: "tech4good",
-    title: "Tech4Good / Causeway",
+    title: "Causeway / Tech4Good",
     type: "Lab",
     date: "Spring 2023",
     tools: ["javascript", "html", "css", "angular", "stackblitz"],
@@ -272,12 +272,12 @@ export const workData: WorkProject[] = [
           <li>
             <strong>File System Pane:</strong> Lastly, we use the{" "}
             <strong>Angular</strong>{" "}
-            <code className="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded text-xs">
+            <code className="bg-[var(--code-bg)] px-2 py-0.5 rounded text-xs">
               mat-tree
             </code>{" "}
             component to create a file system pane UI, which involved
             recursively traversing through the directories with the{" "}
-            <code className="bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded text-xs">
+            <code className="bg-[var(--code-bg)] px-2 py-0.5 rounded text-xs">
               readdir
             </code>{" "}
             function and updating the code editor based on selected files.
@@ -423,7 +423,7 @@ export const workData: WorkProject[] = [
   // Athenahacks / USC SOS
   {
     slug: "athenahacks",
-    title: "AthenaHacks / USC SOS",
+    title: "USC SOS / AthenaHacks",
     type: "Hackathon",
     date: "Spring 2021",
     tools: ["javascript", "html", "css", "twilio"],

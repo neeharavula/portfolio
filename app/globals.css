@@ -28,12 +28,14 @@ body {
 
 :root {
   --hover-bg: #f4f4f5;
+  --code-bg: #e5e5e5;
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
   --hover-bg: #18181b;
+  --code-bg: #404040;
 }
 
 /* Fonts */
