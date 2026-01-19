@@ -77,7 +77,7 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
           className="relative w-1/3 max-w-xs aspect-[3/4] mb-4"
         >
           <Image
-            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.jpeg?v=${IMAGE_VERSION}`}
+            src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.png?v=${IMAGE_VERSION}`}
             alt="About Image"
             fill
             className="object-contain"
