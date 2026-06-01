@@ -27,8 +27,8 @@ export default function ResumePage() {
     threshold: 0.1,
   });
 
-  // Sammy cursor :D
-  const [isHoveringEducation, setIsHoveringEducation] = useState(false);
+  // Easter egg cursors :D
+  const [activeCursorImage, setActiveCursorImage] = useState<string | null>(null);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPos({ x: e.clientX, y: e.clientY });
@@ -68,13 +68,10 @@ export default function ResumePage() {
             <Section
               key={section.title}
               title={section.title}
-              className={isEducation ? "relative" : ""}
               {...(isEducation
                 ? {
-                    onMouseEnter: () => setIsHoveringEducation(true),
-                    onMouseLeave: () => setIsHoveringEducation(false),
                     onMouseMove: handleMouseMove,
-                    style: { cursor: "none" },
+                    style: activeCursorImage ? { cursor: "none" } : undefined,
                   }
                 : {})}
             >
@@ -87,6 +84,15 @@ export default function ResumePage() {
                     bounce: 0,
                     duration: 0.2,
                   }}
+                  {...(isEducation
+                    ? {
+                        onValueChange: (id) => {
+                          if (!id) { setActiveCursorImage(null); return; }
+                          const idx = parseInt(id.split("-").pop()!);
+                          setActiveCursorImage(section.entries[idx]?.cursorImage ?? null);
+                        },
+                      }
+                    : {})}
                 >
                   {section.entries.map((entry, i) => (
                     <motion.li
@@ -141,8 +147,8 @@ export default function ResumePage() {
                 </AnimatedBackground>
               </ul>
 
-              {/* Sammy cursor */}
-              {isEducation && isHoveringEducation && (
+              {/* Easter egg cursors */}
+              {isEducation && activeCursorImage && (
                 <div
                   style={{
                     position: "fixed",
@@ -154,7 +160,7 @@ export default function ResumePage() {
                     width: 50,
                     height: 50,
                     borderRadius: "50%",
-                    backgroundImage: 'url("/images/sammy.png")',
+                    backgroundImage: `url("${activeCursorImage}")`,
                     backgroundSize: "contain",
                     backgroundRepeat: "no-repeat",
                   }}

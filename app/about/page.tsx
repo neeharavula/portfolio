@@ -59,22 +59,23 @@ const AboutPageContent = () => {
       >
         <p className="indent-8">
           Hi! I&apos;m Neeha. I grew up in San Diego, California and studied
-          Computer Science at UC Santa Cruz in northern California. Currently, I
-          develop flight control and mission systems simulation software in the
-          aerospace/defense sector.
+          computer science at UC Santa Cruz. This fall, I&apos;ll be heading to
+          NYC to pursue a master's in computer science at Cornell Tech,
+          exploring the areas of human-centered computing and AI. Previously, I
+          worked on developing software solutions across the aerospace and
+          fintech sectors.
         </p>
         <p className="indent-8">
           I approach my work with a mix of intentionality, playfulness, and
-          care, balancing thoughtful design with scalable, functional solutions.
-          I&apos;m driven by curiosity and exploration and I&apos;m always
+          care, bridging thoughtful design with scalable, functional solutions.
+          I&apos;m driven by curiosity and a hunger to learn, and am always
           looking for opportunities that lie at the intersection of design,
           tech, and social impact.
         </p>
         <p className="indent-8">
-          Outside of tech, you can find me hiking by the beach, taking photos on
-          my Fujifilm XT30II, browsing my next travel destination (it&apos;s an
-          obsession), or finding my next song fixation on Spotify. Feel free to
-          reach out and say hi!
+          Outside of tech, you can find me hiking in the mountains, taking
+          photos on my Fujifilm XT30II, or finding my next song fixation on
+          Spotify. Feel free to reach out and say hi!
         </p>
       </motion.div>
 
