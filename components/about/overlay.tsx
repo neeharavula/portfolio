@@ -94,21 +94,22 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
         >
           <p className="whitespace-pre-wrap leading-relaxed text-sm">
             Hi! I&apos;m Neeha. I grew up in San Diego, California and studied
-            Computer Science at UC Santa Cruz in northern California. Currently,
-            I develop simulation and flight control software solutions in the
-            aerospace/defense sector. 🛩️
+            computer science at UC Santa Cruz. This fall, I&apos;ll be heading
+            to NYC to pursue a master's in computer science at Cornell Tech,
+            exploring the areas of human-centered computing and AI. Previously,
+            I worked on developing software solutions across the aerospace and
+            fintech sectors.
             <br />
             <br />
             I approach my work with a mix of intentionality, playfulness, and
-            care, balancing thoughtful design with scalable, functional
-            solutions. I’m driven by curiosity and exploration, and am always
-            looking for opportunities that lie at the intersection of design,
-            tech, and social impact.
+            care, bridging thoughtful design with scalable, functional
+            solutions. I&apos;m driven by curiosity and a hunger to learn, and
+            am always looking for opportunities that lie at the intersection of
+            design, tech, and social impact.
             <br />
             <br />
-            Outside of tech, you can find me hiking by the beach, taking photos
-            on my Fujifilm XT30II, browsing my next travel destination
-            (it&apos;s an obsession), or finding my next song fixation on
+            Outside of tech, you can find me hiking in the mountains, taking
+            photos on my Fujifilm XT30II, or finding my next song fixation on
             Spotify. Feel free to reach out and say hi!
           </p>
         </motion.div>
@@ -123,58 +124,58 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
         >
           {/* Email */}
           <Magnetic>
-              <Link
-                href="mailto:hello@neeharavula.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#adbcc4]"
-              >
-                <EnvelopeIcon size={20} />
-              </Link>
+            <Link
+              href="mailto:hello@neeharavula.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#adbcc4]"
+            >
+              <EnvelopeIcon size={20} />
+            </Link>
           </Magnetic>
           {/* LinkedIn */}
           <Magnetic>
-              <Link
-                href="https://www.linkedin.com/in/neeharavula/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#60a0c4]"
-              >
-                <LinkedinLogoIcon size={20} />
-              </Link>
+            <Link
+              href="https://www.linkedin.com/in/neeharavula/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#60a0c4]"
+            >
+              <LinkedinLogoIcon size={20} />
+            </Link>
           </Magnetic>
           {/* Github */}
           <Magnetic>
-              <Link
-                href="https://github.com/neeharavula"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#d1996b]"
-              >
-                <GithubLogoIcon size={20} />
-              </Link>
+            <Link
+              href="https://github.com/neeharavula"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#d1996b]"
+            >
+              <GithubLogoIcon size={20} />
+            </Link>
           </Magnetic>
           {/* Instagram */}
           <Magnetic>
-              <Link
-                href="https://www.instagram.com/neehasroll/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#bd6881]"
-              >
-                <InstagramLogoIcon size={20} />
-              </Link>
+            <Link
+              href="https://www.instagram.com/neehasroll/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#bd6881]"
+            >
+              <InstagramLogoIcon size={20} />
+            </Link>
           </Magnetic>
           {/* Spotify */}
           <Magnetic>
-              <Link
-                href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#94A75D]"
-              >
-                <SpotifyLogoIcon size={20} />
-              </Link>
+            <Link
+              href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#94A75D]"
+            >
+              <SpotifyLogoIcon size={20} />
+            </Link>
           </Magnetic>
         </motion.div>
       </div>

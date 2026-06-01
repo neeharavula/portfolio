@@ -6,9 +6,9 @@ export type FilterType = (typeof filters)[number];
 
 // Loading captions (per filter)
 export const captions: Record<FilterType, string> = {
-  film: "Loading film roll...",
-  digital: "Cleaning sensor...",
-  art: "Opening sketchbook...",
+  film: "Loading film roll",
+  digital: "Cleaning sensor",
+  art: "Opening sketchbook",
 };
 
 // Images (per filter)
