@@ -34,7 +34,7 @@ const Nav: React.FC<NavProps> = ({
 
   const [time, setTime] = useState<string>(() => formatTime(new Date()));
   const [hour, setHour] = useState<number>(new Date().getHours());
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const Nav: React.FC<NavProps> = ({
               </Link>
             </Magnetic>
             <div className="flex items-center gap-8 relative z-10">
-              <span>{time}</span>
+              <span suppressHydrationWarning>{time}</span>
               <Magnetic>
                 <button onClick={toggleTheme} className="cursor-pointer flex items-center">
                   {getIcon()}
@@ -129,7 +129,7 @@ const Nav: React.FC<NavProps> = ({
               {variant === "resume" && "Resume"}
             </div>
             <div className="flex items-center gap-8 relative z-10">
-              <span>{time}</span>
+              <span suppressHydrationWarning>{time}</span>
               <Magnetic>
                 <button onClick={toggleTheme} className="cursor-pointer flex items-center">
                   {getIcon()}
@@ -153,7 +153,7 @@ const Nav: React.FC<NavProps> = ({
               {projectTitle ?? "Project"}
             </div>
             <div className="flex items-center gap-8 relative z-10">
-              <span>{time}</span>
+              <span suppressHydrationWarning>{time}</span>
               <Magnetic>
                 <button onClick={toggleTheme} className="cursor-pointer flex items-center">
                   {getIcon()}
