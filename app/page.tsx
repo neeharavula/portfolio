@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import {
   EnvelopeIcon,
   LinkedinLogoIcon,
+  XLogoIcon,
   GithubLogoIcon,
   InstagramLogoIcon,
   SpotifyLogoIcon,
@@ -117,6 +118,14 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <LinkedinLogoIcon size={20} />
+          </Link>
+          {/* X */}
+          <Link
+            href="https://x.com/neeharavula"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <XLogoIcon size={20} />
           </Link>
           {/* Github */}
           <Link
