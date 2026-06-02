@@ -8,6 +8,7 @@ import {
   InstagramLogoIcon,
   SpotifyLogoIcon,
   LinkedinLogoIcon,
+  XLogoIcon,
 } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -142,6 +143,17 @@ const AboutOverlay = ({ onClose }: AboutOverlayProps) => {
               className="hover:text-[#60a0c4]"
             >
               <LinkedinLogoIcon size={20} />
+            </Link>
+          </Magnetic>
+          {/* X */}
+          <Magnetic>
+            <Link
+              href="https://x.com/neeharavula"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#adbcc4]"
+            >
+              <XLogoIcon size={20} />
             </Link>
           </Magnetic>
           {/* Github */}
