@@ -4,6 +4,7 @@
 
 import {
   XIcon,
+  XLogoIcon,
   EnvelopeIcon,
   LinkedinLogoIcon,
   GithubLogoIcon,
@@ -141,6 +142,14 @@ const Layout = ({ children, variant, projectTitle }: LayoutProps) => {
                   rel="noopener noreferrer"
                 >
                   <LinkedinLogoIcon size={20} />
+                </Link>
+                {/* X */}
+                <Link
+                  href="https://x.com/neeharavula"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <XLogoIcon size={20} />
                 </Link>
                 {/* Github */}
                 <Link

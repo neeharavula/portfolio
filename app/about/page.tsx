@@ -5,6 +5,7 @@
 import {
   EnvelopeIcon,
   LinkedinLogoIcon,
+  XLogoIcon,
   GithubLogoIcon,
   InstagramLogoIcon,
   SpotifyLogoIcon,
@@ -100,6 +101,13 @@ const AboutPageContent = () => {
           rel="noopener noreferrer"
         >
           <LinkedinLogoIcon size={20} />
+        </Link>
+        <Link
+          href="https://x.com/neeharavula"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <XLogoIcon size={20} />
         </Link>
         <Link
           href="https://github.com/neeharavula"
