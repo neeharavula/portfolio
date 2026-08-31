@@ -32,10 +32,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="dns-prefetch" href="https://f6ciazohrats9a1e.public.blob.vercel-storage.com" />
-        <link rel="preconnect" href="https://f6ciazohrats9a1e.public.blob.vercel-storage.com" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
