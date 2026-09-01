@@ -42,8 +42,11 @@ body {
 
 @font-face {
   font-family: "Offbit Trail";
-  src: url("/fonts/OffBit-Bold.woff2") format("woff2"),
-    url("/fonts/OffBit-Bold.woff") format("woff");
+  src:
+    url("https://f6ciazohrats9a1e.public.blob.vercel-storage.com/fonts/OffBit-Bold.woff2")
+      format("woff2"),
+    url("https://f6ciazohrats9a1e.public.blob.vercel-storage.com/fonts/OffBit-Bold.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
