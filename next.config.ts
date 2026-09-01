@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* Config options */
+  agentRules: false,
   images: {
     remotePatterns: [
       {
