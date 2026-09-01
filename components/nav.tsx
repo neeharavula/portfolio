@@ -1,7 +1,11 @@
 /* Global nav */
 
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { SunIcon, ListIcon } from "@phosphor-icons/react/ssr";
+import MobileMenu from "@/components/mobile-menu";
 
 const links = [
   { href: "/", label: "Work" },
@@ -10,6 +14,8 @@ const links = [
 ];
 
 const Nav = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="w-full flex items-center justify-between px-xl py-xl">
       {/* Home */}
@@ -28,9 +34,15 @@ const Nav = () => {
       </div>
 
       {/* Mobile: menu button */}
-      <button aria-label="Open menu" className="sm:hidden text-tertiary">
+      <button
+        aria-label="Open menu"
+        onClick={() => setMenuOpen(true)}
+        className="sm:hidden text-tertiary"
+      >
         <ListIcon size={24} />
       </button>
+
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
   );
 };
