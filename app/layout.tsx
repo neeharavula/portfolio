@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import Nav from "@/components/nav";
 import "./globals.css";
 
 /* Fonts */
@@ -37,6 +38,7 @@ export default function RootLayout({
         className={`${inter.variable} ${ibmPlexMono.variable} font-content bg-background text-primary antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Nav />
           {children}
         </ThemeProvider>
       </body>

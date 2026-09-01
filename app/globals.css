@@ -12,6 +12,7 @@
   --text-primary: #171717;
   --text-secondary: #a1a1a1;
   --text-tertiary: #6a7e87;
+  --overlay-background: #0a0a0a; /* mobile menu */
 }
 
 .dark {
@@ -25,7 +26,7 @@
   --text-tertiary: #6a7e87;
 }
 
-/* Header font: OffBit Bold  */
+/* OffBit Bold  */
 @font-face {
   font-family: "OffBit Bold";
   src:
@@ -48,6 +49,7 @@
   --color-primary: var(--text-primary);
   --color-secondary: var(--text-secondary);
   --color-tertiary: var(--text-tertiary);
+  --color-overlay: var(--overlay-background);
 
   /* Spacing */
   --spacing-xs: 4px;
