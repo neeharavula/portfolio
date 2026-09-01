@@ -12,8 +12,7 @@
   --text-primary: #171717;
   --text-secondary: #a1a1a1;
   --text-tertiary: #6a7e87;
-  /* Always dark, regardless of light/dark mode (e.g. the mobile menu overlay) */
-  --overlay-background: #0a0a0a;
+  --overlay-background: #0a0a0a; /* mobile menu */
 }
 
 .dark {
@@ -27,7 +26,7 @@
   --text-tertiary: #6a7e87;
 }
 
-/* Header font: OffBit Bold  */
+/* OffBit Bold  */
 @font-face {
   font-family: "OffBit Bold";
   src:

@@ -5,6 +5,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { SunIcon, ListIcon } from "@phosphor-icons/react/ssr";
+import { motion, AnimatePresence } from "motion/react";
 import MobileMenu from "@/components/mobile-menu";
 
 const links = [
@@ -34,13 +35,23 @@ const Nav = () => {
       </div>
 
       {/* Mobile: menu button */}
-      <button
-        aria-label="Open menu"
-        onClick={() => setMenuOpen(true)}
-        className="sm:hidden text-tertiary"
-      >
-        <ListIcon size={24} />
-      </button>
+      <div className="sm:hidden text-tertiary">
+        <AnimatePresence mode="wait">
+          {!menuOpen && (
+            <motion.button
+              key="hamburger"
+              aria-label="Open menu"
+              onClick={() => setMenuOpen(true)}
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ListIcon size={24} />
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </div>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
