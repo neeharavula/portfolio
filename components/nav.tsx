@@ -31,7 +31,7 @@ const Nav = () => {
             [ {label} ]
           </Link>
         ))}
-        <SunIcon size={20} />
+        <SunIcon size={20} weight="regular" />
       </div>
 
       {/* Mobile: menu button */}
