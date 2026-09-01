@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Nav from "@/components/nav";
+import Footer from "@/components/footer";
 import "./globals.css";
 
 /* Fonts */
@@ -40,6 +41,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Nav />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

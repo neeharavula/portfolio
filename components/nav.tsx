@@ -31,7 +31,7 @@ const Nav = () => {
             [ {label} ]
           </Link>
         ))}
-        <SunIcon size={20} />
+        <SunIcon size={20} weight="regular" />
       </div>
 
       {/* Mobile: menu button */}
@@ -47,7 +47,7 @@ const Nav = () => {
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <ListIcon size={24} />
+              <ListIcon size={20} weight="regular" />
             </motion.button>
           )}
         </AnimatePresence>

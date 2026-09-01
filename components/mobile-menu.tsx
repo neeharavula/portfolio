@@ -4,12 +4,27 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import { XIcon } from "@phosphor-icons/react/ssr";
+import {
+  XIcon,
+  EnvelopeIcon,
+  LinkedinLogoIcon,
+  XLogoIcon,
+  GithubLogoIcon,
+  InstagramLogoIcon,
+} from "@phosphor-icons/react/ssr";
 
 const links = [
   { href: "/", label: "Work" },
   { href: "/play", label: "Play" },
   { href: "/about", label: "About" },
+];
+
+const socials = [
+  { href: "mailto:hello@neeharavula.com", label: "Email", Icon: EnvelopeIcon },
+  { href: "https://www.linkedin.com/in/neeharavula/", label: "LinkedIn", Icon: LinkedinLogoIcon },
+  { href: "https://x.com/neeharavula", label: "X", Icon: XLogoIcon },
+  { href: "https://github.com/neeharavula", label: "GitHub", Icon: GithubLogoIcon },
+  { href: "https://www.instagram.com/neehasroll/", label: "Instagram", Icon: InstagramLogoIcon },
 ];
 
 type MobileMenuProps = {
@@ -37,12 +52,12 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
                 exit={{ rotate: 90, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <XIcon size={24} />
+                <XIcon size={20} weight="regular" />
               </motion.div>
             </button>
           </div>
 
-          {/* Links */}
+          {/* Page links */}
           <nav className="flex-1 flex flex-col items-start justify-center gap-xl font-navigation text-sm uppercase">
             {links.map(({ href, label }) => (
               <Link key={href} href={href} onClick={onClose}>
@@ -50,6 +65,15 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
               </Link>
             ))}
           </nav>
+
+          {/* Socials */}
+          <div className="flex items-center justify-center gap-xl">
+            {socials.map(({ href, label, Icon }) => (
+              <a key={label} href={href} aria-label={label}>
+                <Icon size={20} weight="regular" />
+              </a>
+            ))}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
