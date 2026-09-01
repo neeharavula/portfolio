@@ -21,7 +21,7 @@ const Nav = () => {
     <header className="w-full flex items-center justify-between px-xl py-xl">
       {/* Home */}
       <Link href="/" aria-label="Home">
-        <span className="block h-3 w-3 rounded-full bg-accent" />
+        <span className="block h-4 w-4 rounded-full bg-accent" />
       </Link>
 
       {/* Desktop: links + theme icon */}

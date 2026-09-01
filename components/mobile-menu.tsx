@@ -43,7 +43,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
           </div>
 
           {/* Links */}
-          <nav className="flex-1 flex flex-col items-start justify-center gap-lg font-navigation text-sm uppercase">
+          <nav className="flex-1 flex flex-col items-start justify-center gap-xl font-navigation text-sm uppercase">
             {links.map(({ href, label }) => (
               <Link key={href} href={href} onClick={onClose}>
                 [ {label} ]
