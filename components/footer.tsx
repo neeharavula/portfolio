@@ -3,6 +3,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
 
 const formatTime = (date: Date) => {
   let hours = date.getHours();
@@ -29,9 +30,13 @@ const Footer = () => {
     <footer className="w-full flex items-center justify-between px-xl py-xl font-navigation text-tertiary text-sm uppercase">
       <span>© {year}</span>
 
-      <a href="mailto:hello@neeharavula.com" className="hidden sm:inline">
-        [ Collab / Say Hi ]
-      </a>
+      <span className="hidden sm:inline">
+        <Magnetic>
+          <a href="mailto:hello@neeharavula.com" className="hover:text-accent">
+            [ Collab / Say Hi ]
+          </a>
+        </Magnetic>
+      </span>
 
       <span suppressHydrationWarning>{time}</span>
     </footer>
