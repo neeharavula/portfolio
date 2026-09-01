@@ -6,6 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { SunIcon, ListIcon } from "@phosphor-icons/react/ssr";
 import { motion, AnimatePresence } from "motion/react";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
 import MobileMenu from "@/components/mobile-menu";
 
 const links = [
@@ -20,18 +21,24 @@ const Nav = () => {
   return (
     <header className="w-full flex items-center justify-between px-xl py-xl">
       {/* Home */}
-      <Link href="/" aria-label="Home">
-        <span className="block h-3.5 w-3.5 rounded-full bg-accent" />
-      </Link>
+      <Magnetic>
+        <Link href="/" aria-label="Home">
+          <span className="block h-3.5 w-3.5 rounded-full bg-accent" />
+        </Link>
+      </Magnetic>
 
       {/* Desktop: links + theme icon */}
       <div className="hidden sm:flex items-center gap-xl font-navigation text-tertiary text-sm uppercase">
         {links.map(({ href, label }) => (
-          <Link key={href} href={href}>
-            [ {label} ]
-          </Link>
+          <Magnetic key={href}>
+            <Link href={href} className="hover:text-accent">
+              [ {label} ]
+            </Link>
+          </Magnetic>
         ))}
-        <SunIcon size={20} weight="regular" />
+        <Magnetic>
+          <SunIcon size={20} weight="regular" />
+        </Magnetic>
       </div>
 
       {/* Mobile: menu button */}
