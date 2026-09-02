@@ -4,9 +4,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { SunIcon, ListIcon } from "@phosphor-icons/react/ssr";
+import { ListIcon } from "@phosphor-icons/react/ssr";
 import { motion, AnimatePresence } from "motion/react";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
+import ThemeToggle from "@/components/theme-toggle";
 import MobileMenu from "@/components/mobile-menu";
 
 const links = [
@@ -36,9 +37,7 @@ const Nav = () => {
             </Link>
           </Magnetic>
         ))}
-        <Magnetic>
-          <SunIcon size={20} weight="regular" />
-        </Magnetic>
+        <ThemeToggle />
       </div>
 
       {/* Mobile: menu button */}
