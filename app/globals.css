@@ -1,47 +1,34 @@
-/* Global CSS */
-
 @import "tailwindcss";
 
-/* Base */
+@custom-variant dark (&:where(.dark, .dark *));
 
+/* Color tokens */
 :root {
+  --accent: #9caf64;
   --background: #ffffff;
-  --foreground: #171717;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-offbit: "Offbit Trail", sans-serif;
-}
-
-html {
-  transition: background-color ease, color ease;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  transition: background-color ease, color ease;
-}
-
-/* Dark/Light mode */
-
-:root {
-  --hover-bg: #f4f4f5;
-  --code-bg: #e5e5e5;
+  --background-hover: #e5e5e5;
+  --background-code: #e5e5e5;
+  --text-header: #4a4a4a;
+  --text-primary: #171717;
+  --text-secondary: #a1a1a1;
+  --text-tertiary: #6a7e87;
+  --overlay-background: #0a0a0a; /* mobile menu */
 }
 
 .dark {
+  --accent: #9caf64;
   --background: #0a0a0a;
-  --foreground: #ededed;
-  --hover-bg: #18181b;
-  --code-bg: #404040;
+  --background-hover: #18181b;
+  --background-code: #404040;
+  --text-header: #ededed;
+  --text-primary: #ededed;
+  --text-secondary: #a1a1a1;
+  --text-tertiary: #6a7e87;
 }
 
-/* Fonts */
-
+/* OffBit Bold  */
 @font-face {
-  font-family: "Offbit Trail";
+  font-family: "OffBit Bold";
   src:
     url("https://f6ciazohrats9a1e.public.blob.vercel-storage.com/fonts/OffBit-Bold.woff2")
       format("woff2"),
@@ -49,42 +36,35 @@ body {
       format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
-.font-offbit {
-  font-family: var(--font-offbit);
+@theme inline {
+  /* Colors */
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-background-hover: var(--background-hover);
+  --color-background-code: var(--background-code);
+  --color-header: var(--text-header);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-tertiary: var(--text-tertiary);
+  --color-overlay: var(--overlay-background);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+
+  /* Fonts */
+  --font-header: "OffBit Bold", sans-serif;
+  --font-navigation: var(--font-ibm-plex-mono), monospace;
+  --font-content: var(--font-inter), sans-serif;
 }
 
-/* Image grid */
-
-.masonry-grid {
-  display: flex;
-  margin-left: -2rem;
-  margin-right: -1rem;
-}
-
-@media (min-width: 640px) {
-  .masonry-grid {
-    margin-left: -3rem;
-  }
-}
-
-.masonry-column {
-  padding-left: 1rem;
-}
-
-@media (min-width: 640px) {
-  .masonry-column {
-    padding-left: 2rem;
-  }
-}
-
-.masonry-column > div {
-  margin-bottom: 1rem;
-}
-
-@media (min-width: 640px) {
-  .masonry-column > div {
-    margin-bottom: 2rem;
-  }
+body {
+  background: var(--background);
+  color: var(--text-primary);
 }
