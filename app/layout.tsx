@@ -35,8 +35,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/smn7zyq.css" />
+      </head>
       <body
-        className={`${inter.variable} ${ibmPlexMono.variable} font-content bg-background text-primary antialiased`}
+        className={`${inter.variable} ${ibmPlexMono.variable} font-content tracking-wide bg-background text-primary antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Nav />

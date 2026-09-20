@@ -10,7 +10,7 @@
   --background-code: #e5e5e5;
   --text-header: #4a4a4a;
   --text-primary: #171717;
-  --text-secondary: #a1a1a1;
+  --text-secondary: #b0b0b0;
   --text-tertiary: #6a7e87;
   --overlay-background: #0a0a0a; /* mobile menu */
 }
@@ -22,7 +22,7 @@
   --background-code: #404040;
   --text-header: #ededed;
   --text-primary: #ededed;
-  --text-secondary: #a1a1a1;
+  --text-secondary: #b0b0b0;
   --text-tertiary: #6a7e87;
 }
 
@@ -61,7 +61,7 @@
   /* Fonts */
   --font-header: "OffBit Bold", sans-serif;
   --font-navigation: var(--font-ibm-plex-mono), monospace;
-  --font-content: var(--font-inter), sans-serif;
+  --font-content: "elza", var(--font-inter), sans-serif;
 }
 
 body {
