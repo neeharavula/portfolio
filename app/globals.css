@@ -13,7 +13,7 @@
   --text-secondary: #b0b0b0;
   --text-tertiary: #6a7e87;
   --overlay-background: #0a0a0a; /* mobile menu */
-  --page-divider: var(--background-code);
+  --page-divider: #e5e5e5;
 }
 
 .dark {
@@ -25,6 +25,7 @@
   --text-primary: #ededed;
   --text-secondary: #b0b0b0;
   --text-tertiary: #6a7e87;
+  --page-divider: #404040;
 }
 
 /* OffBit Bold  */
