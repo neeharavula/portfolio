@@ -21,23 +21,36 @@ import { Magnetic } from "@/components/motion-primitives/magnetic";
 import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
 
 const socials = [
-  { href: "mailto:hello@neeharavula.com", label: "Email", Icon: EnvelopeIcon },
+  {
+    href: "mailto:hello@neeharavula.com",
+    label: "Email",
+    Icon: EnvelopeIcon,
+    hoverClass: "hover:text-[#adbcc4]",
+  },
   {
     href: "https://www.linkedin.com/in/neeharavula/",
     label: "LinkedIn",
     Icon: LinkedinLogoIcon,
+    hoverClass: "hover:text-[#60a0c4]",
   },
-  { href: "https://x.com/neeharavula", label: "X", Icon: XLogoIcon },
+  {
+    href: "https://x.com/neeharavula",
+    label: "X",
+    Icon: XLogoIcon,
+    hoverClass: "hover:text-[#adbcc4]",
+  },
   {
     href: "https://github.com/neeharavula",
     label: "GitHub",
     Icon: GithubLogoIcon,
+    hoverClass: "hover:text-[#d1996b]",
   },
   {
     href: "https://www.instagram.com/neehasroll/",
     label: "Instagram",
     Icon: InstagramLogoIcon,
-  }
+    hoverClass: "hover:text-[#bd6881]",
+  },
 ];
 
 export default function About() {
@@ -60,7 +73,7 @@ export default function About() {
   };
 
   return (
-    <main className="max-w-5xl mx-auto px-xl pt-md md:pt-16 pb-xl font-content text-sm">
+    <main className="w-full flex-1 max-w-5xl mx-auto px-xl pt-md md:pt-16 pb-xl font-content text-sm">
       {/* Summary */}
       <div className="flex flex-col md:flex-row gap-y-lg md:gap-x-24 items-center md:items-start mb-xl">
         {/* Photo */}
@@ -115,14 +128,14 @@ export default function About() {
 
           {/* Socials */}
           <div className="flex items-center justify-center md:justify-start gap-lg pt-md text-primary">
-            {socials.map(({ href, label, Icon }) => (
+            {socials.map(({ href, label, Icon, hoverClass }) => (
               <Magnetic key={label}>
                 <a
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="hover:text-accent"
+                  className={hoverClass}
                 >
                   <Icon size={20} weight="regular" />
                 </a>
@@ -181,13 +194,13 @@ export default function About() {
                         duration: 0.5,
                         ease: [0.33, 1, 0.68, 1],
                       }}
-                      className="flex w-full rounded-md"
+                      className="flex w-full rounded-md -mx-md px-md py-sm"
                     >
                       <Link
                         href={entry.link || "#"}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex gap-lg items-start px-md py-sm"
+                        className="flex gap-lg items-start"
                       >
                         {/* Date */}
                         <p className="w-24 shrink-0 text-tertiary">
