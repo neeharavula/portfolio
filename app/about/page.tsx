@@ -145,7 +145,7 @@ export default function About() {
         </motion.div>
       </div>
 
-      <hr className="border-t-[0.5px] border-secondary mt-12 mb-8" />
+      <hr className="border-t-[0.5px] border-page-divider mt-12 mb-8" />
 
       {/* Resume */}
       <div>

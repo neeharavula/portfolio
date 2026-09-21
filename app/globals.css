@@ -13,6 +13,7 @@
   --text-secondary: #b0b0b0;
   --text-tertiary: #6a7e87;
   --overlay-background: #0a0a0a; /* mobile menu */
+  --page-divider: var(--background-code);
 }
 
 .dark {
@@ -50,6 +51,7 @@
   --color-secondary: var(--text-secondary);
   --color-tertiary: var(--text-tertiary);
   --color-overlay: var(--overlay-background);
+  --color-page-divider: var(--page-divider);
 
   /* Spacing */
   --spacing-xs: 4px;
