@@ -24,7 +24,7 @@ const Section = ({ title, children, className = "", ...rest }: SectionProps) => 
 
   return (
     <section
-      className={`flex flex-col md:flex-row gap-24 py-lg md:py-xl ${className}`}
+      className={`flex flex-col md:flex-row gap-y-sm md:gap-x-24 py-lg md:py-xl ${className}`}
       {...rest}
     >
       {/* Title */}
@@ -33,7 +33,7 @@ const Section = ({ title, children, className = "", ...rest }: SectionProps) => 
         initial={{ opacity: 0, y: 20 }}
         animate={titleInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-        className="w-full md:w-1/4 md:shrink-0 md:pl-24 font-header text-2xl text-header"
+        className="w-full md:w-1/4 md:shrink-0 md:pl-24 md:pt-sm font-header text-2xl text-header"
       >
         {title}
       </motion.div>

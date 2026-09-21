@@ -60,16 +60,16 @@ export default function About() {
   };
 
   return (
-    <main className="max-w-5xl mx-auto px-xl pt-16 pb-xl font-content text-sm">
+    <main className="max-w-5xl mx-auto px-xl pt-md md:pt-16 pb-xl font-content text-sm">
       {/* Summary */}
-      <div className="flex flex-col md:flex-row gap-24 items-start mb-xl">
+      <div className="flex flex-col md:flex-row gap-y-lg md:gap-x-24 items-center md:items-start mb-xl">
         {/* Photo */}
         <motion.div
           ref={imageRef}
           initial={{ opacity: 0, y: 20 }}
           animate={imageInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-          className="relative w-full md:w-1/4 aspect-[3/4] shrink-0 -rotate-3"
+          className="relative w-1/2 md:w-1/4 aspect-[3/4] shrink-0 -rotate-3"
         >
           <Image
             src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.png"
@@ -87,7 +87,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={textInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-          className="flex-1 space-y-lg leading-relaxed text-header"
+          className="flex-1 space-y-lg leading-relaxed text-header text-center md:text-left"
         >
           <h1 className="font-header text-2xl text-header">
             hi! i&apos;m neeha
@@ -114,7 +114,7 @@ export default function About() {
           </p>
 
           {/* Socials */}
-          <div className="flex items-center gap-lg pt-md text-primary">
+          <div className="flex items-center justify-center md:justify-start gap-lg pt-md text-primary">
             {socials.map(({ href, label, Icon }) => (
               <Magnetic key={label}>
                 <a
@@ -132,7 +132,7 @@ export default function About() {
         </motion.div>
       </div>
 
-      <hr className="border-t-[0.5px] border-secondary mt-16 mb-16" />
+      <hr className="border-t-[0.5px] border-secondary mt-12 mb-8" />
 
       {/* Resume */}
       <div>
