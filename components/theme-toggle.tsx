@@ -25,7 +25,7 @@ const ThemeToggle = () => {
       <button
         onClick={toggleTheme}
         aria-label="Toggle theme"
-        className="relative inline-flex h-5 w-5 items-center justify-center overflow-hidden translate-y-[2.5px]"
+        className="relative inline-flex h-5 w-5 items-center justify-center overflow-hidden translate-y-[2.5px] cursor-pointer"
       >
         {mounted && (
           <AnimatePresence initial={false}>

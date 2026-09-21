@@ -12,12 +12,7 @@ import {
   GithubLogoIcon,
   InstagramLogoIcon,
 } from "@phosphor-icons/react/ssr";
-
-const links = [
-  { href: "/", label: "Work" },
-  { href: "/play", label: "Play" },
-  { href: "/about", label: "About" },
-];
+import { navLinks } from "@/data/nav-links";
 
 const socials = [
   { href: "mailto:hello@neeharavula.com", label: "Email", Icon: EnvelopeIcon },
@@ -59,7 +54,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
 
           {/* Page links */}
           <nav className="flex-1 flex flex-col items-start justify-center gap-xl font-navigation text-sm uppercase">
-            {links.map(({ href, label }) => (
+            {navLinks.map(({ href, label }) => (
               <Link key={href} href={href} onClick={onClose}>
                 [ {label} ]
               </Link>

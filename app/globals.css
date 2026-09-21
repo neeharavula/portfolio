@@ -6,13 +6,14 @@
 :root {
   --accent: #9caf64;
   --background: #ffffff;
-  --background-hover: #e5e5e5;
+  --background-hover: #f1f1f1;
   --background-code: #e5e5e5;
   --text-header: #4a4a4a;
-  --text-primary: #171717;
-  --text-secondary: #a1a1a1;
+  --text-primary: #4a4a4a;
+  --text-secondary: #b0b0b0;
   --text-tertiary: #6a7e87;
   --overlay-background: #0a0a0a; /* mobile menu */
+  --page-divider: #e5e5e5;
 }
 
 .dark {
@@ -22,8 +23,9 @@
   --background-code: #404040;
   --text-header: #ededed;
   --text-primary: #ededed;
-  --text-secondary: #a1a1a1;
+  --text-secondary: #b0b0b0;
   --text-tertiary: #6a7e87;
+  --page-divider: #404040;
 }
 
 /* OffBit Bold  */
@@ -50,6 +52,7 @@
   --color-secondary: var(--text-secondary);
   --color-tertiary: var(--text-tertiary);
   --color-overlay: var(--overlay-background);
+  --color-page-divider: var(--page-divider);
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -61,7 +64,7 @@
   /* Fonts */
   --font-header: "OffBit Bold", sans-serif;
   --font-navigation: var(--font-ibm-plex-mono), monospace;
-  --font-content: var(--font-inter), sans-serif;
+  --font-content: "elza", var(--font-inter), sans-serif;
 }
 
 body {

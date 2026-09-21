@@ -35,8 +35,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/smn7zyq.css" />
+        <link
+          rel="dns-prefetch"
+          href="https://f6ciazohrats9a1e.public.blob.vercel-storage.com"
+        />
+        <link
+          rel="preconnect"
+          href="https://f6ciazohrats9a1e.public.blob.vercel-storage.com"
+        />
+      </head>
       <body
-        className={`${inter.variable} ${ibmPlexMono.variable} font-content bg-background text-primary antialiased`}
+        className={`${inter.variable} ${ibmPlexMono.variable} font-content tracking-wide bg-background text-primary antialiased flex min-h-screen flex-col`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Nav />

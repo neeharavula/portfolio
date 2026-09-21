@@ -9,12 +9,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import ThemeToggle from "@/components/theme-toggle";
 import MobileMenu from "@/components/mobile-menu";
-
-const links = [
-  { href: "/", label: "Work" },
-  { href: "/play", label: "Play" },
-  { href: "/about", label: "About" },
-];
+import { navLinks } from "@/data/nav-links";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,7 +25,7 @@ const Nav = () => {
 
       {/* Desktop: links + theme icon */}
       <div className="hidden sm:flex items-center gap-xl font-navigation text-tertiary text-sm uppercase">
-        {links.map(({ href, label }) => (
+        {navLinks.map(({ href, label }) => (
           <Magnetic key={href}>
             <Link href={href} className="hover:text-accent">
               [ {label} ]
