@@ -6,10 +6,10 @@
 :root {
   --accent: #9caf64;
   --background: #ffffff;
-  --background-hover: #e5e5e5;
+  --background-hover: #f1f1f1;
   --background-code: #e5e5e5;
   --text-header: #4a4a4a;
-  --text-primary: #171717;
+  --text-primary: #4a4a4a;
   --text-secondary: #b0b0b0;
   --text-tertiary: #6a7e87;
   --overlay-background: #0a0a0a; /* mobile menu */

@@ -18,6 +18,7 @@ import {
 import { resumeSections } from "@/data/resume-data";
 import Section from "@/components/section";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
 
 const socials = [
   { href: "mailto:hello@neeharavula.com", label: "Email", Icon: EnvelopeIcon },
@@ -36,12 +37,7 @@ const socials = [
     href: "https://www.instagram.com/neehasroll/",
     label: "Instagram",
     Icon: InstagramLogoIcon,
-  },
-  {
-    href: "https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457",
-    label: "Spotify",
-    Icon: SpotifyLogoIcon,
-  },
+  }
 ];
 
 export default function About() {
@@ -79,6 +75,8 @@ export default function About() {
             src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.png"
             alt="Neeha Ravula"
             fill
+            sizes="(min-width: 768px) 25vw, 100vw"
+            priority
             className="object-contain"
           />
         </motion.div>
@@ -89,18 +87,18 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={textInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-          className="flex-1 space-y-lg leading-relaxed text-primary"
+          className="flex-1 space-y-lg leading-relaxed text-header"
         >
           <h1 className="font-header text-2xl text-header">
             hi! i&apos;m neeha
           </h1>
           <p>
             I grew up in San Diego, California and studied
-            computer science at UC Santa Cruz. This fall, I&apos;ll be heading
-            to NYC to pursue a master&apos;s in computer science at Cornell
-            Tech, exploring the areas of human-centered computing and AI.
-            Previously, I worked on developing software solutions across the
-            aerospace and fintech sectors.
+            computer science at UC Santa Cruz. Currently, I&apos;m 
+            pursuing a master&apos;s in computer science at Cornell
+            Tech in NYC, exploring the areas of human-centered computing and
+            ethical AI. Previously, I worked on developing software solutions 
+            across the aerospace and fintech sectors.
           </p>
           <p>
             I approach my work with a mix of intentionality, playfulness, and
@@ -110,9 +108,9 @@ export default function About() {
             of design, tech, and social impact.
           </p>
           <p>
-            Outside of tech, you can find me hiking in the mountains, taking
+            Outside of tech, you can find me exploring new food spots around the city, taking
             photos on my Fujifilm XT30II, or finding my next song fixation on
-            Spotify. Feel free to reach out and say hi!
+            Spotify. Feel free to reach out and say hi :-)
           </p>
 
           {/* Socials */}
@@ -139,7 +137,7 @@ export default function About() {
       {/* Resume */}
       <div>
         {resumeSections.map((section) => {
-          const isEducation = section.title === "Education";
+          const isEducation = section.title === "education";
 
           return (
             <Section
@@ -153,61 +151,74 @@ export default function About() {
                 : {})}
             >
               <ul className="space-y-lg">
-                {section.entries.map((entry, i) => (
-                  <motion.li
-                    key={`${section.title}-${i}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: i * 0.1,
-                      duration: 0.5,
-                      ease: [0.33, 1, 0.68, 1],
-                    }}
-                    onMouseEnter={
-                      isEducation
-                        ? () =>
-                            setActiveCursorImage(entry.cursorImage ?? null)
-                        : undefined
-                    }
-                    onMouseLeave={
-                      isEducation ? () => setActiveCursorImage(null) : undefined
-                    }
-                  >
-                    <Link
-                      href={entry.link || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex gap-lg items-start"
+                <AnimatedBackground
+                  enableHover
+                  className="rounded-md bg-background-hover"
+                  transition={{ type: "spring", bounce: 0, duration: 0.2 }}
+                  {...(isEducation
+                    ? {
+                        onValueChange: (id: string | null) => {
+                          if (!id) {
+                            setActiveCursorImage(null);
+                            return;
+                          }
+                          const idx = parseInt(id.split("-").pop()!);
+                          setActiveCursorImage(
+                            section.entries[idx]?.cursorImage ?? null
+                          );
+                        },
+                      }
+                    : {})}
+                >
+                  {section.entries.map((entry, i) => (
+                    <motion.li
+                      key={`${section.title}-${i}`}
+                      data-id={`${section.title}-${i}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        delay: i * 0.1,
+                        duration: 0.5,
+                        ease: [0.33, 1, 0.68, 1],
+                      }}
+                      className="flex w-full rounded-md"
                     >
-                      {/* Date */}
-                      <p className="w-24 shrink-0 text-tertiary">
-                        {entry.date}
-                      </p>
-                      {/* Role and location */}
-                      <div className="flex-1">
-                        <p className="text-primary">{entry.role}</p>
-                        <p className="text-tertiary text-sm">
-                          {entry.location}
+                      <Link
+                        href={entry.link || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex gap-lg items-start px-md py-sm"
+                      >
+                        {/* Date */}
+                        <p className="w-24 shrink-0 text-tertiary">
+                          {entry.date}
                         </p>
-                        {/* Images */}
-                        {entry.images && entry.images.length > 0 && (
-                          <div className="flex gap-sm mt-sm">
-                            {entry.images.map((src, idx) => (
-                              <Image
-                                key={idx}
-                                src={src}
-                                alt="preview"
-                                width={120}
-                                height={80}
-                                className="rounded-md object-cover"
-                              />
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </Link>
-                  </motion.li>
-                ))}
+                        {/* Role and location */}
+                        <div className="flex-1">
+                          <p className="text-primary">{entry.role}</p>
+                          <p className="text-tertiary text-sm">
+                            {entry.location}
+                          </p>
+                          {/* Images */}
+                          {entry.images && entry.images.length > 0 && (
+                            <div className="flex gap-sm mt-sm">
+                              {entry.images.map((src, idx) => (
+                                <Image
+                                  key={idx}
+                                  src={src}
+                                  alt="preview"
+                                  width={120}
+                                  height={80}
+                                  className="rounded-md object-cover"
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </Link>
+                    </motion.li>
+                  ))}
+                </AnimatedBackground>
               </ul>
             </Section>
           );

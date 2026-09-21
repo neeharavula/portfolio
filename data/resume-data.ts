@@ -20,7 +20,7 @@ export const resumeSections: ResumeSection[] = [
     title: "education",
     entries: [
       {
-        date: "Incoming",
+        date: "Now - 2027 ",
         role: "Master's in Computer Science at Cornell Tech",
         location: "New York, NY",
         link: "https://tech.cornell.edu/",
@@ -40,7 +40,7 @@ export const resumeSections: ResumeSection[] = [
     title: "experience",
     entries: [
       {
-        date: "2024 — 2026",
+        date: "2024 - 2026",
         role: "Software Engineer at General Atomics Aeronautical Systems",
         location: "San Diego, CA",
         link: "https://www.ga-asi.com/",
