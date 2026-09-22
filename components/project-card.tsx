@@ -4,11 +4,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
-import { WorkProject } from "@/data/work-projects";
+import { WorkProjectSummary } from "@/lib/work-projects";
 
 type ProjectCardProps = {
-  project: WorkProject;
+  project: WorkProjectSummary;
 };
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
@@ -45,8 +46,18 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <span className="shrink-0">{project.date}</span>
       </div>
 
-      {/* Placeholder image */}
-      <div className="aspect-video rounded-lg bg-background-code" />
+      {/* Image (or placeholder) */}
+      {project.image ? (
+        <Image
+          src={project.image}
+          alt={project.name}
+          width={800}
+          height={450}
+          className="aspect-video rounded-lg w-full h-auto object-cover"
+        />
+      ) : (
+        <div className="aspect-video rounded-lg bg-background-code" />
+      )}
 
       {/* Mobile: always open */}
       <div className="md:hidden">{details}</div>
