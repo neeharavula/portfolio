@@ -39,7 +39,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     >
       {/* Title + date */}
       <div className="flex items-center justify-between gap-sm px-md py-sm font-navigation text-xs text-tertiary uppercase">
-        <span>{project.title}</span>
+        <span>
+          {project.name} / {project.org}
+        </span>
         <span className="shrink-0">{project.date}</span>
       </div>
 
