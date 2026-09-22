@@ -1,40 +1,29 @@
-/* Expandable Image Component - wraps Next.js Image with morphing dialog */
+/* Expandable image - wraps an <img> with a click-to-expand morphing dialog */
 
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
   MorphingDialog,
   MorphingDialogTrigger,
   MorphingDialogContent,
   MorphingDialogContainer,
   MorphingDialogImage,
-} from "@/components/ui/morphing-dialog";
+} from "@/components/motion-primitives/morphing-dialog";
 
 type ExpandableImageProps = {
   src: string;
   alt: string;
-  width?: number;
-  height?: number;
   className?: string;
 };
 
-export default function ExpandableImage({
-  src,
-  alt,
-  className = "",
-}: ExpandableImageProps) {
+const ExpandableImage = ({ src, alt, className = "" }: ExpandableImageProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <MorphingDialog
-      transition={{
-        duration: 0.3,
-        ease: [0.32, 0.72, 0, 1],
-      }}
-    >
-      <MorphingDialogTrigger className="inline-block cursor-pointer">
+    <MorphingDialog transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
+      <MorphingDialogTrigger className="inline-block w-full cursor-pointer">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: imageLoaded ? 1 : 0 }}
@@ -50,7 +39,7 @@ export default function ExpandableImage({
         </motion.div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative overflow-hidden rounded-lg">
+        <MorphingDialogContent className="fixed inset-0 m-auto w-fit h-fit overflow-hidden rounded-lg">
           <MorphingDialogImage
             src={src}
             alt={alt}
@@ -60,4 +49,6 @@ export default function ExpandableImage({
       </MorphingDialogContainer>
     </MorphingDialog>
   );
-}
+};
+
+export default ExpandableImage;

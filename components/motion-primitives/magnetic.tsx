@@ -1,14 +1,12 @@
-/* Magnetic component (motion primitives) */
+'use client';
 
-"use client";
-
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import {
   motion,
   useMotionValue,
   useSpring,
   type SpringOptions,
-} from "motion/react";
+} from 'motion/react';
 
 const SPRING_CONFIG = { stiffness: 26.7, damping: 4.1, mass: 0.2 };
 
@@ -16,15 +14,15 @@ export type MagneticProps = {
   children: React.ReactNode;
   intensity?: number;
   range?: number;
-  actionArea?: "self" | "parent" | "global";
+  actionArea?: 'self' | 'parent' | 'global';
   springOptions?: SpringOptions;
 };
 
 export function Magnetic({
   children,
-  intensity = 0.6,
+  intensity = 0.4,
   range = 100,
-  actionArea = "self",
+  actionArea = 'self',
   springOptions = SPRING_CONFIG,
 }: MagneticProps) {
   const [isHovered, setIsHovered] = useState(false);
@@ -58,40 +56,40 @@ export function Magnetic({
       }
     };
 
-    document.addEventListener("mousemove", calculateDistance);
+    document.addEventListener('mousemove', calculateDistance);
 
     return () => {
-      document.removeEventListener("mousemove", calculateDistance);
+      document.removeEventListener('mousemove', calculateDistance);
     };
-  }, [ref, isHovered, intensity, range, x, y]);
+  }, [ref, isHovered, intensity, range]);
 
   useEffect(() => {
-    if (actionArea === "parent" && ref.current?.parentElement) {
+    if (actionArea === 'parent' && ref.current?.parentElement) {
       const parent = ref.current.parentElement;
 
       const handleParentEnter = () => setIsHovered(true);
       const handleParentLeave = () => setIsHovered(false);
 
-      parent.addEventListener("mouseenter", handleParentEnter);
-      parent.addEventListener("mouseleave", handleParentLeave);
+      parent.addEventListener('mouseenter', handleParentEnter);
+      parent.addEventListener('mouseleave', handleParentLeave);
 
       return () => {
-        parent.removeEventListener("mouseenter", handleParentEnter);
-        parent.removeEventListener("mouseleave", handleParentLeave);
+        parent.removeEventListener('mouseenter', handleParentEnter);
+        parent.removeEventListener('mouseleave', handleParentLeave);
       };
-    } else if (actionArea === "global") {
+    } else if (actionArea === 'global') {
       setIsHovered(true);
     }
   }, [actionArea]);
 
   const handleMouseEnter = () => {
-    if (actionArea === "self") {
+    if (actionArea === 'self') {
       setIsHovered(true);
     }
   };
 
   const handleMouseLeave = () => {
-    if (actionArea === "self") {
+    if (actionArea === 'self') {
       setIsHovered(false);
       x.set(0);
       y.set(0);
@@ -101,8 +99,8 @@ export function Magnetic({
   return (
     <motion.div
       ref={ref}
-      onMouseEnter={actionArea === "self" ? handleMouseEnter : undefined}
-      onMouseLeave={actionArea === "self" ? handleMouseLeave : undefined}
+      onMouseEnter={actionArea === 'self' ? handleMouseEnter : undefined}
+      onMouseLeave={actionArea === 'self' ? handleMouseLeave : undefined}
       style={{
         x: springX,
         y: springY,
