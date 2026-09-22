@@ -70,12 +70,17 @@
   --radius-lg: 6px;
 }
 
+/* Slightly widen letter spacing on all OffBit (font-header) text */
+.font-header {
+  letter-spacing: 0.03em;
+}
+
 body {
   background: var(--background);
   color: var(--text-primary);
 }
 
-/* Play page masonry grid */
+/* Masonry grid (play page, home/work page) */
 .masonry-grid {
   display: flex;
   margin-left: -0.875rem;
@@ -85,6 +90,6 @@ body {
   padding-left: 0.875rem;
 }
 
-.masonry-column > div {
+.masonry-column > * {
   margin-bottom: 0.875rem;
 }
