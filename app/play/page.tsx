@@ -34,7 +34,7 @@ export default function Play() {
         }));
 
   return (
-    <main className="flex-1 flex flex-col md:flex-row gap-y-lg md:gap-x-8 px-xl md:px-16 pt-md md:pt-16 pb-xl font-content text-sm">
+    <main className="flex-1 flex flex-col md:flex-row gap-y-sm md:gap-x-8 px-xl md:px-16 pt-md md:pt-16 pb-xl font-content text-sm">
       {/* Sidebar */}
       <div className="w-full md:w-1/4 md:shrink-0 space-y-10">
         <div>
