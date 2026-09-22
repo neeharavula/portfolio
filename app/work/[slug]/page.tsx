@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllWorkProjects, getWorkProjectBySlug } from "@/lib/work-projects";
 import CaseStudyToc from "@/components/case-study-toc";
+import FadeIn from "@/components/fade-in";
 
 export function generateStaticParams() {
   return getAllWorkProjects().map(({ slug }) => ({ slug }));
@@ -48,38 +49,46 @@ export default async function WorkCaseStudy({
   return (
     <main className="w-full flex-1 max-w-7xl mx-auto px-xl md:px-16 pt-md md:pt-16 pb-16 font-content text-sm">
       {/* Back link */}
-      <Link
-        href="/"
-        className="font-navigation text-xs text-tertiary uppercase hover:text-accent"
-      >
-        ← Back to all work
-      </Link>
+      <FadeIn>
+        <Link
+          href="/"
+          className="font-navigation text-xs text-tertiary uppercase hover:text-accent"
+        >
+          ← Back to all work
+        </Link>
+      </FadeIn>
 
       {/* Title */}
-      <h1 className="font-header text-2xl md:text-3xl text-header mt-16">
-        {frontmatter.name}
-        <br />/ {frontmatter.org}
-      </h1>
+      <FadeIn delay={0.1}>
+        <h1 className="font-header text-2xl md:text-3xl text-header mt-16">
+          {frontmatter.name}
+          <br />/ {frontmatter.org}
+        </h1>
+      </FadeIn>
 
       {/* Info columns */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-x-lg gap-y-lg mt-16">
-        {infoColumns.map(({ label, value }) => (
-          <div key={label}>
-            <p className="font-navigation text-xs text-tertiary uppercase">
-              {label}
-            </p>
-            <div className="text-primary mt-sm">{value}</div>
-          </div>
-        ))}
-      </div>
+      <FadeIn delay={0.2}>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-x-lg gap-y-lg mt-16">
+          {infoColumns.map(({ label, value }) => (
+            <div key={label}>
+              <p className="font-navigation text-xs text-tertiary uppercase">
+                {label}
+              </p>
+              <div className="text-primary mt-sm">{value}</div>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
 
       <hr className="border-t-[0.5px] border-page-divider mt-16 mb-16" />
 
       {/* Case study content */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-x-lg gap-y-lg">
-        <CaseStudyToc toc={toc} />
-        <div className="md:col-span-4">{content}</div>
-      </div>
+      <FadeIn delay={0.3}>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-x-lg gap-y-lg">
+          <CaseStudyToc toc={toc} />
+          <div className="md:col-span-4">{content}</div>
+        </div>
+      </FadeIn>
     </main>
   );
 }
