@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getAllWorkProjects, getWorkProjectBySlug } from "@/lib/work-projects";
 import CaseStudyToc from "@/components/case-study-toc";
 import FadeIn from "@/components/fade-in";
+import { iconMap } from "@/utils/icons";
 
 export function generateStaticParams() {
   return getAllWorkProjects().map(({ slug }) => ({ slug }));
@@ -43,7 +44,17 @@ export default async function WorkCaseStudy({
         </div>
       ),
     },
-    { label: "Stack", value: null },
+    {
+      label: "Stack",
+      value: (
+        <div className="flex flex-wrap items-center gap-sm">
+          {frontmatter.stack.map((tech) => {
+            const Icon = iconMap[tech];
+            return Icon ? <Icon key={tech} className="text-xl" /> : null;
+          })}
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -52,7 +63,7 @@ export default async function WorkCaseStudy({
       <FadeIn>
         <Link
           href="/"
-          className="font-navigation text-xs text-tertiary uppercase hover:text-accent"
+          className="font-navigation text-xs uppercase text-accent md:text-tertiary md:hover:text-accent"
         >
           ← Back to all work
         </Link>
@@ -68,7 +79,7 @@ export default async function WorkCaseStudy({
 
       {/* Info columns */}
       <FadeIn delay={0.2}>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-x-lg gap-y-lg mt-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-x-16 gap-y-lg mt-16">
           {infoColumns.map(({ label, value }) => (
             <div key={label}>
               <p className="font-navigation text-xs text-tertiary uppercase">
@@ -84,7 +95,7 @@ export default async function WorkCaseStudy({
 
       {/* Case study content */}
       <FadeIn delay={0.3}>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-x-lg gap-y-lg">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-x-16 gap-y-lg">
           <CaseStudyToc toc={toc} />
           <div className="md:col-span-4">{content}</div>
         </div>

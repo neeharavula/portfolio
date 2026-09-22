@@ -10,7 +10,7 @@ type ProjectImageProps = {
 };
 
 const ProjectImage = ({ src, alt, caption }: ProjectImageProps) => (
-  <figure className="my-lg">
+  <figure className="mt-md">
     {src ? (
       <Image
         src={src}
@@ -36,7 +36,7 @@ type EmbedProps = {
 };
 
 const Embed = ({ src, title }: EmbedProps) => (
-  <div className="my-lg aspect-video rounded-lg overflow-hidden bg-background-code">
+  <div className="mt-md aspect-video rounded-lg overflow-hidden bg-background-code">
     {src && (
       <iframe
         src={src}
@@ -51,7 +51,7 @@ const Embed = ({ src, title }: EmbedProps) => (
 export const mdxComponents: MDXComponents = {
   h2: (props) => (
     <h2
-      className="font-header text-2xl text-header mt-16 first:mt-0"
+      className="font-header text-2xl text-header mt-8 first:mt-0"
       {...props}
     />
   ),
