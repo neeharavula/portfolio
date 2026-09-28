@@ -7,9 +7,15 @@ type ProjectImageProps = {
   src: string;
   alt: string;
   caption?: string;
+  priority?: boolean;
 };
 
-const ProjectImage = ({ src, alt, caption }: ProjectImageProps) => (
+const ProjectImage = ({
+  src,
+  alt,
+  caption,
+  priority = false,
+}: ProjectImageProps) => (
   <figure className="mt-md">
     {src ? (
       <Image
@@ -17,6 +23,7 @@ const ProjectImage = ({ src, alt, caption }: ProjectImageProps) => (
         alt={alt}
         width={1200}
         height={675}
+        priority={priority}
         className="w-full h-auto rounded-lg object-cover"
       />
     ) : (

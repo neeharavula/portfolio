@@ -50,7 +50,7 @@ export default async function WorkCaseStudy({
         <div className="flex flex-wrap items-center gap-sm">
           {frontmatter.stack.map((tech) => {
             const Icon = iconMap[tech];
-            return Icon ? <Icon key={tech} className="text-xl" /> : null;
+            return Icon ? <Icon key={tech} size={28} /> : null;
           })}
         </div>
       ),

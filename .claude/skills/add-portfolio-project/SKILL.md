@@ -112,7 +112,12 @@ Notes on the body:
   automatically from these headings, in order.
 - **Place media exactly where the user says it goes**, using
   `<ProjectImage src="..." alt="..." caption="..." />` (caption optional)
-  inline in the prose, not bunched at the end of a section.
+  inline in the prose, not bunched at the end of a section. If an image
+  renders early enough to likely be the page's Largest Contentful Paint
+  (short section above it, or it's the first image on the page), add the
+  `priority` prop (e.g. `<ProjectImage ... priority />`) - Next.js will warn
+  about this at build/dev time otherwise. Don't add it to every image, only
+  ones actually likely to be above the fold.
 - **Embeds** (Figma prototypes, YouTube, etc.) use
   `<Embed src="..." title="..." />`. Only use `src` values from platforms
   meant to be embedded (Figma, YouTube, Vimeo, CodeSandbox, etc.) - an
