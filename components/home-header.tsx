@@ -39,9 +39,9 @@ const HomeHeader = () => {
           <span>creative</span>
         </TextLoop>
         <br />
-        based in New York, NY,
+        based in New York,
         <br />
-        exploring the
+        NY, exploring the
         <br />
         intersection of design
         <br />
