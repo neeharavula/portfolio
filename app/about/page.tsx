@@ -1,7 +1,12 @@
-/* Mobile about page */
+/* About page */
 
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "motion/react";
+import { useInView } from "react-intersection-observer";
 import {
   EnvelopeIcon,
   LinkedinLogoIcon,
@@ -9,183 +14,249 @@ import {
   GithubLogoIcon,
   InstagramLogoIcon,
   SpotifyLogoIcon,
-} from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Layout from "@/components/base/general-layout";
-import Image from "next/image";
-import Link from "next/link";
-import { IMAGE_VERSION } from "@/config/image-version";
+} from "@phosphor-icons/react/ssr";
+import { resumeSections } from "@/data/resume-data";
+import Section from "@/components/section";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
 
-const AboutPageContent = () => {
-  const { ref: imageRef, inView: imageInView } = useInView({
+const socials = [
+  {
+    href: "mailto:hello@neeharavula.com",
+    label: "Email",
+    Icon: EnvelopeIcon,
+    hoverClass: "hover:text-[#adbcc4]",
+  },
+  {
+    href: "https://www.linkedin.com/in/neeharavula/",
+    label: "LinkedIn",
+    Icon: LinkedinLogoIcon,
+    hoverClass: "hover:text-[#60a0c4]",
+  },
+  {
+    href: "https://x.com/neeharavula",
+    label: "X",
+    Icon: XLogoIcon,
+    hoverClass: "hover:text-[#adbcc4]",
+  },
+  {
+    href: "https://github.com/neeharavula",
+    label: "GitHub",
+    Icon: GithubLogoIcon,
+    hoverClass: "hover:text-[#d1996b]",
+  },
+  {
+    href: "https://www.instagram.com/neehasroll/",
+    label: "Instagram",
+    Icon: InstagramLogoIcon,
+    hoverClass: "hover:text-[#bd6881]",
+  },
+];
+
+export default function About() {
+  const [imageRef, imageInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-  const { ref: textRef, inView: textInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  const { ref: iconsRef, inView: iconsInView } = useInView({
+  const [textRef, textInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  return (
-    <div className="flex flex-col items-center px-6 py-2 pb-8 font-[family-name:var(--font-geist-mono)]">
-      {/* Image */}
-      <motion.div
-        ref={imageRef}
-        initial={{ opacity: 0, y: 20 }}
-        animate={imageInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-        className="relative w-2/3 max-w-sm aspect-[3/4] mb-4"
-      >
-        <Image
-          src={`https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.png?v=${IMAGE_VERSION}`}
-          alt="About Image"
-          fill
-          className="object-contain"
-        />
-      </motion.div>
-
-      {/* Text */}
-      <motion.div
-        ref={textRef}
-        initial={{ opacity: 0, y: 20 }}
-        animate={textInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ delay: 0.1, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-        className="text-center leading-relaxed text-sm mt-6 space-y-8"
-      >
-        <p className="indent-8">
-          Hi! I&apos;m Neeha. I grew up in San Diego, California and studied
-          computer science at UC Santa Cruz. This fall, I&apos;ll be heading to
-          NYC to pursue a master's in computer science at Cornell Tech,
-          exploring the areas of human-centered computing and AI. Previously, I
-          worked on developing software solutions across the aerospace and
-          fintech sectors.
-        </p>
-        <p className="indent-8">
-          I approach my work with a mix of intentionality, playfulness, and
-          care, bridging thoughtful design with scalable, functional solutions.
-          I&apos;m driven by curiosity and a hunger to learn, and am always
-          looking for opportunities that lie at the intersection of design,
-          tech, and social impact.
-        </p>
-        <p className="indent-8">
-          Outside of tech, you can find me hiking in the mountains, taking
-          photos on my Fujifilm XT30II, or finding my next song fixation on
-          Spotify. Feel free to reach out and say hi!
-        </p>
-      </motion.div>
-
-      {/* Social icons at bottom */}
-      <motion.div
-        ref={iconsRef}
-        initial={{ opacity: 0, y: 20 }}
-        animate={iconsInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ delay: 0.2, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-        className="flex justify-center items-center gap-8 mt-8"
-      >
-        <Link
-          href="mailto:hello@neeharavula.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <EnvelopeIcon size={20} />
-        </Link>
-        <Link
-          href="https://www.linkedin.com/in/neeharavula/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <LinkedinLogoIcon size={20} />
-        </Link>
-        <Link
-          href="https://x.com/neeharavula"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <XLogoIcon size={20} />
-        </Link>
-        <Link
-          href="https://github.com/neeharavula"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <GithubLogoIcon size={20} />
-        </Link>
-        <Link
-          href="https://www.instagram.com/neehasroll/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <InstagramLogoIcon size={20} />
-        </Link>
-        <Link
-          href="https://open.spotify.com/user/awesomesauce872?si=0ea3f9e157784457"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <SpotifyLogoIcon size={20} />
-        </Link>
-      </motion.div>
-    </div>
+  // Easter egg cursor
+  const [activeCursorImage, setActiveCursorImage] = useState<string | null>(
+    null
   );
-};
-
-export default function AboutPage() {
-  const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    let start = 0;
-    setProgress(0);
-
-    const interval = setInterval(() => {
-      start = Math.min(start + Math.floor(Math.random() * 15) + 5, 100);
-      setProgress(start);
-
-      if (start >= 100) {
-        clearInterval(interval);
-      }
-    }, 200);
-
-    const loadTimeout = setTimeout(() => {
-      clearInterval(interval);
-      setProgress(100);
-      setLoading(false);
-    }, 1500);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(loadTimeout);
-    };
-  }, []);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setCursorPos({ x: e.clientX, y: e.clientY });
+  };
 
   return (
-    <Layout variant="about">
-      <div className="bg-black text-white min-h-screen relative">
-        {loading && (
-          <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black transition-colors">
-            <div
-              className="text-2xl text-white"
-              style={{ fontFamily: "var(--font-offbit)", fontWeight: "bold" }}
-            >
-              {progress}
-            </div>
-            <div
-              className="mt-2 text-sm text-white"
-              style={{ fontFamily: "var(--font-geist-mono)" }}
-            >
-              Loading info...
-            </div>
-          </div>
-        )}
+    <main className="w-full flex-1 max-w-5xl mx-auto px-xl pt-md md:pt-16 pb-xl font-content text-sm">
+      {/* Summary */}
+      <div className="flex flex-col md:flex-row gap-y-lg md:gap-x-24 items-center md:items-start mb-xl">
+        {/* Photo */}
+        <motion.div
+          ref={imageRef}
+          initial={{ opacity: 0, y: 20 }}
+          animate={imageInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+          className="relative w-1/2 md:w-1/4 aspect-[3/4] shrink-0 -rotate-3"
+        >
+          <Image
+            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.png"
+            alt="Neeha Ravula"
+            fill
+            sizes="(min-width: 768px) 25vw, 100vw"
+            priority
+            className="object-contain"
+          />
+        </motion.div>
 
-        {!loading && <AboutPageContent />}
+        {/* Text + socials */}
+        <motion.div
+          ref={textRef}
+          initial={{ opacity: 0, y: 20 }}
+          animate={textInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+          className="flex-1 space-y-lg leading-relaxed text-header text-center md:text-left"
+        >
+          <h1 className="font-header text-2xl text-header">
+            hi! i&apos;m neeha
+          </h1>
+          <p>
+            I grew up in San Diego, California and studied
+            computer science at UC Santa Cruz. Currently, I&apos;m 
+            pursuing a master&apos;s in computer science at Cornell
+            Tech in NYC, exploring the areas of human-centered computing and
+            ethical AI. Previously, I worked on developing software solutions 
+            across the aerospace and fintech sectors.
+          </p>
+          <p>
+            I approach my work with a mix of intentionality, playfulness, and
+            care, bridging thoughtful design with scalable, functional
+            solutions. I&apos;m driven by curiosity and a hunger to learn, and
+            am always looking for opportunities that lie at the intersection
+            of design, tech, and social impact.
+          </p>
+          <p>
+            Outside of tech, you can find me exploring new food spots around the city, taking
+            photos on my Fujifilm XT30II, or finding my next song fixation on
+            Spotify. Feel free to reach out and say hi :-)
+          </p>
+
+          {/* Socials */}
+          <div className="flex items-center justify-center md:justify-start gap-lg pt-md text-primary">
+            {socials.map(({ href, label, Icon, hoverClass }) => (
+              <Magnetic key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={hoverClass}
+                >
+                  <Icon size={20} weight="regular" />
+                </a>
+              </Magnetic>
+            ))}
+          </div>
+        </motion.div>
       </div>
-    </Layout>
+
+      <hr className="border-t-[0.5px] border-page-divider mt-12 mb-8" />
+
+      {/* Resume */}
+      <div>
+        {resumeSections.map((section) => {
+          const isEducation = section.title === "education";
+
+          return (
+            <Section
+              key={section.title}
+              title={section.title}
+              {...(isEducation
+                ? {
+                    onMouseMove: handleMouseMove,
+                    style: activeCursorImage ? { cursor: "none" } : undefined,
+                  }
+                : {})}
+            >
+              <ul className="space-y-lg">
+                <AnimatedBackground
+                  enableHover
+                  className="rounded-md bg-background-hover"
+                  transition={{ type: "spring", bounce: 0, duration: 0.2 }}
+                  {...(isEducation
+                    ? {
+                        onValueChange: (id: string | null) => {
+                          if (!id) {
+                            setActiveCursorImage(null);
+                            return;
+                          }
+                          const idx = parseInt(id.split("-").pop()!);
+                          setActiveCursorImage(
+                            section.entries[idx]?.cursorImage ?? null
+                          );
+                        },
+                      }
+                    : {})}
+                >
+                  {section.entries.map((entry, i) => (
+                    <motion.li
+                      key={`${section.title}-${i}`}
+                      data-id={`${section.title}-${i}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        delay: i * 0.1,
+                        duration: 0.5,
+                        ease: [0.33, 1, 0.68, 1],
+                      }}
+                      className="flex w-full rounded-md -mx-md px-md py-sm"
+                    >
+                      <Link
+                        href={entry.link || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex gap-lg items-start"
+                      >
+                        {/* Date */}
+                        <p className="w-24 shrink-0 text-tertiary">
+                          {entry.date}
+                        </p>
+                        {/* Role and location */}
+                        <div className="flex-1">
+                          <p className="text-primary">{entry.role}</p>
+                          <p className="text-tertiary text-sm">
+                            {entry.location}
+                          </p>
+                          {/* Images */}
+                          {entry.images && entry.images.length > 0 && (
+                            <div className="flex gap-sm mt-sm">
+                              {entry.images.map((src, idx) => (
+                                <Image
+                                  key={idx}
+                                  src={src}
+                                  alt="preview"
+                                  width={120}
+                                  height={80}
+                                  className="rounded-md object-cover"
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </Link>
+                    </motion.li>
+                  ))}
+                </AnimatedBackground>
+              </ul>
+            </Section>
+          );
+        })}
+      </div>
+
+      {/* Easter egg cursor */}
+      {activeCursorImage && (
+        <div
+          style={{
+            position: "fixed",
+            top: cursorPos.y,
+            left: cursorPos.x,
+            pointerEvents: "none",
+            transform: "translate(-50%, -50%)",
+            zIndex: 9999,
+            width: 50,
+            height: 50,
+            borderRadius: "50%",
+            backgroundImage: `url("${activeCursorImage}")`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+      )}
+    </main>
   );
 }

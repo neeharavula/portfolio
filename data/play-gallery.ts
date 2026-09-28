@@ -1,17 +1,8 @@
-/* Play data */
+/* Play gallery data */
 
-// Filters
 export const filters = ["film", "digital", "art"] as const;
 export type FilterType = (typeof filters)[number];
 
-// Loading captions (per filter)
-export const captions: Record<FilterType, string> = {
-  film: "Loading film roll",
-  digital: "Cleaning sensor",
-  art: "Opening sketchbook",
-};
-
-// Images (per filter)
 export const imageFiles: Record<FilterType, string[]> = {
   film: [
     "01-monaco.jpeg",
@@ -54,9 +45,5 @@ export const imageFiles: Record<FilterType, string[]> = {
     "17-sandiego.jpeg",
     "18-sandiego.jpeg",
   ],
-  /*video: [
-    "pilot.mp4",
-    // ...
-  ],*/
   art: ["florence.jpeg"],
 };

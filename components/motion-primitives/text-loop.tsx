@@ -1,14 +1,13 @@
-/* Text loop component (motion primitives) */
-
-"use client";
-import { useState, useEffect, Children } from "react";
+'use client';
+import { cn } from '@/lib/utils';
 import {
   motion,
   AnimatePresence,
   Transition,
   Variants,
   AnimatePresenceProps,
-} from "motion/react";
+} from 'motion/react';
+import { useState, useEffect, Children } from 'react';
 
 export type TextLoopProps = {
   children: React.ReactNode[];
@@ -18,18 +17,18 @@ export type TextLoopProps = {
   variants?: Variants;
   onIndexChange?: (index: number) => void;
   trigger?: boolean;
-  mode?: AnimatePresenceProps["mode"];
+  mode?: AnimatePresenceProps['mode'];
 };
 
 export function TextLoop({
   children,
   className,
-  interval = 4,
+  interval = 2,
   transition = { duration: 0.3 },
   variants,
   onIndexChange,
   trigger = true,
-  mode = "popLayout",
+  mode = 'popLayout',
 }: TextLoopProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const items = Children.toArray(children);
@@ -55,21 +54,15 @@ export function TextLoop({
   };
 
   return (
-    <div
-      className={`relative inline-block align-middle h-[1em] ${
-        className ?? ""
-      }`}
-      style={{ lineHeight: "1em" }}
-    >
+    <div className={cn('relative inline-block whitespace-nowrap', className)}>
       <AnimatePresence mode={mode} initial={false}>
         <motion.div
           key={currentIndex}
-          initial="initial"
-          animate="animate"
-          exit="exit"
+          initial='initial'
+          animate='animate'
+          exit='exit'
           transition={transition}
           variants={variants || motionVariants}
-          className="absolute top-0 left-0 w-full h-full flex items-center justify-start"
         >
           {items[currentIndex]}
         </motion.div>

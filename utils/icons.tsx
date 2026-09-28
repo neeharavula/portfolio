@@ -1,3 +1,5 @@
+/* Tech stack icon map */
+
 import {
   // Languages
   PythonOriginal,
@@ -18,20 +20,23 @@ import {
   // Design
   FigmaOriginal,
 } from "devicons-react";
-import { SiTwilio, SiStackblitz } from "react-icons/si";
+import { SiStackblitz } from "react-icons/si";
+import { TbBrandTwilio } from "react-icons/tb";
 import { ComponentType } from "react";
 
-// Rare icon components
-const TwilioIcon: ComponentType<{ className?: string }> = ({ className }) => (
-  <SiTwilio className={`text-[#F22F46] ${className ?? ""}`} />
+type IconProps = { className?: string; size?: number | string };
+
+// Rare icon components (not covered by devicons-react)
+const TwilioIcon: ComponentType<IconProps> = ({ className, size }) => (
+  <TbBrandTwilio className={`text-[#F22F46] ${className ?? ""}`} size={size} />
 );
 
-const StackblitzIcon: ComponentType<{ className?: string }> = ({
-  className,
-}) => <SiStackblitz className={`text-[#1389FD] ${className ?? ""}`} />;
+const StackblitzIcon: ComponentType<IconProps> = ({ className, size }) => (
+  <SiStackblitz className={`text-[#1389FD] ${className ?? ""}`} size={size} />
+);
 
 // Icon map
-export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
+export const iconMap: Record<string, ComponentType<IconProps>> = {
   // Languages
   python: PythonOriginal,
   javascript: JavascriptOriginal,
