@@ -78,6 +78,8 @@
 body {
   background: var(--background);
   color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: 0.03em;
 }
 
 /* Masonry grid (play page, home/work page) */

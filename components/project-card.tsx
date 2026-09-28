@@ -10,9 +10,10 @@ import { WorkProjectSummary } from "@/lib/work-projects";
 
 type ProjectCardProps = {
   project: WorkProjectSummary;
+  priority?: boolean;
 };
 
-const ProjectCard = ({ project }: ProjectCardProps) => {
+const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const details = (
@@ -54,6 +55,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           alt={project.name}
           width={800}
           height={450}
+          priority={priority}
           className="aspect-video rounded-lg w-full h-auto object-cover"
         />
       ) : (

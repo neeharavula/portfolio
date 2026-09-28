@@ -47,7 +47,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${ibmPlexMono.variable} font-content tracking-wide bg-background text-primary antialiased flex min-h-screen flex-col`}
+        className={`${inter.variable} ${ibmPlexMono.variable} font-content bg-background text-primary antialiased flex min-h-screen flex-col`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Nav />

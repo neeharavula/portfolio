@@ -30,7 +30,7 @@ const WorkGrid = ({ projects }: WorkGridProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: index * 0.05 }}
         >
-          <ProjectCard project={project} />
+          <ProjectCard project={project} priority={index === 0} />
         </motion.div>
       ))}
     </Masonry>
