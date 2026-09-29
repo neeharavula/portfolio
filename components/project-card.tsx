@@ -34,7 +34,9 @@ const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
 
   return (
     <Link
-      href={`/work/${project.slug}`}
+      href={project.externalUrl ?? `/work/${project.slug}`}
+      target={project.externalUrl ? "_blank" : undefined}
+      rel={project.externalUrl ? "noopener noreferrer" : undefined}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="block rounded-lg bg-background-hover overflow-hidden"
@@ -43,7 +45,11 @@ const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
       <div className="flex items-center justify-between gap-sm px-md py-sm font-navigation text-xs text-tertiary uppercase">
         <span>
           {project.name}
-          <br />/ {project.org}
+          {project.org && (
+            <>
+              <br />/ {project.org}
+            </>
+          )}
         </span>
         <span className="shrink-0">{project.date}</span>
       </div>
@@ -56,7 +62,7 @@ const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
           width={800}
           height={450}
           priority={priority}
-          className="aspect-video rounded-lg w-full h-auto object-cover"
+          className="rounded-lg w-full h-auto"
         />
       ) : (
         <div className="aspect-video rounded-lg bg-background-code" />

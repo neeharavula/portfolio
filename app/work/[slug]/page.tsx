@@ -5,10 +5,12 @@ import { notFound } from "next/navigation";
 import { getAllWorkProjects, getWorkProjectBySlug } from "@/lib/work-projects";
 import CaseStudyToc from "@/components/case-study-toc";
 import FadeIn from "@/components/fade-in";
-import { iconMap } from "@/utils/icons";
+import { iconMap, iconLabels, invertInDark } from "@/utils/icons";
 
 export function generateStaticParams() {
-  return getAllWorkProjects().map(({ slug }) => ({ slug }));
+  return getAllWorkProjects()
+    .filter((project) => !project.externalUrl)
+    .map(({ slug }) => ({ slug }));
 }
 
 export default async function WorkCaseStudy({
@@ -19,7 +21,7 @@ export default async function WorkCaseStudy({
   const { slug } = await params;
   const project = await getWorkProjectBySlug(slug);
 
-  if (!project) {
+  if (!project || project.frontmatter.externalUrl) {
     notFound();
   }
 
@@ -50,7 +52,15 @@ export default async function WorkCaseStudy({
         <div className="flex flex-wrap items-center gap-sm">
           {frontmatter.stack.map((tech) => {
             const Icon = iconMap[tech];
-            return Icon ? <Icon key={tech} size={28} /> : null;
+            return Icon ? (
+              <span
+                key={tech}
+                title={iconLabels[tech] ?? tech}
+                className={invertInDark.has(tech) ? "dark:invert" : undefined}
+              >
+                <Icon size={20} />
+              </span>
+            ) : null;
           })}
         </div>
       ),
@@ -73,7 +83,11 @@ export default async function WorkCaseStudy({
       <FadeIn delay={0.1}>
         <h1 className="font-header text-2xl md:text-3xl text-header mt-16">
           {frontmatter.name}
-          <br />/ {frontmatter.org}
+          {frontmatter.org && (
+            <>
+              <br />/ {frontmatter.org}
+            </>
+          )}
         </h1>
       </FadeIn>
 
@@ -85,7 +99,9 @@ export default async function WorkCaseStudy({
               <p className="font-navigation text-xs text-tertiary uppercase">
                 {label}
               </p>
-              <div className="text-primary mt-sm">{value}</div>
+              <div className="text-primary mt-sm whitespace-pre-line">
+                {value}
+              </div>
             </div>
           ))}
         </div>
