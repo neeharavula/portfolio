@@ -12,6 +12,8 @@ import { mdxComponents } from "@/components/mdx-components";
 
 const CONTENT_DIR = path.join(process.cwd(), "content/work");
 
+export type WorkProjectType = "demo" | "internship" | "work" | "project";
+
 export type WorkProjectFrontmatter = {
   name: string;
   org: string;
@@ -23,6 +25,7 @@ export type WorkProjectFrontmatter = {
   stack: string[];
   description: string;
   image: string;
+  type: WorkProjectType;
   externalUrl?: string;
 };
 

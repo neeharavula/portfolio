@@ -38,7 +38,7 @@ export default async function WorkCaseStudy({
           {frontmatter.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-background-code px-sm py-xs text-xs text-tertiary"
+              className="rounded-full bg-background-code px-sm py-xs text-xs text-primary"
             >
               {tag}
             </span>

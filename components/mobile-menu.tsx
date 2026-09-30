@@ -3,6 +3,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import {
   XIcon,
@@ -12,7 +13,7 @@ import {
   GithubLogoIcon,
   InstagramLogoIcon,
 } from "@phosphor-icons/react/ssr";
-import { navLinks } from "@/data/nav-links";
+import { navLinks, isNavLinkActive } from "@/data/nav-links";
 
 const socials = [
   { href: "mailto:hello@neeharavula.com", label: "Email", Icon: EnvelopeIcon },
@@ -28,6 +29,8 @@ type MobileMenuProps = {
 };
 
 const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
+  const pathname = usePathname();
+
   return (
     <AnimatePresence>
       {open && (
@@ -55,7 +58,12 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
           {/* Page links */}
           <nav className="flex-1 flex flex-col items-start justify-center gap-xl font-navigation text-sm uppercase">
             {navLinks.map(({ href, label }) => (
-              <Link key={href} href={href} onClick={onClose}>
+              <Link
+                key={href}
+                href={href}
+                onClick={onClose}
+                className={isNavLinkActive(pathname, href) ? "text-accent" : undefined}
+              >
                 [ {label} ]
               </Link>
             ))}

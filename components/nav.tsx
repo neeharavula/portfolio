@@ -4,15 +4,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ListIcon } from "@phosphor-icons/react/ssr";
 import { motion, AnimatePresence } from "motion/react";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import ThemeToggle from "@/components/theme-toggle";
 import MobileMenu from "@/components/mobile-menu";
-import { navLinks } from "@/data/nav-links";
+import { navLinks, isNavLinkActive } from "@/data/nav-links";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="w-full flex items-center justify-between px-xl py-xl">
@@ -27,7 +29,12 @@ const Nav = () => {
       <div className="hidden sm:flex items-center gap-xl font-navigation text-tertiary text-sm uppercase">
         {navLinks.map(({ href, label }) => (
           <Magnetic key={href}>
-            <Link href={href} className="hover:text-accent">
+            <Link
+              href={href}
+              className={`hover:text-accent ${
+                isNavLinkActive(pathname, href) ? "text-accent" : ""
+              }`}
+            >
               [ {label} ]
             </Link>
           </Magnetic>

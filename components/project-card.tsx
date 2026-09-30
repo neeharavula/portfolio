@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { WorkProjectSummary } from "@/lib/work-projects";
+import { useCursor } from "@/components/cursor-context";
 
 type ProjectCardProps = {
   project: WorkProjectSummary;
@@ -15,10 +16,11 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { setLabel } = useCursor();
 
   const details = (
     <div className="p-md space-y-sm">
-      <p className="text-tertiary text-sm">{project.description}</p>
+      <p className="text-primary text-sm">{project.description}</p>
       <div className="flex flex-wrap gap-sm">
         {project.tags.map((tag) => (
           <span
@@ -37,8 +39,15 @@ const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
       href={project.externalUrl ?? `/work/${project.slug}`}
       target={project.externalUrl ? "_blank" : undefined}
       rel={project.externalUrl ? "noopener noreferrer" : undefined}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setLabel(project.type);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setLabel(null);
+      }}
+      onClick={() => setLabel(null)}
       className="block rounded-lg bg-background-hover overflow-hidden"
     >
       {/* Title + date */}
