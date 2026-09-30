@@ -25,14 +25,27 @@ Ask for whatever the user hasn't already given you:
 - **org** - company/org name (e.g. "General Atomics Aeronautical Systems")
 - **timeline** - full range, e.g. "June 2024 – May 2026"
 - **role** - their title/role on the project
-- **team** - short team description (e.g. "Modeling and Simulation, Autonomy and AI. 1 Manager, 2 PMs, 3 Devs")
+- **team** - short team description (e.g. "Modeling and Simulation, Autonomy and AI. 1 Manager, 2 PMs, 3 Devs").
+  Any info-column value (`role`, `team`, etc.) can be split across lines by
+  using an actual line break in the frontmatter value, e.g.
+  `team: "Modeling and Simulation, Autonomy and AI\n1 Senior Dev, 1 Manager"`
+  (double-quoted YAML string with a `\n` escape) - the column renders with
+  `whitespace-pre-line`, so it'll show as two lines instead of one.
 - **tags** - short list of tags shown as pills (e.g. ["PyTest", "Kubernetes", "C++", "Podman"])
-- **stack** - technologies for the Stack column icons. Cross-check each
-  against `utils/icons.tsx`'s `iconMap` keys (python, javascript,
-  typescript, html, css, tailwind, angular, react, nextjs, postman, twilio,
-  stackblitz, aws, mysql, figma). If something they mention isn't in the
-  map, ask whether to add a new icon there or just omit it for now - don't
-  silently drop it without saying so.
+- **stack** - technologies for the Stack column icons (rendered small, with
+  a hover tooltip showing the display name). Cross-check each against
+  `utils/icons.tsx`'s `iconMap` keys (python, javascript, typescript, html,
+  css, tailwind, angular, react, react-native, nextjs, expo-cli, postman,
+  twilio, stackblitz, aws, mysql, figma). If something they mention isn't in
+  the map, check whether `devicons-react` or `react-icons` has it (most
+  common tools do) and add it to *both* `iconMap` and the neighboring
+  `iconLabels` map (the tooltip text) - don't add one without the other.
+  If no icon exists anywhere, ask whether to omit it for now rather than
+  silently dropping it. While you're in there: check the new icon's raw SVG
+  source for its fill color(s). If it's solid black (or black + white) with
+  no other brand color, add its key to the `invertInDark` set too, so it
+  doesn't disappear on the dark theme - but don't add multi-color icons
+  there, inverting would distort their actual brand colors.
 - **description** - one short sentence for the project card's hover reveal
 - **card image** - the image shown on the home page card (optional; a grey
   placeholder box renders automatically if omitted)
@@ -117,14 +130,19 @@ Notes on the body:
   (short section above it, or it's the first image on the page), add the
   `priority` prop (e.g. `<ProjectImage ... priority />`) - Next.js will warn
   about this at build/dev time otherwise. Don't add it to every image, only
-  ones actually likely to be above the fold.
+  ones actually likely to be above the fold. If the asset is an animated
+  GIF, also add `unoptimized` (Next can't process animated GIFs through its
+  image optimizer and will warn otherwise) - and mention to the user that
+  GIFs are an inefficient format, a short muted looping video would be
+  smaller/faster if they have one, but don't hold up the task on it.
 - **Embeds** (Figma prototypes, YouTube, etc.) use
   `<Embed src="..." title="..." />`. Only use `src` values from platforms
   meant to be embedded (Figma, YouTube, Vimeo, CodeSandbox, etc.) - an
   iframe renders whatever that URL serves directly on the user's site.
-- **Lists and code** are plain Markdown - `- item` for bullets, fenced
-  code blocks with a language hint (` ```ts `) for snippets. No special
-  component needed for either.
+- **Lists, code, and links** are plain Markdown - `- item` for bullets,
+  fenced code blocks with a language hint (` ```ts `) for snippets, and
+  `[text](url)` for links (styled and opened in a new tab automatically).
+  No special component needed for any of these.
 - Don't paste raw HTML/script snippets the user hands you (e.g. a copied
   embed code) directly into the MDX without a quick sanity check first -
   MDX compiles to real, executed code.

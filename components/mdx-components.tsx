@@ -8,6 +8,7 @@ type ProjectImageProps = {
   alt: string;
   caption?: string;
   priority?: boolean;
+  unoptimized?: boolean;
 };
 
 const ProjectImage = ({
@@ -15,8 +16,9 @@ const ProjectImage = ({
   alt,
   caption,
   priority = false,
+  unoptimized = false,
 }: ProjectImageProps) => (
-  <figure className="mt-md">
+  <figure className="mt-8 mb-8">
     {src ? (
       <Image
         src={src}
@@ -24,6 +26,7 @@ const ProjectImage = ({
         width={1200}
         height={675}
         priority={priority}
+        unoptimized={unoptimized}
         className="w-full h-auto rounded-lg object-cover"
       />
     ) : (
@@ -43,7 +46,7 @@ type EmbedProps = {
 };
 
 const Embed = ({ src, title }: EmbedProps) => (
-  <div className="mt-md aspect-video rounded-lg overflow-hidden bg-background-code">
+  <div className="mt-8 mb-8 aspect-video rounded-lg overflow-hidden bg-background-code">
     {src && (
       <iframe
         src={src}
@@ -78,6 +81,14 @@ export const mdxComponents: MDXComponents = {
     />
   ),
   strong: (props) => <strong className="text-header font-semibold" {...props} />,
+  a: (props) => (
+    <a
+      className="text-tertiary hover:text-accent underline underline-offset-2"
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+    />
+  ),
   code: (props) => (
     <code
       className="bg-background-code rounded px-xs py-0.5 text-xs"

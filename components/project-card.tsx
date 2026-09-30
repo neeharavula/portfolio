@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { WorkProjectSummary } from "@/lib/work-projects";
+import { useCursor } from "@/components/cursor-context";
 
 type ProjectCardProps = {
   project: WorkProjectSummary;
@@ -15,10 +16,11 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { setLabel } = useCursor();
 
   const details = (
     <div className="p-md space-y-sm">
-      <p className="text-tertiary text-sm">{project.description}</p>
+      <p className="text-primary text-sm">{project.description}</p>
       <div className="flex flex-wrap gap-sm">
         {project.tags.map((tag) => (
           <span
@@ -34,16 +36,29 @@ const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
 
   return (
     <Link
-      href={`/work/${project.slug}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      href={project.externalUrl ?? `/work/${project.slug}`}
+      target={project.externalUrl ? "_blank" : undefined}
+      rel={project.externalUrl ? "noopener noreferrer" : undefined}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setLabel(project.type);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setLabel(null);
+      }}
+      onClick={() => setLabel(null)}
       className="block rounded-lg bg-background-hover overflow-hidden"
     >
       {/* Title + date */}
       <div className="flex items-center justify-between gap-sm px-md py-sm font-navigation text-xs text-tertiary uppercase">
         <span>
           {project.name}
-          <br />/ {project.org}
+          {project.org && (
+            <>
+              <br />/ {project.org}
+            </>
+          )}
         </span>
         <span className="shrink-0">{project.date}</span>
       </div>
@@ -56,7 +71,7 @@ const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
           width={800}
           height={450}
           priority={priority}
-          className="aspect-video rounded-lg w-full h-auto object-cover"
+          className="rounded-lg w-full h-auto"
         />
       ) : (
         <div className="aspect-video rounded-lg bg-background-code" />

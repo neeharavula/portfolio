@@ -5,6 +5,8 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
+import { CursorProvider } from "@/components/cursor-context";
+import CustomCursor from "@/components/custom-cursor";
 import "./globals.css";
 
 /* Fonts */
@@ -50,9 +52,12 @@ export default function RootLayout({
         className={`${inter.variable} ${ibmPlexMono.variable} font-content bg-background text-primary antialiased flex min-h-screen flex-col`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Nav />
-          {children}
-          <Footer />
+          <CursorProvider>
+            <CustomCursor />
+            <Nav />
+            {children}
+            <Footer />
+          </CursorProvider>
         </ThemeProvider>
       </body>
     </html>
