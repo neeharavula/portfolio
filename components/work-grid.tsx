@@ -32,7 +32,11 @@ const WorkGrid = ({ projects }: WorkGridProps) => {
         >
           <ProjectCard
             project={project}
-            priority={index < breakpointColumnsObj.default * 2}
+            // Masonry fills columns round-robin, not row-by-row, so "above
+            // the fold" isn't just the first N items - covers 3 rows for
+            // now. Revisit (or replace with real height-based detection) if
+            // the catalog keeps growing and this starts under/over-covering.
+            priority={index < breakpointColumnsObj.default * 3}
           />
         </motion.div>
       ))}
