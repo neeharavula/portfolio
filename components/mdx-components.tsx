@@ -1,6 +1,8 @@
 /* Components available inside case study MDX content */
 
 import type { MDXComponents } from "mdx/types";
+import type { ReactNode } from "react";
+import { Children } from "react";
 import Image from "next/image";
 
 type ProjectImageProps = {
@@ -39,6 +41,25 @@ const ProjectImage = ({
     )}
   </figure>
 );
+
+// Passing an array via a JSX expression prop (items={[...]}) doesn't
+// survive next-mdx-remote's compileMDX - it silently drops any
+// expression-valued attribute, keeping only string/boolean ones. So each
+// item is its own <NumberedItem> child instead, numbered via Children.map.
+const NumberedList = ({ children }: { children: ReactNode }) => (
+  <ol className="mt-md space-y-sm text-primary">
+    {Children.map(children, (child, index) => (
+      <li key={index} className="flex items-start gap-sm">
+        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#fdbbe6] font-navigation text-xs font-semibold text-background">
+          {index + 1}
+        </span>
+        {child}
+      </li>
+    ))}
+  </ol>
+);
+
+const NumberedItem = ({ children }: { children: ReactNode }) => children;
 
 type EmbedProps = {
   src: string;
@@ -103,4 +124,6 @@ export const mdxComponents: MDXComponents = {
   ),
   ProjectImage,
   Embed,
+  NumberedList,
+  NumberedItem,
 };
