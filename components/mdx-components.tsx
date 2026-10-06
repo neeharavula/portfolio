@@ -4,6 +4,7 @@ import type { MDXComponents } from "mdx/types";
 import type { ReactNode } from "react";
 import { Children } from "react";
 import Image from "next/image";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 
 type ProjectImageProps = {
   src: string;
@@ -79,6 +80,25 @@ const Embed = ({ src, title }: EmbedProps) => (
   </div>
 );
 
+type LinkButtonProps = {
+  href: string;
+  label: string;
+};
+
+const LinkButton = ({ href, label }: LinkButtonProps) => (
+  <div className="mt-8 flex justify-center">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-sm rounded-lg bg-[#6c92a6] px-lg py-sm font-navigation text-xs uppercase text-background hover:opacity-90"
+    >
+      {label}
+      <ArrowUpRightIcon size={14} weight="bold" />
+    </a>
+  </div>
+);
+
 export const mdxComponents: MDXComponents = {
   h2: (props) => (
     <h2
@@ -90,8 +110,11 @@ export const mdxComponents: MDXComponents = {
     <p className="text-primary mt-md leading-relaxed" {...props} />
   ),
   ul: (props) => (
-    <ul
-      className="list-disc list-inside space-y-sm mt-md text-primary"
+    <ul className="list-none space-y-sm mt-md text-primary" {...props} />
+  ),
+  li: (props) => (
+    <li
+      className="flex items-start gap-xs before:content-['•'] before:shrink-0 before:text-lg before:leading-[1.15]"
       {...props}
     />
   ),
@@ -126,4 +149,5 @@ export const mdxComponents: MDXComponents = {
   Embed,
   NumberedList,
   NumberedItem,
+  LinkButton,
 };

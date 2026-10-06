@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getAllWorkProjects, getWorkProjectBySlug } from "@/lib/work-projects";
 import CaseStudyToc from "@/components/case-study-toc";
 import FadeIn from "@/components/fade-in";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
 import { iconMap, iconLabels, invertInDark } from "@/utils/icons";
 
 export function generateStaticParams() {
@@ -36,12 +37,11 @@ export default async function WorkCaseStudy({
       value: (
         <div className="flex flex-wrap gap-sm">
           {frontmatter.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-background-code px-sm py-xs text-xs text-primary"
-            >
-              {tag}
-            </span>
+            <Magnetic key={tag}>
+              <span className="rounded-full bg-background-code px-sm py-xs text-xs text-primary">
+                {tag}
+              </span>
+            </Magnetic>
           ))}
         </div>
       ),

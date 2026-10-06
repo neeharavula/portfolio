@@ -8,6 +8,7 @@ import {
   Html5Original,
   Css3Original,
   TailwindcssOriginal,
+  CplusplusOriginal,
   // Frameworks
   AngularOriginal,
   ReactOriginal,
@@ -25,6 +26,9 @@ import {
   // Platforms
   VercelOriginal,
   ViteOriginal,
+  // DevOps
+  AnsibleOriginal,
+  PodmanOriginal,
 } from "devicons-react";
 import { SiStackblitz } from "react-icons/si";
 import { TbBrandTwilio } from "react-icons/tb";
@@ -50,6 +54,7 @@ export const iconMap: Record<string, ComponentType<IconProps>> = {
   html: Html5Original,
   css: Css3Original,
   tailwind: TailwindcssOriginal,
+  "c++": CplusplusOriginal,
 
   // Frameworks
   angular: AngularOriginal,
@@ -74,6 +79,10 @@ export const iconMap: Record<string, ComponentType<IconProps>> = {
   // Platforms
   vercel: VercelOriginal,
   vite: ViteOriginal,
+
+  // DevOps
+  ansible: AnsibleOriginal,
+  podman: PodmanOriginal,
 };
 
 // Icons that render as solid black (or black + white) shapes by default,
@@ -81,7 +90,7 @@ export const iconMap: Record<string, ComponentType<IconProps>> = {
 // invert in dark mode since they have no other brand color to preserve.
 // Don't add multi-color icons here (e.g. aws) - inverting would distort
 // their actual brand colors, not just fix contrast.
-export const invertInDark = new Set(["expo-cli", "nextjs", "vercel"]);
+export const invertInDark = new Set(["expo-cli", "nextjs", "vercel", "ansible"]);
 
 // Display names for the icon map's keys, used e.g. for hover tooltips
 export const iconLabels: Record<string, string> = {
@@ -91,6 +100,7 @@ export const iconLabels: Record<string, string> = {
   html: "HTML",
   css: "CSS",
   tailwind: "Tailwind CSS",
+  "c++": "C++",
 
   angular: "Angular",
   react: "React",
@@ -110,4 +120,7 @@ export const iconLabels: Record<string, string> = {
 
   vercel: "Vercel",
   vite: "Vite",
+
+  ansible: "Ansible",
+  podman: "Podman",
 };

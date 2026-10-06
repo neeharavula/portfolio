@@ -3,17 +3,61 @@ name: "Jeoparty"
 org: ""
 date: "2026"
 timeline: "July 2026 – August 2026"
-role: "Software Engineer and Designer"
+role: "Software Engineer"
 team: "Solo"
 tags: ["Fullstack", "Realtime"]
 stack: ["react", "supabase", "tailwind", "typescript", "vercel", "vite"]
-description: "A realtime, multiplayer Jeopardy-style game to play with your friends"
+description: "A realtime, multiplayer Jeopardy-style game to play with your friends and family."
 image: "https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/jeoparty/cover.png"
 type: "project"
 ---
 
 ## Overview
 
-## Contributions
+Jeoparty is a real-time, multiplayer Jeopardy-style trivia game built for
+parties and game nights. One person hosts and judges from their laptop or
+phone, players buzz in and answer from their own devices, and a shared TV
+displays the live board, questions, and leaderboard for everyone to follow
+together.
+
+The idea was born while I was planning my going-away party. As I was
+brainstorming with friends about what games would be fun to play as a
+group, we landed on Jeopardy. But the existing options didn't feel very
+personalized or interactive, so I set out to build my own: a no-setup,
+no-accounts game you can spin up in seconds and replay with your own
+questions.
+
+## Features
+
+I built Jeoparty end to end as a solo project, using React, TypeScript,
+and Tailwind CSS, with Supabase (Postgres + Realtime) powering the backend
+and Vercel for hosting. I built out the following core features:
+
+- Four role-based modes: setup, host, player, and display, each with its
+  own responsive layout tailored to the device it runs on (laptop/phone
+  for the host, phones for players, TV for the shared display)
+- Real-time, multiplayer sync: host, player, and display views are
+  synchronized as questions are revealed, answered, and judged, using
+  Supabase Postgres and Realtime to model and broadcast game state
+- Live scoring and leaderboard: player scores update in real time, and a
+  final leaderboard is displayed across all modes at the end of each game
+- Custom board builder: allows hosts to create their own 5x5 boards with
+  multiple-choice or free-text questions
+- Reusable boards: hosts can reload a previous game's board by room code
+  instead of rebuilding it from scratch
+- Easy joining: players can hop in with a host-provided link or game code,
+  no accounts or sign-up required
 
 ## Reflections
+
+Developing Jeoparty was a fun challenge, especially building out
+multiplayer functionality for the first time. Modeling the game as shared
+state in Supabase and broadcasting every reveal, answer, and judgment
+taught me a lot about designing around realtime data and handling the
+edge cases that come with multiple people performing multiple actions at
+once. The best part was testing it live with fifteen of my friends at my
+party and seeing everyone get so competitive :) It's since been deployed
+and is playable by anyone with a room code. Try it out with your friends
+or family!
+
+<LinkButton href="https://jeoparty-game.vercel.app/" label="Play Jeoparty" />
