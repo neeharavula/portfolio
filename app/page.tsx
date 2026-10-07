@@ -11,7 +11,7 @@ export default function Home() {
     <main className="flex-1 px-xl md:px-16 pt-md md:pt-16 pb-xl font-content text-sm">
       <HomeHeader />
 
-      <hr className="border-t-[0.5px] border-page-divider mt-16 mb-16" />
+      <hr className="border-t-[0.5px] border-page-divider mt-12 mb-16" />
 
       <WorkGrid projects={workProjects} />
     </main>
