@@ -3,35 +3,22 @@
 import type { MDXComponents } from "mdx/types";
 import type { ReactNode } from "react";
 import { Children } from "react";
-import Image from "next/image";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
+import ExpandableImage from "@/components/expandable-image";
 
 type ProjectImageProps = {
   src: string;
   alt: string;
   caption?: string;
-  priority?: boolean;
-  unoptimized?: boolean;
 };
 
-const ProjectImage = ({
-  src,
-  alt,
-  caption,
-  priority = false,
-  unoptimized = false,
-}: ProjectImageProps) => (
+// Click-to-expand, same mechanism as the Play page's grid (a raw <img>
+// morphing into a fullscreen view) - trades away next/image's automatic
+// optimization for these inline images in exchange for that interaction.
+const ProjectImage = ({ src, alt, caption }: ProjectImageProps) => (
   <figure className="mt-8 mb-8">
     {src ? (
-      <Image
-        src={src}
-        alt={alt}
-        width={1200}
-        height={675}
-        priority={priority}
-        unoptimized={unoptimized}
-        className="w-full h-auto rounded-lg object-cover"
-      />
+      <ExpandableImage src={src} alt={alt} className="w-full h-auto" />
     ) : (
       <div className="aspect-video rounded-lg bg-background-code" />
     )}
@@ -114,7 +101,7 @@ export const mdxComponents: MDXComponents = {
   ),
   li: (props) => (
     <li
-      className="flex items-start gap-xs before:content-['•'] before:shrink-0 before:text-lg before:leading-[1.15]"
+      className="relative pl-lg before:absolute before:left-0 before:content-['•'] before:text-lg before:leading-[1.15]"
       {...props}
     />
   ),

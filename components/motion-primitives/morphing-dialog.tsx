@@ -1,6 +1,7 @@
 'use client';
 
 import React, {
+  forwardRef,
   useCallback,
   useContext,
   useEffect,
@@ -351,26 +352,24 @@ export type MorphingDialogImageProps = {
   onLoad?: React.ReactEventHandler<HTMLImageElement>;
 };
 
-function MorphingDialogImage({
-  src,
-  alt,
-  className,
-  style,
-  onLoad,
-}: MorphingDialogImageProps) {
-  const { uniqueId } = useMorphingDialog();
+const MorphingDialogImage = forwardRef<HTMLImageElement, MorphingDialogImageProps>(
+  ({ src, alt, className, style, onLoad }, ref) => {
+    const { uniqueId } = useMorphingDialog();
 
-  return (
-    <motion.img
-      src={src}
-      alt={alt}
-      className={cn(className)}
-      layoutId={`dialog-img-${uniqueId}`}
-      style={style}
-      onLoad={onLoad}
-    />
-  );
-}
+    return (
+      <motion.img
+        ref={ref}
+        src={src}
+        alt={alt}
+        className={cn(className)}
+        layoutId={`dialog-img-${uniqueId}`}
+        style={style}
+        onLoad={onLoad}
+      />
+    );
+  }
+);
+MorphingDialogImage.displayName = 'MorphingDialogImage';
 
 export type MorphingDialogCloseProps = {
   children?: React.ReactNode;
