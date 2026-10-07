@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import {
   MorphingDialog,
@@ -20,6 +20,16 @@ type ExpandableImageProps = {
 
 const ExpandableImage = ({ src, alt, className = "" }: ExpandableImageProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // If the browser already had this image cached, the "load" event can
+  // fire before this ref/handler is attached, leaving imageLoaded stuck
+  // false (image permanently invisible). Catch that case on mount.
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setImageLoaded(true);
+    }
+  }, []);
 
   return (
     <MorphingDialog transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
@@ -30,6 +40,7 @@ const ExpandableImage = ({ src, alt, className = "" }: ExpandableImageProps) => 
           transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
         >
           <MorphingDialogImage
+            ref={imgRef}
             src={src}
             alt={alt}
             className={`rounded-lg ${className}`}

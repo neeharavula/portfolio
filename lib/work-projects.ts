@@ -12,6 +12,8 @@ import { mdxComponents } from "@/components/mdx-components";
 
 const CONTENT_DIR = path.join(process.cwd(), "content/work");
 
+export type WorkProjectType = "demo" | "internship" | "work" | "project";
+
 export type WorkProjectFrontmatter = {
   name: string;
   org: string;
@@ -23,6 +25,8 @@ export type WorkProjectFrontmatter = {
   stack: string[];
   description: string;
   image: string;
+  type: WorkProjectType;
+  externalUrl?: string;
 };
 
 export type WorkProjectSummary = WorkProjectFrontmatter & { slug: string };
@@ -35,12 +39,23 @@ const getSlugs = (): string[] =>
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => file.replace(/\.mdx$/, ""));
 
+// Sorts newest-first using the start of `timeline` (e.g. "June 2023 –
+// August 2023" or "2021"), so ties within the same year (e.g. two projects
+// both dated "2023") still order correctly by month.
+const getTimelineStart = (timeline: string): number => {
+  const start = timeline.split("–")[0].trim();
+  const parsed = Date.parse(start);
+  return Number.isNaN(parsed) ? 0 : parsed;
+};
+
 export const getAllWorkProjects = (): WorkProjectSummary[] =>
-  getSlugs().map((slug) => {
-    const raw = fs.readFileSync(path.join(CONTENT_DIR, `${slug}.mdx`), "utf8");
-    const { data } = matter(raw);
-    return { slug, ...(data as WorkProjectFrontmatter) };
-  });
+  getSlugs()
+    .map((slug) => {
+      const raw = fs.readFileSync(path.join(CONTENT_DIR, `${slug}.mdx`), "utf8");
+      const { data } = matter(raw);
+      return { slug, ...(data as WorkProjectFrontmatter) };
+    })
+    .sort((a, b) => getTimelineStart(b.timeline) - getTimelineStart(a.timeline));
 
 // Extracts h2 headings (and matching ids) to build the case study's table
 // of contents, using the same slugger rehype-slug uses so ids line up.

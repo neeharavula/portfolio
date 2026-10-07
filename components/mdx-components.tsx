@@ -1,31 +1,24 @@
 /* Components available inside case study MDX content */
 
 import type { MDXComponents } from "mdx/types";
-import Image from "next/image";
+import type { ReactNode } from "react";
+import { Children } from "react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
+import ExpandableImage from "@/components/expandable-image";
 
 type ProjectImageProps = {
   src: string;
   alt: string;
   caption?: string;
-  priority?: boolean;
 };
 
-const ProjectImage = ({
-  src,
-  alt,
-  caption,
-  priority = false,
-}: ProjectImageProps) => (
-  <figure className="mt-md">
+// Click-to-expand, same mechanism as the Play page's grid (a raw <img>
+// morphing into a fullscreen view) - trades away next/image's automatic
+// optimization for these inline images in exchange for that interaction.
+const ProjectImage = ({ src, alt, caption }: ProjectImageProps) => (
+  <figure className="mt-8 mb-8">
     {src ? (
-      <Image
-        src={src}
-        alt={alt}
-        width={1200}
-        height={675}
-        priority={priority}
-        className="w-full h-auto rounded-lg object-cover"
-      />
+      <ExpandableImage src={src} alt={alt} className="w-full h-auto" />
     ) : (
       <div className="aspect-video rounded-lg bg-background-code" />
     )}
@@ -37,13 +30,32 @@ const ProjectImage = ({
   </figure>
 );
 
+// Passing an array via a JSX expression prop (items={[...]}) doesn't
+// survive next-mdx-remote's compileMDX - it silently drops any
+// expression-valued attribute, keeping only string/boolean ones. So each
+// item is its own <NumberedItem> child instead, numbered via Children.map.
+const NumberedList = ({ children }: { children: ReactNode }) => (
+  <ol className="mt-md space-y-sm text-primary">
+    {Children.map(children, (child, index) => (
+      <li key={index} className="flex items-start gap-sm">
+        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#fdbbe6] font-navigation text-xs font-semibold text-background">
+          {index + 1}
+        </span>
+        {child}
+      </li>
+    ))}
+  </ol>
+);
+
+const NumberedItem = ({ children }: { children: ReactNode }) => children;
+
 type EmbedProps = {
   src: string;
   title: string;
 };
 
 const Embed = ({ src, title }: EmbedProps) => (
-  <div className="mt-md aspect-video rounded-lg overflow-hidden bg-background-code">
+  <div className="mt-8 mb-8 aspect-video rounded-lg overflow-hidden bg-background-code">
     {src && (
       <iframe
         src={src}
@@ -52,6 +64,25 @@ const Embed = ({ src, title }: EmbedProps) => (
         allowFullScreen
       />
     )}
+  </div>
+);
+
+type LinkButtonProps = {
+  href: string;
+  label: string;
+};
+
+const LinkButton = ({ href, label }: LinkButtonProps) => (
+  <div className="mt-8 flex justify-center">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-sm rounded-lg bg-[#6c92a6] px-lg py-sm font-navigation text-xs uppercase text-background hover:opacity-90"
+    >
+      {label}
+      <ArrowUpRightIcon size={14} weight="bold" />
+    </a>
   </div>
 );
 
@@ -66,8 +97,11 @@ export const mdxComponents: MDXComponents = {
     <p className="text-primary mt-md leading-relaxed" {...props} />
   ),
   ul: (props) => (
-    <ul
-      className="list-disc list-inside space-y-sm mt-md text-primary"
+    <ul className="list-none space-y-sm mt-md text-primary" {...props} />
+  ),
+  li: (props) => (
+    <li
+      className="relative pl-lg before:absolute before:left-0 before:content-['•'] before:text-lg before:leading-[1.15]"
       {...props}
     />
   ),
@@ -78,6 +112,14 @@ export const mdxComponents: MDXComponents = {
     />
   ),
   strong: (props) => <strong className="text-header font-semibold" {...props} />,
+  a: (props) => (
+    <a
+      className="text-tertiary hover:text-accent underline underline-offset-2"
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+    />
+  ),
   code: (props) => (
     <code
       className="bg-background-code rounded px-xs py-0.5 text-xs"
@@ -92,4 +134,7 @@ export const mdxComponents: MDXComponents = {
   ),
   ProjectImage,
   Embed,
+  NumberedList,
+  NumberedItem,
+  LinkButton,
 };
