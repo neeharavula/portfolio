@@ -110,10 +110,13 @@ export default function About() {
           </h1>
           <p>
             I grew up in San Diego, California and studied
-            computer science at UC Santa Cruz. Currently, I&apos;m 
-            pursuing a master&apos;s in computer science at Cornell
-            Tech in NYC, exploring the areas of human-centered computing and
-            ethical AI. Previously, I worked on developing software solutions 
+            computer science at UC Santa Cruz.{" "}
+            <strong className="font-medium">
+              Currently, I&apos;m pursuing a master&apos;s in computer
+              science at Cornell Tech in NYC, exploring the areas of
+              human-centered computing and ethical AI
+            </strong>
+            . Previously, I worked on developing software solutions
             across the aerospace and fintech sectors.
           </p>
           <p>
