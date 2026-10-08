@@ -1,0 +1,67 @@
+/* Home page header, with the developer/creative word loop */
+
+"use client";
+
+import { motion } from "motion/react";
+import { TextLoop } from "@/components/motion-primitives/text-loop";
+
+const loopProps = {
+  className: "text-accent",
+  interval: 3.5,
+  transition: {
+    type: "spring" as const,
+    stiffness: 900,
+    damping: 80,
+    mass: 10,
+  },
+  variants: {
+    initial: { y: 20, opacity: 0, filter: "blur(4px)" },
+    animate: { y: 0, opacity: 1, filter: "blur(0px)" },
+    exit: { y: -20, opacity: 0, filter: "blur(4px)" },
+  },
+};
+
+const HomeHeader = () => {
+  return (
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+      className="font-header text-4xl md:text-5xl text-header max-w-3xl"
+    >
+      {/* Mobile */}
+      <span className="md:hidden">
+        Neeha Ravula is
+        <br />
+        a{" "}
+        <TextLoop {...loopProps}>
+          <span>developer</span>
+          <span>creative</span>
+        </TextLoop>
+        <br />
+        based in New York,
+        <br />
+        NY, exploring the
+        <br />
+        intersection of design
+        <br />
+        and computation.
+      </span>
+
+      {/* Desktop */}
+      <span className="hidden md:inline">
+        Neeha Ravula is a{" "}
+        <TextLoop {...loopProps}>
+          <span>developer</span>
+          <span>creative</span>
+        </TextLoop>
+        <br />
+        based in New York, NY, exploring
+        <br />
+        the intersection of design and computation.
+      </span>
+    </motion.h1>
+  );
+};
+
+export default HomeHeader;

@@ -1,3 +1,5 @@
+/* Tech stack icon map */
+
 import {
   // Languages
   PythonOriginal,
@@ -6,32 +8,45 @@ import {
   Html5Original,
   Css3Original,
   TailwindcssOriginal,
+  CplusplusOriginal,
   // Frameworks
   AngularOriginal,
   ReactOriginal,
+  ReactnativeOriginal,
   NextjsOriginal,
+  ExpoOriginal,
   // APIs
   PostmanOriginal,
   // Data
   AmazonwebservicesOriginalWordmark,
   MysqlOriginal,
+  SupabaseOriginal,
   // Design
   FigmaOriginal,
+  // Platforms
+  VercelOriginal,
+  ViteOriginal,
+  // DevOps
+  AnsibleOriginal,
+  PodmanOriginal,
 } from "devicons-react";
-import { SiTwilio, SiStackblitz } from "react-icons/si";
+import { SiStackblitz } from "react-icons/si";
+import { TbBrandTwilio } from "react-icons/tb";
 import { ComponentType } from "react";
 
-// Rare icon components
-const TwilioIcon: ComponentType<{ className?: string }> = ({ className }) => (
-  <SiTwilio className={`text-[#F22F46] ${className ?? ""}`} />
+type IconProps = { className?: string; size?: number | string };
+
+// Rare icon components (not covered by devicons-react)
+const TwilioIcon: ComponentType<IconProps> = ({ className, size }) => (
+  <TbBrandTwilio className={`text-[#F22F46] ${className ?? ""}`} size={size} />
 );
 
-const StackblitzIcon: ComponentType<{ className?: string }> = ({
-  className,
-}) => <SiStackblitz className={`text-[#1389FD] ${className ?? ""}`} />;
+const StackblitzIcon: ComponentType<IconProps> = ({ className, size }) => (
+  <SiStackblitz className={`text-[#1389FD] ${className ?? ""}`} size={size} />
+);
 
 // Icon map
-export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
+export const iconMap: Record<string, ComponentType<IconProps>> = {
   // Languages
   python: PythonOriginal,
   javascript: JavascriptOriginal,
@@ -39,11 +54,14 @@ export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   html: Html5Original,
   css: Css3Original,
   tailwind: TailwindcssOriginal,
+  "c++": CplusplusOriginal,
 
   // Frameworks
   angular: AngularOriginal,
   react: ReactOriginal,
+  "react-native": ReactnativeOriginal,
   nextjs: NextjsOriginal,
+  "expo-cli": ExpoOriginal,
 
   // APIs
   postman: PostmanOriginal,
@@ -53,7 +71,56 @@ export const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   // Data
   aws: AmazonwebservicesOriginalWordmark,
   mysql: MysqlOriginal,
+  supabase: SupabaseOriginal,
 
   // Design
   figma: FigmaOriginal,
+
+  // Platforms
+  vercel: VercelOriginal,
+  vite: ViteOriginal,
+
+  // DevOps
+  ansible: AnsibleOriginal,
+  podman: PodmanOriginal,
+};
+
+// Icons that render as solid black (or black + white) shapes by default,
+// which disappear or go low-contrast against a dark background. Safe to
+// invert in dark mode since they have no other brand color to preserve.
+// Don't add multi-color icons here (e.g. aws) - inverting would distort
+// their actual brand colors, not just fix contrast.
+export const invertInDark = new Set(["expo-cli", "nextjs", "vercel", "ansible"]);
+
+// Display names for the icon map's keys, used e.g. for hover tooltips
+export const iconLabels: Record<string, string> = {
+  python: "Python",
+  javascript: "JavaScript",
+  typescript: "TypeScript",
+  html: "HTML",
+  css: "CSS",
+  tailwind: "Tailwind CSS",
+  "c++": "C++",
+
+  angular: "Angular",
+  react: "React",
+  "react-native": "React Native",
+  nextjs: "Next.js",
+  "expo-cli": "Expo CLI",
+
+  postman: "Postman",
+  twilio: "Twilio",
+  stackblitz: "StackBlitz",
+
+  aws: "AWS",
+  mysql: "MySQL",
+  supabase: "Supabase",
+
+  figma: "Figma",
+
+  vercel: "Vercel",
+  vite: "Vite",
+
+  ansible: "Ansible",
+  podman: "Podman",
 };
