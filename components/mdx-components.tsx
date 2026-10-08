@@ -111,7 +111,7 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
-  strong: (props) => <strong className="text-header font-semibold" {...props} />,
+  strong: (props) => <strong className="font-medium" {...props} />,
   a: (props) => (
     <a
       className="text-tertiary hover:text-accent underline underline-offset-2"
