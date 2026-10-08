@@ -19,6 +19,7 @@ import { resumeSections } from "@/data/resume-data";
 import Section from "@/components/section";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
+import { Tilt } from "@/components/motion-primitives/tilt";
 
 const socials = [
   {
@@ -84,14 +85,16 @@ export default function About() {
           transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
           className="relative w-1/2 md:w-1/4 aspect-[3/4] shrink-0 -rotate-3"
         >
-          <Image
-            src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.png"
-            alt="Neeha Ravula"
-            fill
-            sizes="(min-width: 768px) 25vw, 100vw"
-            priority
-            className="object-contain"
-          />
+          <Tilt className="relative w-full h-full">
+            <Image
+              src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/about/polaroid.png"
+              alt="Neeha Ravula"
+              fill
+              sizes="(min-width: 768px) 25vw, 100vw"
+              priority
+              className="object-contain"
+            />
+          </Tilt>
         </motion.div>
 
         {/* Text + socials */}
@@ -107,10 +110,13 @@ export default function About() {
           </h1>
           <p>
             I grew up in San Diego, California and studied
-            computer science at UC Santa Cruz. Currently, I&apos;m 
-            pursuing a master&apos;s in computer science at Cornell
-            Tech in NYC, exploring the areas of human-centered computing and
-            ethical AI. Previously, I worked on developing software solutions 
+            computer science at UC Santa Cruz.{" "}
+            <strong className="font-medium">
+              Currently, I&apos;m pursuing a master&apos;s in computer
+              science at Cornell Tech in NYC, exploring the areas of
+              human-centered computing and ethical AI
+            </strong>
+            . Previously, I worked on developing software solutions
             across the aerospace and fintech sectors.
           </p>
           <p>

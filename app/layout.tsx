@@ -38,6 +38,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Clear any saved theme override before next-themes' own init
+            script runs, so every fresh page load always resolves the theme
+            from the current system preference instead of a stale manual
+            choice from a previous visit. The toggle still works normally
+            within a visit - this only resets on a fresh load. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try { localStorage.removeItem("theme"); } catch (e) {}`,
+          }}
+        />
         <link rel="stylesheet" href="https://use.typekit.net/smn7zyq.css" />
         <link
           rel="dns-prefetch"
