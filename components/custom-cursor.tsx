@@ -1,5 +1,5 @@
-/* Accent dot that follows the cursor, morphing into a "SEE <TYPE>" pill
-   when hovering a project card (see useCursor/CursorProvider). */
+/* Accent dot that follows the cursor and morphs into a "SEE <TYPE>" pill
+   on project card hover (see useCursor/CursorProvider). */
 
 "use client";
 

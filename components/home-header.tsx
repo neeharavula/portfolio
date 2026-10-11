@@ -1,4 +1,4 @@
-/* Home page header, with the developer/creative word loop */
+/* Home page header, with text loop animation */
 
 "use client";
 

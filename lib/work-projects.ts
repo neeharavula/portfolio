@@ -39,9 +39,7 @@ const getSlugs = (): string[] =>
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => file.replace(/\.mdx$/, ""));
 
-// Sorts newest-first using the start of `timeline` (e.g. "June 2023 –
-// August 2023" or "2021"), so ties within the same year (e.g. two projects
-// both dated "2023") still order correctly by month.
+// Sorts newest-first using the start of `timeline`
 const getTimelineStart = (timeline: string): number => {
   const start = timeline.split("–")[0].trim();
   const parsed = Date.parse(start);

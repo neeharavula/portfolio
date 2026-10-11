@@ -1,4 +1,4 @@
-/* Case study table of contents - highlights + scrolls to the active section */
+/* Case study table of contents */
 
 "use client";
 
@@ -11,13 +11,10 @@ type CaseStudyTocProps = {
 
 // How far from the top of the viewport a heading counts as "in view".
 const SCROLL_OFFSET = 150;
-// How close to the bottom of the page counts as "at the end" - guarantees
-// the last section highlights even if its heading is too short to ever
-// cross SCROLL_OFFSET before hitting the bottom of the page.
+// How close to the bottom of the page counts as "at the end"
 const BOTTOM_THRESHOLD = 2;
 // After a sidebar click, ignore scroll-driven recalculation until scroll
-// events stop for this long - otherwise the smooth-scroll animation fights
-// the manually set active section and flickers between sections mid-scroll.
+// events stop for this long
 const MANUAL_SCROLL_SETTLE_MS = 150;
 
 const CaseStudyToc = ({ toc }: CaseStudyTocProps) => {

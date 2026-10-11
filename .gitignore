@@ -40,3 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 public/fonts
+
+# local-only tooling (run on the author's machine, not needed for the
+# deployed site, reference local paths/Blob upload behavior)
+/scripts

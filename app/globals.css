@@ -70,7 +70,6 @@
   --radius-lg: 6px;
 }
 
-/* Slightly widen letter spacing on all OffBit (font-header) text */
 .font-header {
   letter-spacing: 0.03em;
 }

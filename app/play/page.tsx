@@ -14,7 +14,7 @@ const imageBreakpointCols = {
   768: 2,
 };
 
-// Video thumbnails are given more room than photos, at every breakpoint.
+// Video thumbnails are given more room than photos
 const videoBreakpointCols = {
   default: 2,
   768: 2,
@@ -71,11 +71,6 @@ const renderVideoGrid = () => (
   </Masonry>
 );
 
-// Mobile has no filter UI, so every category renders in one continuous
-// masonry, in filter order (film, digital, video, art) - photos and videos
-// both want 2 columns on mobile anyway, so there's no layout reason to
-// split them (splitting them into separate stacked grids left a visible
-// gap wherever one column finished shorter than the other).
 const mobileItems: MixedGalleryItem[] = filters.flatMap((filter) =>
   filter === "video"
     ? videoItems.map(({ slug, title }): MixedGalleryItem => ({ type: "video", slug, title }))

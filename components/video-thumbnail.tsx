@@ -1,5 +1,4 @@
-/* Video gallery item - static poster + play button in the grid, expands
-   to the full video with audio + controls on click/tap. */
+/* Video gallery item */
 
 "use client";
 
