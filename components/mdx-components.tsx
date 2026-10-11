@@ -12,9 +12,7 @@ type ProjectImageProps = {
   caption?: string;
 };
 
-// Click-to-expand, same mechanism as the Play page's grid (a raw <img>
-// morphing into a fullscreen view) - trades away next/image's automatic
-// optimization for these inline images in exchange for that interaction.
+// Click-to-expand, same mechanism as the Play page's grid
 const ProjectImage = ({ src, alt, caption }: ProjectImageProps) => (
   <figure className="mt-8 mb-8">
     {src ? (
@@ -30,10 +28,6 @@ const ProjectImage = ({ src, alt, caption }: ProjectImageProps) => (
   </figure>
 );
 
-// Passing an array via a JSX expression prop (items={[...]}) doesn't
-// survive next-mdx-remote's compileMDX - it silently drops any
-// expression-valued attribute, keeping only string/boolean ones. So each
-// item is its own <NumberedItem> child instead, numbered via Children.map.
 const NumberedList = ({ children }: { children: ReactNode }) => (
   <ol className="mt-md space-y-sm text-primary">
     {Children.map(children, (child, index) => (

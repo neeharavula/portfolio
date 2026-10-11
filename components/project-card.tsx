@@ -1,4 +1,4 @@
-/* Work project card - expands on hover to reveal description + tags */
+/* Work project card */
 
 "use client";
 

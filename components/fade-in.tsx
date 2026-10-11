@@ -1,4 +1,4 @@
-/* Fade-in-on-mount wrapper, matching the reveal used across the site */
+/* Fade-in-on-mount wrapper */
 
 "use client";
 

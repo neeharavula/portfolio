@@ -1,4 +1,4 @@
-/* Shares the currently-hovered project's type with the custom cursor */
+/* Shares currently-hovered project's type with the custom cursor */
 
 "use client";
 

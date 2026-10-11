@@ -1,4 +1,4 @@
-/* Expandable image - wraps an <img> with a click-to-expand morphing dialog */
+/* Expandable image */
 
 "use client";
 
