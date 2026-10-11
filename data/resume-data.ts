@@ -17,10 +17,10 @@ export type ResumeSection = {
 export const resumeSections: ResumeSection[] = [
   {
     /* Education */
-    title: "Education",
+    title: "education",
     entries: [
       {
-        date: "Incoming", // 2026 - Now
+        date: "Now - 2027 ",
         role: "Master's in Computer Science at Cornell Tech",
         location: "New York, NY",
         link: "https://tech.cornell.edu/",
@@ -37,10 +37,10 @@ export const resumeSections: ResumeSection[] = [
   },
   {
     /* Professional */
-    title: "Professional",
+    title: "experience",
     entries: [
       {
-        date: "2024 — 2026",
+        date: "2024 - 2026",
         role: "Software Engineer at General Atomics Aeronautical Systems",
         location: "San Diego, CA",
         link: "https://www.ga-asi.com/",
@@ -61,7 +61,7 @@ export const resumeSections: ResumeSection[] = [
   },
   {
     /* Community */
-    title: "Community",
+    title: "community",
     entries: [
       {
         date: "2023",

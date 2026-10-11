@@ -1,83 +1,121 @@
-/* Project pages */
+/* Case study page */
 
-import Layout from "@/components/base/general-layout";
-import Section from "@/components/base/section";
-import { iconMap } from "@/utils/icons";
-import { workData } from "@/data/work-projects";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getAllWorkProjects, getWorkProjectBySlug } from "@/lib/work-projects";
+import CaseStudyToc from "@/components/case-study-toc";
+import FadeIn from "@/components/fade-in";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { iconMap, iconLabels, invertInDark } from "@/utils/icons";
 
-type Props = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
+export function generateStaticParams() {
+  return getAllWorkProjects()
+    .filter((project) => !project.externalUrl)
+    .map(({ slug }) => ({ slug }));
+}
 
-// Pull project data
-export default async function Project({ params }: Props) {
+export default async function WorkCaseStudy({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
+  const project = await getWorkProjectBySlug(slug);
 
-  const project = workData.find((p) => p.slug === slug);
+  if (!project || project.frontmatter.externalUrl) {
+    notFound();
+  }
 
-  if (!project) return notFound();
+  const { frontmatter, content, toc } = project;
+
+  const infoColumns = [
+    { label: "Timeline", value: frontmatter.timeline },
+    { label: "Role", value: frontmatter.role },
+    { label: "Team", value: frontmatter.team },
+    {
+      label: "Tags",
+      value: (
+        <div className="flex flex-wrap gap-sm">
+          {frontmatter.tags.map((tag) => (
+            <Magnetic key={tag}>
+              <span className="rounded-full bg-background-code px-sm py-xs text-xs text-primary">
+                {tag}
+              </span>
+            </Magnetic>
+          ))}
+        </div>
+      ),
+    },
+    {
+      label: "Stack",
+      value: (
+        <div className="flex flex-wrap items-center gap-sm">
+          {frontmatter.stack.map((tech) => {
+            const Icon = iconMap[tech];
+            return Icon ? (
+              <span
+                key={tech}
+                title={iconLabels[tech] ?? tech}
+                className={invertInDark.has(tech) ? "dark:invert" : undefined}
+              >
+                <Icon size={20} />
+              </span>
+            ) : null;
+          })}
+        </div>
+      ),
+    },
+  ];
 
   return (
-    <Layout variant="project" projectTitle={project.title}>
-      <div className="max-w-5xl mx-auto px-8 py-2 font-[family-name:var(--font-geist-mono)] text-sm relative z-10">
-        {/* Overview */}
-        {project.overview && (
-          <Section title="Overview">
-            <div>{project.overview}</div>
-          </Section>
-        )}
+    <main className="w-full flex-1 max-w-7xl mx-auto px-xl md:px-16 pt-md md:pt-16 pb-16 font-content text-sm">
+      {/* Back link */}
+      <FadeIn>
+        <Link
+          href="/"
+          className="font-navigation text-xs uppercase text-accent md:text-tertiary md:hover:text-accent"
+        >
+          ← Back to all work
+        </Link>
+      </FadeIn>
 
-        {/* Stack */}
-        {project.tools && (
-          <Section title="Stack">
-            <ul className="flex gap-2 flex-wrap">
-              {project.tools.map((tool) => {
-                const Icon = iconMap[tool.toLowerCase()];
-                const lowerTool = tool.toLowerCase();
+      {/* Title */}
+      <FadeIn delay={0.1}>
+        <h1 className="font-header text-2xl md:text-3xl text-header mt-16">
+          {frontmatter.name}
+          {frontmatter.org && (
+            <>
+              <br />/ {frontmatter.org}
+            </>
+          )}
+        </h1>
+      </FadeIn>
 
-                return Icon ? (
-                  <li
-                    key={tool}
-                    title={tool}
-                    className="w-6 h-6 flex items-center justify-center relative"
-                  >
-                    <Icon
-                      className={`w-5 h-5 ${
-                        lowerTool === "twilio"
-                          ? "text-red-600 scale-[0.8]"
-                          : lowerTool === "stackblitz"
-                          ? "scale-[0.8]"
-                          : "text-gray-800"
-                      }`}
-                    />
-                  </li>
-                ) : (
-                  <li key={tool} className="text-sm text-neutral-500">
-                    {tool}
-                  </li>
-                );
-              })}
-            </ul>
-          </Section>
-        )}
+      {/* Info columns */}
+      <FadeIn delay={0.2}>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-x-16 gap-y-lg mt-16">
+          {infoColumns.map(({ label, value }) => (
+            <div key={label}>
+              <p className="font-navigation text-xs text-tertiary uppercase">
+                {label}
+              </p>
+              <div className="text-primary mt-sm whitespace-pre-line">
+                {value}
+              </div>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
 
-        {/* Contributions */}
-        {project.tasks && (
-          <Section title="Contributions">
-            <div>{project.tasks}</div>
-          </Section>
-        )}
+      <hr className="border-t-[0.5px] border-page-divider mt-16 mb-16" />
 
-        {/* Reflections */}
-        {project.reflections && (
-          <Section title="Reflections">
-            <div>{project.reflections}</div>
-          </Section>
-        )}
-      </div>
-    </Layout>
+      {/* Case study content */}
+      <FadeIn delay={0.3}>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-x-16 gap-y-lg">
+          <CaseStudyToc toc={toc} />
+          <div className="md:col-span-4">{content}</div>
+        </div>
+      </FadeIn>
+    </main>
   );
 }
