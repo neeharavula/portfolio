@@ -1,9 +1,9 @@
 /* Play gallery data */
 
-export const filters = ["film", "digital", "art"] as const;
+export const filters = ["film", "digital", "video", "art"] as const;
 export type FilterType = (typeof filters)[number];
 
-export const imageFiles: Record<FilterType, string[]> = {
+export const imageFiles: Record<Exclude<FilterType, "video">, string[]> = {
   film: [
     "01-monaco.jpeg",
     "02-beaune.jpg",
@@ -49,3 +49,19 @@ export const imageFiles: Record<FilterType, string[]> = {
   ],
   art: ["florence.jpeg"],
 };
+
+// Video entries live at Blob storage play/video/<slug>/{full.mp4,
+// poster.jpg} (see scripts/compress-videos.mjs) - a richer shape than
+// imageFiles since each needs a title (alt text/aria-label) and a slug
+// that maps to two separate files, not one filename.
+export type VideoItem = {
+  slug: string;
+  title: string;
+};
+
+export const videoItems: VideoItem[] = [
+  { slug: "summer-in-the-vineyard", title: "Summer in the Vineyard" },
+  { slug: "idyllwild", title: "Idyllwild" },
+  { slug: "rochelle-jordan", title: "Rochelle Jordan" },
+  { slug: "pnw", title: "PNW" },
+];

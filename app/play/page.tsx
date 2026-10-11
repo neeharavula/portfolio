@@ -5,26 +5,37 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import Masonry from "react-masonry-css";
-import { filters, imageFiles, FilterType } from "@/data/play-gallery";
+import { filters, imageFiles, videoItems, FilterType } from "@/data/play-gallery";
 import ExpandableImage from "@/components/expandable-image";
+import VideoThumbnail from "@/components/video-thumbnail";
 
-const breakpointColumnsObj = {
+const imageBreakpointCols = {
   default: 4,
   768: 2,
 };
 
-const imageUrl = (category: FilterType, file: string) =>
+// Video thumbnails are given more room than photos, at every breakpoint.
+const videoBreakpointCols = {
+  default: 2,
+  768: 2,
+};
+
+const imageUrl = (category: Exclude<FilterType, "video">, file: string) =>
   `https://f6ciazohrats9a1e.public.blob.vercel-storage.com/play/${category}/${file}`;
 
-type GalleryImage = { category: FilterType; file: string };
+type ImageGalleryItem = { category: Exclude<FilterType, "video">; file: string };
 
-const renderGrid = (images: GalleryImage[]) => (
+type MixedGalleryItem =
+  | { type: "image"; category: Exclude<FilterType, "video">; file: string }
+  | { type: "video"; slug: string; title: string };
+
+const renderImageGrid = (items: ImageGalleryItem[]) => (
   <Masonry
-    breakpointCols={breakpointColumnsObj}
+    breakpointCols={imageBreakpointCols}
     className="masonry-grid"
     columnClassName="masonry-column"
   >
-    {images.map(({ category, file }, index) => (
+    {items.map(({ category, file }, index) => (
       <motion.div
         key={`${category}-${file}-${index}`}
         initial={{ opacity: 0, y: 20 }}
@@ -41,18 +52,72 @@ const renderGrid = (images: GalleryImage[]) => (
   </Masonry>
 );
 
+const renderVideoGrid = () => (
+  <Masonry
+    breakpointCols={videoBreakpointCols}
+    className="masonry-grid"
+    columnClassName="masonry-column"
+  >
+    {videoItems.map(({ slug, title }, index) => (
+      <motion.div
+        key={slug}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.05 }}
+      >
+        <VideoThumbnail slug={slug} title={title} />
+      </motion.div>
+    ))}
+  </Masonry>
+);
+
+// Mobile has no filter UI, so every category renders in one continuous
+// masonry, in filter order (film, digital, video, art) - photos and videos
+// both want 2 columns on mobile anyway, so there's no layout reason to
+// split them (splitting them into separate stacked grids left a visible
+// gap wherever one column finished shorter than the other).
+const mobileItems: MixedGalleryItem[] = filters.flatMap((filter) =>
+  filter === "video"
+    ? videoItems.map(({ slug, title }): MixedGalleryItem => ({ type: "video", slug, title }))
+    : imageFiles[filter].map(
+        (file): MixedGalleryItem => ({ type: "image", category: filter, file })
+      )
+);
+
+const renderMobileGrid = () => (
+  <Masonry
+    breakpointCols={videoBreakpointCols}
+    className="masonry-grid"
+    columnClassName="masonry-column"
+  >
+    {mobileItems.map((item, index) => (
+      <motion.div
+        key={item.type === "video" ? item.slug : `${item.category}-${item.file}-${index}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.05 }}
+      >
+        {item.type === "video" ? (
+          <VideoThumbnail slug={item.slug} title={item.title} />
+        ) : (
+          <ExpandableImage
+            src={imageUrl(item.category, item.file)}
+            alt={`${item.category} ${index}`}
+            className="w-full h-auto object-cover"
+          />
+        )}
+      </motion.div>
+    ))}
+  </Masonry>
+);
+
 export default function Play() {
   const [activeFilter, setActiveFilter] = useState<FilterType>(filters[0]);
 
-  // Mobile has no filter UI (nav is desktop-only) - it always shows every
-  // category combined, independent of the desktop filter selection.
-  const allImages = filters.flatMap((category) =>
-    imageFiles[category].map((file) => ({ category, file }))
-  );
-  const currentImages = imageFiles[activeFilter].map((file) => ({
-    category: activeFilter,
-    file,
-  }));
+  const currentImages: ImageGalleryItem[] =
+    activeFilter === "video"
+      ? []
+      : imageFiles[activeFilter].map((file) => ({ category: activeFilter, file }));
 
   return (
     <main className="flex-1 flex flex-col md:flex-row gap-y-sm md:gap-x-8 px-xl md:px-16 pt-md md:pt-16 pb-xl font-content text-sm">
@@ -80,10 +145,15 @@ export default function Play() {
         </nav>
       </div>
 
-      {/* Masonry image grid */}
+      {/* Masonry grid(s) */}
       <div className="w-full md:flex-1">
-        <div className="md:hidden">{renderGrid(allImages)}</div>
-        <div className="hidden md:block">{renderGrid(currentImages)}</div>
+        {/* Mobile: everything combined, in filter order */}
+        <div className="md:hidden">{renderMobileGrid()}</div>
+
+        {/* Desktop: filtered to the selected category */}
+        <div className="hidden md:block">
+          {activeFilter === "video" ? renderVideoGrid() : renderImageGrid(currentImages)}
+        </div>
       </div>
     </main>
   );

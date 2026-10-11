@@ -1,17 +1,18 @@
 ---
 name: sync-assets
-description: Compress oversized images in ~/neeharavula/assets/ into ~/neeharavula/assets-compressed/, then sync any new/changed files up to Vercel Blob storage. Use when the user wants to update, compress, or sync portfolio assets/images, or invokes /sync-assets.
+description: Compress oversized images/videos in ~/neeharavula/assets/ into ~/neeharavula/assets-compressed/, then sync any new/changed files up to Vercel Blob storage. Use when the user wants to update, compress, or sync portfolio assets/images/videos, or invokes /sync-assets.
 ---
 
 # Sync Assets
 
-The user is a photographer and keeps original (often large) source images in
-`~/neeharavula/assets/`, mirroring the folder structure used in Vercel Blob
-storage (e.g. `play/film/01-monaco.jpeg`, `work/projects/<slug>/cover.png`).
-This skill produces `~/neeharavula/assets-compressed/` as a web-ready mirror
-and pushes it to Blob.
+The user is a photographer and keeps original (often large) source images
+and videos in `~/neeharavula/assets/`, mirroring the folder structure used
+in Vercel Blob storage (e.g. `play/film/01-monaco.jpeg`,
+`play/video/<slug>/`, `work/projects/<slug>/cover.png`). This skill produces
+`~/neeharavula/assets-compressed/` as a web-ready mirror and pushes it to
+Blob.
 
-## 1. Compress
+## 1. Compress images
 
 Run:
 
@@ -50,7 +51,46 @@ large afterward. If a compressed PNG is still over ~1MB, mention it to the
 user and suggest converting it to JPEG by hand if further reduction
 matters for that particular image.
 
-## 2. Check what's out of sync with Blob
+## 2. Compress videos
+
+Run:
+
+```
+node scripts/compress-videos.mjs
+```
+
+This walks `~/neeharavula/assets/play/video/<name>/` - each folder there
+should contain exactly one video (`.mov`/`.mp4`/`.m4v`) and one thumbnail
+image (`.jpg`/`.jpeg`/`.png`). The folder name is slugified (lowercase,
+spaces/punctuation -> hyphens, e.g. "rochelle jordan" ->
+"rochelle-jordan") for the output path. Each folder produces three files
+in `~/neeharavula/assets-compressed/play/video/<slug>/`:
+
+- `preview.mp4` - muted, no audio, trimmed to 6 seconds, scaled to a
+  640px max dimension, higher compression (CRF 30) - this is the
+  autoplay/loop "GIF-like" grid thumbnail (`<video autoPlay loop muted
+  playsInline>`), so small file size matters more than quality here.
+- `full.mp4` - full length with audio (AAC), scaled to a 1920px max
+  dimension, CRF 23 - played on click/tap with controls, quality matters
+  more here.
+- `poster.jpg` - compressed version of the folder's thumbnail image,
+  shown as the `poster` attribute before the preview video loads.
+
+Requires `ffmpeg`/`ffprobe` - the script auto-detects them at
+`/opt/homebrew/bin`, `/usr/local/bin`, or on `PATH`. If missing entirely,
+tell the user to install it (`brew install ffmpeg`) rather than trying to
+install it yourself without asking - it's a system-level change outside
+the project. Skips folders missing either the video or the image (reports
+them rather than guessing). Like the image script, it skips already-
+processed videos (unchanged since last run) and prunes output folders
+whose source folder was renamed/removed.
+
+If a new video was added (not just an update to an existing one), it also
+needs an entry in `data/play-gallery.ts`'s `videoItems` array (`slug`
+matching the folder's slug, plus a display `title`) - the Play page's
+video grid reads from there, not from scanning Blob directly.
+
+## 3. Check what's out of sync with Blob
 
 Run:
 
@@ -64,25 +104,26 @@ changed (needs uploading) and what's in Blob with no local match (needs
 deleting - a file the user renamed or removed from `assets/`), without
 changing anything yet.
 
-## 3. Check if `data/play-gallery.ts` needs updating
+## 4. Check if `data/play-gallery.ts` needs updating
 
 If anything under `play/film/` or `play/digital/` was added, renamed, or
 removed (compare the compress step's output / `assets/play/<category>/`
 against `data/play-gallery.ts`'s `imageFiles` arrays), update that array to
 match the new file list and order - this drives what actually renders on
-the Play page, independent of what's in Blob. Do this before asking about
-the Blob upload (steps 4-5), so the user reviews the complete picture -
-code change plus pending Blob changes - together. Build (`npm run build`)
-to confirm it compiles.
+the Play page, independent of what's in Blob. If a video folder was added
+or removed, do the same for that same file's `videoItems` array. Do this
+before asking about the Blob upload (steps 5-6), so the user reviews the
+complete picture - code change plus pending Blob changes - together.
+Build (`npm run build`) to confirm it compiles.
 
-This file is the one known consumer that needs manual updates when
-`play/` assets change; if other parts of the site ever reference asset
-filenames directly (new case study covers are handled by the existing
+This file is the known consumer that needs manual updates when `play/`
+assets change; if other parts of the site ever reference asset filenames
+directly (new case study covers are handled by the existing
 `add-portfolio-project` skill, not this one), check those too.
 
-## 4. Ask before uploading
+## 5. Ask before uploading
 
-Show the user the dry-run output from step 2. **Never run with `--apply`
+Show the user the dry-run output from step 3. **Never run with `--apply`
 without the user explicitly confirming** - this writes to their live
 production Blob storage, visible on the deployed site immediately (no
 build/deploy step in between), and the orphan cleanup is a real delete.
@@ -93,7 +134,7 @@ rather than reading out every single filename. Call out the orphaned/
 to-delete list separately and clearly - a delete deserves more attention
 than an upload.
 
-## 5. Apply
+## 6. Apply
 
 Once confirmed, run:
 
@@ -123,10 +164,11 @@ whatever was live before (works for both overwritten and deleted files -
 
 ## Notes
 
-- Both scripts need `BLOB_READ_WRITE_TOKEN` in the environment - read it
-  from `.env.local` the same way the `add-portfolio-project` skill does
-  (`BLOB_READ_WRITE_TOKEN=$(grep ... | cut ...) node scripts/...`), never
-  print the token itself.
+- All scripts except `compress-videos.mjs` need `BLOB_READ_WRITE_TOKEN` in
+  the environment - read it from `.env.local` the same way the
+  `add-portfolio-project` skill does (`BLOB_READ_WRITE_TOKEN=$(grep ... |
+  cut ...) node scripts/...`), never print the token itself.
+  `compress-videos.mjs` only touches local files, no token needed.
 - These scripts only ever read from `~/neeharavula/assets/` and write to
   `~/neeharavula/assets-compressed/` and Blob - they never touch
   `content/work/*.mdx` or any frontmatter `image:` fields. If the user
