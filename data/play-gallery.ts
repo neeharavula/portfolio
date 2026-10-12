@@ -47,13 +47,9 @@ export const imageFiles: Record<Exclude<FilterType, "video">, string[]> = {
     "18-nokings.jpg",
     "19-sandiego.jpeg",
   ],
-  art: ["florence.jpeg"],
+  art: ["florence.jpeg", "pianoclass.gif"],
 };
 
-// Video entries live at Blob storage play/video/<slug>/{full.mp4,
-// poster.jpg} (see scripts/compress-videos.mjs) - a richer shape than
-// imageFiles since each needs a title (alt text/aria-label) and a slug
-// that maps to two separate files, not one filename.
 export type VideoItem = {
   slug: string;
   title: string;
