@@ -8,7 +8,7 @@ team: "Solo"
 tags: ["Fullstack", "Realtime"]
 stack: ["react", "supabase", "tailwind", "typescript", "vercel", "vite"]
 description: "A realtime, multiplayer Jeopardy-style game to play with your friends and family."
-image: "https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/jeoparty/cover.png"
+image: "https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/jeoparty/cover-v3.png"
 type: "project"
 ---
 
@@ -31,11 +31,17 @@ questions.
 
 I built Jeoparty end to end as a solo project, using **React, TypeScript,
 and Tailwind CSS, with Supabase (Postgres + Realtime) powering the backend
-and Vercel for hosting**. I built out the following core features:
+and Vercel for hosting**. Core features include:
 
 - **Four role-based modes**: setup, host, player, and display, each with its
   own responsive layout tailored to the device it runs on (laptop/phone
   for the host, phones for players, TV for the shared display)
+
+<ProjectImage
+  src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/jeoparty/modes.png"
+  alt="Jeoparty's four role-based modes"
+/>
+
 - **Real-time, multiplayer sync**: host, player, and display views are
   synchronized as questions are revealed, answered, and judged, using
   Supabase Postgres and Realtime to model and broadcast game state
@@ -43,6 +49,12 @@ and Vercel for hosting**. I built out the following core features:
   final leaderboard is displayed across all modes at the end of each game
 - **Custom board builder**: allows hosts to create their own 5x5 boards with
   multiple-choice or free-text questions
+
+<ProjectImage
+  src="https://f6ciazohrats9a1e.public.blob.vercel-storage.com/work/projects/jeoparty/setup.png"
+  alt="Jeoparty's custom board builder"
+/>
+
 - **Reusable boards**: hosts can reload a previous game's board by room code
   instead of rebuilding it from scratch
 - **Easy joining**: players can hop in with a host-provided link or game code,
